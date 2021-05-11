@@ -8,7 +8,7 @@ import in.bloomapp.model.Flower;
 public class FlowerManager {
 	public static final String NATURAL="Natural";
 	public static final String ARTIFICIAL="Artiicial";
-	public static final List<Flower> flowers = new ArrayList<>();
+	private static List<Flower> flowers = new ArrayList<>();
 	
 	private FlowerManager() {
 		
@@ -24,12 +24,12 @@ public class FlowerManager {
 		Flower f5 = new Flower(ARTIFICIAL, "Floral Boquet", 600);
 		Flower f6 = new Flower(ARTIFICIAL, "Full decoration package", 8000);
 		
-		flowers.add(f1);
-		flowers.add(f2);
-		flowers.add(f3);
-		flowers.add(f4);
-		flowers.add(f5);
-		flowers.add(f6);
+		getFlowers().add(f1);
+		getFlowers().add(f2);
+		getFlowers().add(f3);
+		getFlowers().add(f4);
+		getFlowers().add(f5);
+		getFlowers().add(f6);
 	
 
 	}
@@ -41,6 +41,11 @@ public class FlowerManager {
 	 */
 	public static List<Flower> getFlowerList() {
 		
+		return getFlowers();
+	}
+
+
+	public static List<Flower> getFlowers() {
 		return flowers;
 	}
 	
