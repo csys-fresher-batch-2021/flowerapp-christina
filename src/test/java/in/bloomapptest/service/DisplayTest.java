@@ -10,8 +10,8 @@ public class DisplayTest {
 
 	@Test
 	public void displayAllTest() {
-		List<Flower> display=FlowerManager.getFlowerList();
-		assertEquals(display, FlowerManager.flowers);
+		final List<Flower> display=FlowerManager.getFlowerList();
+		assertEquals(display, FlowerManager.getFlowers());
 		assertEquals(6,display.size());
 	}
 	

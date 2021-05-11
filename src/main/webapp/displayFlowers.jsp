@@ -27,7 +27,7 @@
 		
 			<tbody>
 		<%
-			List<Flower> flowers = FlowerManager.getFlowerList();
+			final List<Flower> flowers = FlowerManager.getFlowerList();
 			int i=0;
 			for(Flower flower: flowers){
 				i++;

@@ -4,6 +4,7 @@ public class Flower {
 	public String category;
 	public String type;
 	public int price;
+	
 
 
 	public Flower(String category, String type, int price) {
@@ -13,6 +14,10 @@ public class Flower {
 		this.price = price;
 	}
 
+	@SuppressWarnings("unused")
+	private Flower() {
+		
+	}
 	@Override
 	public String toString() {
 		return "Flower [category=" + category + ", type=" + type + ", price=" + price + "]";
