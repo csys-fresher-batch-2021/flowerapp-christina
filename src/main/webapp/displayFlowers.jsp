@@ -4,7 +4,7 @@
 <%@ page import ="in.bloomapp.model.Flower" %>
 <%@ page import ="in.bloomapp.service.FlowerManager" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>Flowers available</title>
@@ -13,14 +13,15 @@
 
 <jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
-	<h1 style="color:pink">Flowers available</h1>
+	
 	<table class="table table-border">
+	<caption style="color:pink">Flowers available</caption>
 		<thead>
 			<tr>
-				<th>S.NO</th>
-				<th>Category</th>
-				<th>Type</th>
-				<th>Price</th>
+				<th scope="col">S.NO</th>
+				<th scope="col">Category</th>
+				<th scope="col">Type</th>
+				<th scope="col">Price</th>
 			</tr>
 		</thead>
 		
