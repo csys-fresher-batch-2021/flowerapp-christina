@@ -1,28 +1,31 @@
 package in.bloomapp.service;
 
 import java.util.ArrayList;
+import java.util.List;
 
-import in.bloomapp.model.Flowers;
+import in.bloomapp.model.Flower;
 
 public class FlowerManager {
 
-	public static ArrayList<Flowers> flowers = new ArrayList<Flowers>();
+	public static List<Flower> flowers = new ArrayList<Flower>();
 
 	// Statically available flowers as appended statically
 
 	static {
-		Flowers f1 = new Flowers("Natural", "NORMAL FLOWERS", 300);
-		Flowers f2 = new Flowers("Natural", "FLORAL BOQUET", 1000);
-		Flowers f3 = new Flowers("Natural", "FULL DECORATION PACKAGE", 10000);
-		Flowers f4 = new Flowers("Artificial", "NORMAL FLOWERS", 100);
-		Flowers f5 = new Flowers("Artificial", "FLORAL BOQUET", 600);
-		Flowers f6 = new Flowers("Artificial", "FULL DECORATION PACKAGE", 8000);
+		Flower f1 = new Flower("Natural", "Normal Flowers", 300);
+		Flower f2 = new Flower("Natural", "Floral Boquet", 1000);
+		Flower f3 = new Flower("Natural", "Full decoration package", 10000);
+		Flower f4 = new Flower("Artificial", "Normal Flowers", 100);
+		Flower f5 = new Flower("Artificial", "Floral Boquet", 600);
+		Flower f6 = new Flower("Artificial", "Full decoration package", 8000);
+		//Flower f7 = new Flower("Artificial", "Floral garland", 1000);
 		flowers.add(f1);
 		flowers.add(f2);
 		flowers.add(f3);
 		flowers.add(f4);
 		flowers.add(f5);
 		flowers.add(f6);
+	//	flowers.add(f7);
 
 	}
 
@@ -31,7 +34,7 @@ public class FlowerManager {
 	 * Gets the list of flowers 
 	 * @return
 	 */
-	public static ArrayList<Flowers> getFlowerList() {
+	public static List<Flower> getFlowerList() {
 		return flowers;
 	}
 
