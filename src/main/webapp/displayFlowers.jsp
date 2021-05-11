@@ -34,9 +34,9 @@
 			%>
 			<tr>
 			<th  scope="col"><%=i%></th>
-			<td><%=flower.category %></td>
-			<td><%=flower.type%></td>
-			<td>Rs.<%=flower.price%>/-</td>
+			<td><%=flower.getCategory() %></td>
+			<td><%=flower.getType()%></td>
+			<td>Rs.<%=flower.getPrice()%>/-</td>
 			</tr>
 		<%} %>
 		</tbody>

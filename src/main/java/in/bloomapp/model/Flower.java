@@ -1,9 +1,21 @@
 package in.bloomapp.model;
 
 public class Flower {
-	public String category;
-	public String type;
-	public int price;
+	private String category;
+	private String type;
+	private int price;
+	public String getCategory() {
+		return category;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+	
 	
 
 

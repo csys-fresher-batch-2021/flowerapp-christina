@@ -11,7 +11,7 @@ public class DisplayTest {
 	@Test
 	public void displayAllTest() {
 		final List<Flower> display=FlowerManager.getFlowerList();
-		assertEquals(display, FlowerManager.getFlowers());
+		assertEquals(display, FlowerManager.flowers);
 		assertEquals(6,display.size());
 	}
 	
