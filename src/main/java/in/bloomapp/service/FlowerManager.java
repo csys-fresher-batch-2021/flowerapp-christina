@@ -6,6 +6,9 @@ import java.util.List;
 import in.bloomapp.model.Flower;
 
 public class FlowerManager {
+	private FlowerManager() {
+		
+	}
 
 	public static List<Flower> flowers = new ArrayList<>();
 
@@ -38,5 +41,6 @@ public class FlowerManager {
 		
 		return flowers;
 	}
+	
 
 }

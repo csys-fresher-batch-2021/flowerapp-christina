@@ -13,9 +13,9 @@
 
 <jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
-	
+		<h1 style="color:pink">Flowers available</h1>
 	<table class="table table-border">
-	<caption style="color:pink">Flowers available</caption>
+	<caption style="color:white">Flowers available</caption>
 		<thead>
 			<tr>
 				<th scope="col">S.NO</th>
@@ -33,7 +33,7 @@
 				i++;
 			%>
 			<tr>
-			<th><%=i%></th>
+			<th  scope="col"><%=i%></th>
 			<td><%=flower.category %></td>
 			<td><%=flower.type%></td>
 			<td>Rs.<%=flower.price%>/-</td>
