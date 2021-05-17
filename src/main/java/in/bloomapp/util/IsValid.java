@@ -10,7 +10,7 @@ public class IsValid {
 	 */
 	public static boolean isValidString(String checkString) {
 	boolean validity=false;
-	if (checkString.trim().length() <= 1 && Pattern.matches("[a-zA-Z0-9\s]", checkString)) {
+	if (checkString.trim().length() <= 1 && Pattern.matches("[a-zA-Z0-9]", checkString)) {
 		
 		throw new RuntimeException("Invalid input");
 		
