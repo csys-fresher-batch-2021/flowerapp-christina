@@ -29,7 +29,7 @@ public class AddFlowerServlet extends HttpServlet {
 				try {
 					amount = Integer.parseInt(price);
 				} catch (NumberFormatException e1) {
-					// TODO Auto-generated catch block
+				
 					e1.printStackTrace();
 				}
 				
