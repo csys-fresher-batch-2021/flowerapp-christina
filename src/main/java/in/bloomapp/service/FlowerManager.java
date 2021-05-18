@@ -57,14 +57,13 @@ public class FlowerManager {
 
 		// checks for blank spaces
 		try {
-			if (IsValid.isValidString(type) && Validator.isCategory(category)) {
+			if (IsValid.isValidString(type) && Validator.isCategory(category) &&  !Validator.flowerIsDuplicate(type, category)) {
 				Flower newFlower = new Flower(category, type, price);
 				getFlowers().add(newFlower);
 				return true;
 			}
 		} 
 		catch (RuntimeException e) {
-			e.getMessage();
 			e.printStackTrace();
 		}
 		return false;

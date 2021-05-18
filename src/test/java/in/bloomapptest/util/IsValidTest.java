@@ -1,28 +1,24 @@
 package in.bloomapptest.util;
 
 import static org.junit.Assert.*;
+
+import java.io.IOException;
+
 import in.bloomapp.util.*;
 import org.junit.Test;
 
 public class IsValidTest {
 
 	@Test
-	public void test1() {
+	public void test1(){
 		
 		//Test case with correct and valid input 
 		
 		String word = "Garland";
-		try {
-			if (IsValid.isValidString(word)) {
-				boolean valid = true;
-				assertEquals(true, valid);
+		boolean valid = IsValid.isValidString(word);
+		assertEquals(true, valid);
 			}
-		} 
-		catch (RuntimeException e) {
-			fail();
-		}
-
-	}
+	
 
 	@Test
 	public void test2() {
@@ -30,15 +26,9 @@ public class IsValidTest {
 		//Test case with usual space
 		
 		String word = "floral garland";
-		try {
-			IsValid.isValidString(word);
-			boolean valid = true;
-			assertEquals(true, valid);
+		boolean valid = IsValid.isValidString(word);
+		assertEquals(true, valid);
 
-		} 
-		catch (RuntimeException e) {
-			fail();
-		}
 	}
 
 	@Test
@@ -47,14 +37,9 @@ public class IsValidTest {
 		//Test case with invalid input 
 		
 		String word = "          ";
-		try {
-			IsValid.isValidString(word);
+		boolean valid = IsValid.isValidString(word);
+		assertEquals(false, valid);
 
-		} 
-		catch (RuntimeException e) {
-			assertEquals("Invalid input", e.getMessage());
-		}
 	}
-
 	
 }

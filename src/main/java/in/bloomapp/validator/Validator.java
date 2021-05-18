@@ -1,6 +1,9 @@
 package in.bloomapp.validator;
 import java.io.IOException;
+import java.util.List;
 
+
+import in.bloomapp.model.Flower;
 import in.bloomapp.service.FlowerManager;
 
 public class Validator {
@@ -26,6 +29,29 @@ public class Validator {
 			
 		}
 		return validity;
+	}
+	
+	/**
+	 * returns true if the flower is already available
+	 * @param type
+	 * @param category
+	 * @return
+	 */
+	public static boolean flowerIsDuplicate(String type, String category) {
+		boolean exists = false;
+		//returns true if the flower is already available
+		final List<Flower> flowers = FlowerManager.getFlowers();
+		for (Flower checkFlower : flowers) {
+			if (checkFlower.getCategory().equalsIgnoreCase(category) && checkFlower.getType().equalsIgnoreCase(type)) {
+				exists=true;
+			}
+			else {
+				continue;
+			}
+
+		}
+		return exists;
+		
 	}
 	
 
