@@ -3,6 +3,10 @@ package in.bloomapp.util;
 import java.util.regex.Pattern;
 
 public class IsValid {
+	
+	private IsValid(){
+		//Default constructor
+	}
 	/**
 	 * Checks weather the string is a valid string or not
 	 * @param checkString
@@ -10,14 +14,15 @@ public class IsValid {
 	 */
 	public static boolean isValidString(String checkString) {
 	boolean validity=false;
-	if (checkString.trim().length() <= 1 && Pattern.matches("[a-zA-Z0-9]", checkString)) {
+	if (!checkString.trim().equals("") && Pattern.matches("[a-zA-Z0-9]", checkString)) {
 		
-		throw new RuntimeException("Invalid input");
+
+		validity=true;
 		
 	}
 	else {
 		
-		validity=true;
+		throw new RuntimeException("Invalid input");
 		
 	}
 	return validity;

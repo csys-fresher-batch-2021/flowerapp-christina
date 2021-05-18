@@ -4,6 +4,9 @@ import java.io.IOException;
 import in.bloomapp.service.FlowerManager;
 
 public class Validator {
+	 private Validator(){
+		//Default constructor
+	 }
 	/**
 	 * Checks if the given category name is valid and correct.
 	 * @param category

@@ -63,7 +63,8 @@ public class FlowerManager {
 				return true;
 			}
 		} 
-		catch (Exception e) {
+		catch (RuntimeException e) {
+			e.getMessage();
 			e.printStackTrace();
 		}
 		return false;
