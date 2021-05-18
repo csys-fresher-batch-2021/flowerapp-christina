@@ -25,7 +25,7 @@ public class AddFlowerServlet extends HttpServlet {
 		        String category = request.getParameter("Category");
 		        String type = request.getParameter("flowerType");
 		        String price = request.getParameter("price");
-		        int amount;
+		        int amount=0;
 				try {
 					amount = Integer.parseInt(price);
 				} catch (NumberFormatException e1) {
