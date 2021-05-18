@@ -18,7 +18,7 @@ public class Validator {
 		
 		}
 		else {
-			throw new IOException ("Invalid categ");
+			throw new IOException ("Invalid category");
 			
 			
 		}

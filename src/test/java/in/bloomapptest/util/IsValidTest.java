@@ -56,33 +56,5 @@ public class IsValidTest {
 		}
 	}
 
-	@Test
-	public void test4() {
-		
-		//test case with invalid input
-		
-		String word = "    s ";
-		try {
-			IsValid.isValidString(word);
-
-		} 
-		catch (RuntimeException e) {
-			assertEquals("Invalid input", e.getMessage());
-		}
-	}
-
-	@Test
-	public void test5() {
-		
-		//Test case with invalid input
-		
-		String word = "$#flower";
-		try {
-			IsValid.isValidString(word);
-
-		} 
-		catch (RuntimeException e) {
-			assertEquals("Invalid input", e.getMessage());
-		}
-	}
+	
 }

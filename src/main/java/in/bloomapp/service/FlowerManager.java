@@ -60,7 +60,6 @@ public class FlowerManager {
 			if (IsValid.isValidString(type) && Validator.isCategory(category)) {
 				Flower newFlower = new Flower(category, type, price);
 				getFlowers().add(newFlower);
-				System.out.println("Successfully added flower type");
 				return true;
 			}
 		} 
