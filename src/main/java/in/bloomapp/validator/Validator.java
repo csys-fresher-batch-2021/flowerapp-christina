@@ -45,9 +45,7 @@ public class Validator {
 			if (checkFlower.getCategory().equalsIgnoreCase(category) && checkFlower.getType().equalsIgnoreCase(type)) {
 				exists=true;
 			}
-			else {
-				continue;
-			}
+			
 
 		}
 		return exists;
