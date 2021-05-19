@@ -28,6 +28,11 @@ public class IsValid {
 	return validity;
 	}
 	
+	/**
+	 * Checks if the the string contains only valid characters
+	 * @param checkString
+	 * @return
+	 */
 	public static boolean isCharAllowed(String checkString) {
 		boolean isValid = false;
 		int i = 0;
