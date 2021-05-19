@@ -2,9 +2,9 @@ package in.bloomapp.validator;
 import java.io.IOException;
 import java.util.List;
 
-
+import in.bloomapp.dao.FlowerManagerDAO;
 import in.bloomapp.model.Flower;
-import in.bloomapp.service.FlowerManager;
+
 
 public class Validator {
 	 private Validator(){
@@ -18,7 +18,7 @@ public class Validator {
 	 */
 	public static boolean isCategory(String category) throws IOException {
 		boolean validity=false;
-		if(category.equalsIgnoreCase(FlowerManager.NATURAL)|| category.equalsIgnoreCase(FlowerManager.ARTIFICIAL)) {
+		if(category.equalsIgnoreCase(FlowerManagerDAO.NATURAL)|| category.equalsIgnoreCase(FlowerManagerDAO.ARTIFICIAL)) {
 		
 			validity=true;
 		
@@ -40,7 +40,7 @@ public class Validator {
 	public static boolean flowerIsDuplicate(String type, String category) {
 		boolean exists = false;
 		//returns true if the flower is already available
-		final List<Flower> flowers = FlowerManager.getFlowers();
+		final List<Flower> flowers = FlowerManagerDAO.getFlowers();
 		for (Flower checkFlower : flowers) {
 			if (checkFlower.getCategory().equalsIgnoreCase(category) && checkFlower.getType().equalsIgnoreCase(type)) {
 				exists=true;
@@ -50,5 +50,24 @@ public class Validator {
 		return exists;	
 	}
 	
+	/**
+	 * Checks weather the given flower is available in the list or not
+	 * @param category
+	 * @param type
+	 * @return
+	 */
+	public static boolean FlowerIsExist(String category,String type) {
+
+		final List<Flower> flowers = FlowerManagerDAO.getFlowers();
+		for(Flower item : flowers) {
+		
+			if (item.getType().equalsIgnoreCase(type) && item.getCategory().equalsIgnoreCase(category)) {
+				//searchFlower=item;
+				return true;
+			}
+		
+		}
+		return false;
+	}
 
 }
