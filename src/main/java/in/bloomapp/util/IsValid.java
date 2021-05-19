@@ -14,7 +14,7 @@ public class IsValid {
 	 */
 	public static boolean isValidString(String checkString) {
 	boolean validity=false;
-	if (!checkString.trim().equals("") || Pattern.matches("[a-zA-Z0-9\s]", checkString)) {
+	if (!checkString.trim().equals("")) {
 		
 
 		validity=true;
@@ -26,6 +26,19 @@ public class IsValid {
 		
 	}
 	return validity;
+	}
+	
+	public static boolean isCharAllowed(String checkString) {
+		boolean isValid = false;
+		int i = 0;
+		while ((i <= checkString.length() - 1) && (checkString.length() >= 3)) {
+			if ((checkString.charAt(i) >= 'A' && checkString.charAt(i) <= 'Z')
+					|| (checkString.charAt(i) >= 'a' && checkString.charAt(i) <= 'z') || checkString.charAt(i) == ' ') {
+				isValid = true;
+			}
+			i++;
+		}
+		return isValid;
 	}
 
 }
