@@ -1,6 +1,5 @@
 package in.bloomapp.util;
 
-import java.util.regex.Pattern;
 
 public class IsValid {
 	
