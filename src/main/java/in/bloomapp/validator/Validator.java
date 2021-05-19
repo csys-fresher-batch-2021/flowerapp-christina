@@ -56,13 +56,12 @@ public class Validator {
 	 * @param type
 	 * @return
 	 */
-	public static boolean FlowerIsExist(String category,String type) {
+	public static boolean flowerIsExist(String category,String type) {
 
 		final List<Flower> flowers = FlowerManagerDAO.getFlowers();
 		for(Flower item : flowers) {
 		
 			if (item.getType().equalsIgnoreCase(type) && item.getCategory().equalsIgnoreCase(category)) {
-				//searchFlower=item;
 				return true;
 			}
 		

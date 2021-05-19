@@ -9,6 +9,10 @@ import in.bloomapp.util.*;
 import in.bloomapp.validator.Validator;
 
 public class FlowerManager {
+	
+	private FlowerManager() {
+		//Default constructor
+	}
 
 	/**
 	 * checks for the input category and appends the flower type in that category
@@ -46,11 +50,10 @@ public class FlowerManager {
 		// Checks for the category ,if deleted gives the success message and returns
 		// true
 		
-		System.out.println(category+type);
 		final List<Flower> flowers = FlowerManagerDAO.getFlowers();
 		for(Flower item : flowers) {
 		
-			if (Validator.FlowerIsExist(category, type)) {
+			if (Validator.flowerIsExist(category, type)) {
 				FlowerManagerDAO.delete(item);
 				return true;
 			}
