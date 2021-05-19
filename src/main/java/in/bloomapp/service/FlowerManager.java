@@ -60,7 +60,6 @@ public class FlowerManager {
 			
 		}
 
-			System.out.println("Invalid details");
 			return false;
 
 		}
