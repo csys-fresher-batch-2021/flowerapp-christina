@@ -14,7 +14,7 @@ public class IsValid {
 	 */
 	public static boolean isValidString(String checkString) {
 	boolean validity=false;
-	if (!checkString.trim().equals("") || Pattern.matches("[a-zA-Z0-9]", checkString)) {
+	if (!checkString.trim().equals("") || Pattern.matches("[a-zA-Z0-9\s]", checkString)) {
 		
 
 		validity=true;

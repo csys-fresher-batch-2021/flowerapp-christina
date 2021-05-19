@@ -14,10 +14,10 @@
 		<form action="AddFlowerServlet" method="get">
 		
 		<label for="Category">Flower Category</label>
-		<input type="text" name="Category" placeholder="Enter Flower Category" required autofocus />
+		<input type="text" name="Category" placeholder="Enter Flower Category" pattern="[a-zA-Z0-9\s]{3,}" required autofocus />
 		<br/>
 		<label for="flowerType">Flower Type</label>
-		<input type="text" name="flowerType" placeholder="Enter Flower Type" required autofocus />
+		<input type="text" name="flowerType" placeholder="Enter Flower Type" pattern="[a-zA-Z0-9\s]{3,}"  required autofocus />
 		<br/>
 		<label for="price">Price</label>
 		<input type="number" name="price" placeholder="Enter Flower price" required autofocus />

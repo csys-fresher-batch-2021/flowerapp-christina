@@ -24,8 +24,8 @@ public class Validator {
 		
 		}
 		else {
-			throw new IOException ("Invalid category");
 			
+			throw new IOException ("Invalid category");
 			
 		}
 		return validity;
@@ -46,10 +46,8 @@ public class Validator {
 				exists=true;
 			}
 			
-
 		}
-		return exists;
-		
+		return exists;	
 	}
 	
 
