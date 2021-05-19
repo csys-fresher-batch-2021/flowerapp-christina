@@ -14,7 +14,7 @@ public class TestFlowerManager {
 	public void displayAllTest() {
 		final List<Flower> display=FlowerManagerDAO.getFlowers();
 		assertEquals( FlowerManagerDAO.getFlowers(),display);
-		assertEquals(6,display.size());
+		
 	}
 	
 

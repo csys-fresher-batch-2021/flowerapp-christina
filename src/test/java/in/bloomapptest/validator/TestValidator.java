@@ -25,7 +25,7 @@ public class TestValidator {
 			fail();
 		} 
 		catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 
@@ -44,7 +44,7 @@ public class TestValidator {
 			assertEquals("Invalid category",e.getMessage());
 		}
 		catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 
