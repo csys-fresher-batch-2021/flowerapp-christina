@@ -6,11 +6,11 @@ import org.junit.Test;
 import in.bloomapp.model.Flower;
 import in.bloomapp.service.FlowerManager;
 
-public class DisplayTest {
+public class TestFlowerManager {
 
 	@Test
 	public void displayAllTest() {
-		final List<Flower> display=FlowerManager.getFlowerList();
+		final List<Flower> display=FlowerManager.getFlowers();
 		assertEquals( FlowerManager.getFlowers(),display);
 		assertEquals(6,display.size());
 	}

@@ -27,7 +27,7 @@
 		
 			<tbody>
 		<%
-			final List<Flower> flowers = FlowerManager.getFlowerList();
+			final List<Flower> flowers = FlowerManager.getFlowers();
 			int i=0;
 			for(Flower flower: flowers){
 				i++;
@@ -41,6 +41,7 @@
 		<%} %>
 		</tbody>
 	</table>
+		<a href="addFlower.jsp">Add flowers</a>
 	
 </main>
 </body>
