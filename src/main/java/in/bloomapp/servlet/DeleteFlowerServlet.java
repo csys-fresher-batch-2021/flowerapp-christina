@@ -14,32 +14,31 @@ import in.bloomapp.service.FlowerManager;
  */
 @WebServlet("/DeleteFlowerServlet")
 public class DeleteFlowerServlet extends HttpServlet {
+	private static final String DISPLAY_FLOWERS_JSP_ERROR_MESSAGE = "displayFlowers.jsp?errorMessage=";
 	private static final long serialVersionUID = 1L;
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		String errorMessage;
 		String category = request.getParameter("category");
         String type = request.getParameter("type");
         try {
 			boolean isAdded = FlowerManager.deleteFlower(category,type);
 			if (isAdded) {
-				errorMessage = "Successfully Deleted Flower";
-				
+				String errorMessage = "Successfully Deleted Flower";
+				response.sendRedirect(DISPLAY_FLOWERS_JSP_ERROR_MESSAGE + errorMessage);
 			} 
 			else {
-				errorMessage = "Unable to add flower type";
-				
+				String errorMessage = "Unable to add flower type";
+				response.sendRedirect(DISPLAY_FLOWERS_JSP_ERROR_MESSAGE + errorMessage);
+			}
 	        }
-        }
 	        catch(RuntimeException e){
 	        	
-	        	errorMessage=e.getMessage();
-	     
+	        	String message=e.getMessage();
+	        	response.sendRedirect(DISPLAY_FLOWERS_JSP_ERROR_MESSAGE + message);
 	        	
 	        }
-        response.sendRedirect("displayFlowers.jsp?errorMessage=" + errorMessage);
 		}
 
 	}
