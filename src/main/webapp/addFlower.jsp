@@ -20,7 +20,7 @@
 		<input type="text" name="flowerType" placeholder="Enter Flower Type" pattern="[a-zA-Z0-9\s]{3,}"  required autofocus />
 		<br/>
 		<label for="price">Price</label>
-		<input type="number" name="price" placeholder="Enter Flower price" required autofocus />
+		<input type="number" name="price" placeholder="Enter Flower price" step="0.1" required autofocus />
 		<br/>
 		<button type="submit" class="btn btn-info">Submit</button>
 		<a href="displayFlowers.jsp">Flower List</a>
