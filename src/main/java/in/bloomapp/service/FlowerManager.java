@@ -1,8 +1,6 @@
 package in.bloomapp.service;
 
 import java.io.IOException;
-import java.util.List;
-
 import in.bloomapp.dao.FlowerManagerDAO;
 import in.bloomapp.model.Flower;
 import in.bloomapp.util.*;
@@ -50,15 +48,14 @@ public class FlowerManager {
 		// Checks for the category ,if deleted gives the success message and returns
 		// true
 		
-		final List<Flower> flowers = FlowerManagerDAO.getFlowers();
-		for(Flower item : flowers) {
+		Flower oldFlower=Validator.flowerIsExist(category, type);
 		
-			if (Validator.flowerIsExist(category, type)) {
-				FlowerManagerDAO.delete(item);
+			if (oldFlower!=null) {
+				FlowerManagerDAO.delete(oldFlower);
 				return true;
 			}
 			
-		}
+		
 
 			return false;
 

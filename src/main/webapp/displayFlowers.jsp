@@ -5,6 +5,10 @@
 <%@ page import ="in.bloomapp.dao.FlowerManagerDAO" %>
 <!DOCTYPE html>
 <html lang="en">
+<%
+String loggedInUsername = (String)session.getAttribute("LOGGED_IN_USER");
+String role = (String) session.getAttribute("ROLE");
+%>
 <head>
 <meta charset="ISO-8859-1">
 <title>Flowers available</title>
@@ -37,12 +41,16 @@
 			<td><%=flower.getCategory() %></td>
 			<td><%=flower.getType()%></td>
 			<td>Rs.<%=flower.getPrice()%>/-</td>
+			 <% if (loggedInUsername != null && role != null && role.equalsIgnoreCase("ADMIN")){ %>
 			<td><a href="DeleteFlowerServlet?type=<%=flower.getType()%>&category=<%=flower.getCategory()%>"class="btn btn-danger">Delete</a></td>
+			 <%} %>
 				</tr>
 		<%} %>
 		</tbody>
 	</table>
+		 <% if (loggedInUsername != null && role != null && role.equalsIgnoreCase("ADMIN")){ %>
 		<a href="addFlower.jsp">Add flowers</a>
+		 <%} %>
 	
 </main>
 </body>
