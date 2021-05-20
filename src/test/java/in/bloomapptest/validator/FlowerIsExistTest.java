@@ -12,9 +12,9 @@ public class FlowerIsExistTest {
 	public void availableFlowerTest1() {
 		
 		
-		Flower available=Validator.flowerIsExist("Natural", "Normal Flowers");
+		Flower available=Validator.flowerIsExist("Natural", "Floral Boquet");
 		assertEquals("Natural",available.getCategory());
-		assertEquals("Normal Flowers",available.getType());
+		assertEquals("Floral Boquet",available.getType());
 	}
 	
 	@Test
