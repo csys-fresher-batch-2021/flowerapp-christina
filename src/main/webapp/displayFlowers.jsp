@@ -2,7 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <%@ page import ="java.util.List" %>
 <%@ page import ="in.bloomapp.model.Flower" %>
-<%@ page import ="in.bloomapp.service.FlowerManager" %>
+<%@ page import ="in.bloomapp.dao.FlowerManagerDAO" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,16 +18,16 @@
 	<caption style="color:white">Flowers available</caption>
 		<thead>
 			<tr>
-				<th scope="col">S.NO</th>
-				<th scope="col">Category</th>
-				<th scope="col">Type</th>
-				<th scope="col">Price</th>
+				<th scope="col" id= "serialnumber">S.NO</th>
+				<th scope="col" id="category">Category</th>
+				<th scope="col"id="type">Type</th>
+				<th scope="col"id="price">Price</th>
 			</tr>
 		</thead>
 		
 			<tbody>
 		<%
-			final List<Flower> flowers = FlowerManager.getFlowers();
+			final List<Flower> flowers = FlowerManagerDAO.getFlowers();
 			int i=0;
 			for(Flower flower: flowers){
 				i++;
@@ -37,7 +37,8 @@
 			<td><%=flower.getCategory() %></td>
 			<td><%=flower.getType()%></td>
 			<td>Rs.<%=flower.getPrice()%>/-</td>
-			</tr>
+			<td><a href="DeleteFlowerServlet?type=<%=flower.getType()%>&category=<%=flower.getCategory()%>"class="btn btn-danger">Delete</a></td>
+				</tr>
 		<%} %>
 		</tbody>
 	</table>
