@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
   
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		String username = request.getParameter("username");
@@ -26,10 +27,20 @@ public class LoginServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("LOGGED_IN_USER", username);
 			session.setAttribute("ROLE", "ADMIN");
-			response.sendRedirect("displayFlowers.jsp");
+			try {
+				response.sendRedirect("displayFlowers.jsp");
+			} catch (IOException e) {
+				
+				e.printStackTrace();
+			}
 		}
 		else {
-			response.sendRedirect("login.jsp?errorMessage=Invalid Login Credentials");
+			try {
+				response.sendRedirect("login.jsp?errorMessage=Invalid Login Credentials");
+			} catch (IOException e) {
+				
+				e.printStackTrace();
+			}
 		}
 	}
 

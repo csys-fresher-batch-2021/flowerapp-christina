@@ -10,8 +10,6 @@ public class FlowerIsExistTest {
 	
 	@Test
 	public void availableFlowerTest1() {
-		
-		
 		Flower available=Validator.flowerIsExist("Natural", "Floral Boquet");
 		assertEquals("Natural",available.getCategory());
 		assertEquals("Floral Boquet",available.getType());
