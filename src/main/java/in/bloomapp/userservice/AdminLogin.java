@@ -2,6 +2,9 @@ package in.bloomapp.userservice;
 
 public class AdminLogin {
 	
+	private AdminLogin() {
+		
+	}
 	/**
 	 * Checks weather the user name and password is valid
 	 * @param username
