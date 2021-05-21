@@ -9,13 +9,11 @@ public class AdminLogin {
 	 * @return
 	 */
 	public static boolean login(String username, String password) {
+		boolean valid=false;
 		if(username.equalsIgnoreCase("admin")&& password.equals("admin123")){
-			return true;
+			valid=true;
 		}
-		else {
-			return false;
-		}
-		
+		return valid;
 	}
 
 }
