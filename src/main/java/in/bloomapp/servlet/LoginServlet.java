@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import in.bloomapp.userservice.AdminLogin;
+
 /**
  * Servlet implementation class LoginServlet
  */
@@ -21,7 +23,7 @@ public class LoginServlet extends HttpServlet {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 	
-		boolean isValid = "admin".equals(username) && "admin".equals(password);
+		boolean isValid = AdminLogin.login(username, password);
 	
 		if(isValid) {
 			HttpSession session = request.getSession();
