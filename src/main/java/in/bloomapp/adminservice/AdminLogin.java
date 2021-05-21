@@ -1,4 +1,4 @@
-package in.bloomapp.userservice;
+package in.bloomapp.adminservice;
 
 public class AdminLogin {
 	
