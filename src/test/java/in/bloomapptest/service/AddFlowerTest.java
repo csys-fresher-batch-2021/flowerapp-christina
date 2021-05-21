@@ -23,7 +23,7 @@ public class AddFlowerTest {
 			
 		}
 		
-		catch (IOException e) {
+		catch (RuntimeException |IOException e) {
 			
 			e.printStackTrace();
 			fail();
@@ -40,13 +40,26 @@ public class AddFlowerTest {
 			
 		}
 		
-		catch (RuntimeException e) {
+		catch (RuntimeException | IOException e) {
+			e.printStackTrace();
+			assertEquals("Invalid category",e.getMessage());
+		} 
+		
+		
+	}
+	@Test
+	public void test2() {
+		
+		//Test case with wrong input
+		
+		try {
+			FlowerManager.addFlower("Natural","         ",300);
+			
+		}
+		
+		catch (RuntimeException | IOException e) {
 			e.printStackTrace();
 			assertEquals("Invalid input",e.getMessage());
 		} 
-		
-		catch (IOException e) {
-			e.printStackTrace();
-		}
 	}
 }

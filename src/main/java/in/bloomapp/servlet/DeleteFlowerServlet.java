@@ -23,6 +23,7 @@ public class DeleteFlowerServlet extends HttpServlet {
 		String errorMessage;
 		String category = request.getParameter("category");
         String type = request.getParameter("type");
+      
         try {
 			boolean isAdded = FlowerManager.deleteFlower(category,type);
 			if (isAdded) {
