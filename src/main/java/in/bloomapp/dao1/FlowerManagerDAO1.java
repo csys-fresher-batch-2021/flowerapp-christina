@@ -40,7 +40,6 @@ public class FlowerManagerDAO1 {
 			pst.executeUpdate();
 		} 
 		catch (SQLException e) {
-			e.printStackTrace();
 			throw new DBException("Unable to add flower");
 		} 
 		finally {
@@ -71,7 +70,6 @@ public class FlowerManagerDAO1 {
 		} 
 		catch (SQLException e) {
 			//If cannot add flower shows exception
-			e.printStackTrace();
 			throw new DBException("Unable to delete flower");
 		} 
 		finally {

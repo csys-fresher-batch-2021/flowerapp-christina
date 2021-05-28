@@ -37,7 +37,6 @@ public static Connection getConnection() throws DBException {
 		connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
 	} 
 	catch (ClassNotFoundException | SQLException e) {
-		e.printStackTrace();
 		throw new DBException("Unable to get the database connection");
 	}
 

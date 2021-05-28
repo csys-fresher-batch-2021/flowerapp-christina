@@ -13,7 +13,6 @@ public class ConnectionUtilTest {
 			try {
 				ConnectionUtil.getConnection();
 			} catch (DBException e) {
-				e.printStackTrace();
 				fail();
 			}
 		}

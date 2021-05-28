@@ -34,7 +34,7 @@ public class DeleteFlowerServlet extends HttpServlet {
 			}
 	        }
 	        catch(Exception e){
-	        	
+	        	e.printStackTrace();
 	        	errorMessage=e.getMessage();
 	        	
 	        }

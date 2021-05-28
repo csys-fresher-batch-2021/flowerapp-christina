@@ -28,9 +28,9 @@ public class AddFlowerServlet extends HttpServlet {
 		        int amount=0;
 				try {
 					amount = Integer.parseInt(price);
-				} catch (NumberFormatException e1) {
+				} catch (NumberFormatException e) {
 				
-					e1.printStackTrace();
+					e.printStackTrace();
 				}
 				
 				
@@ -45,7 +45,7 @@ public class AddFlowerServlet extends HttpServlet {
 				}
 		        }
 		        catch(TaskImpossibleException | ValidFlowerException | DBException e){
-		        	
+		        	e.printStackTrace();
 		        	String message=e.getMessage();
 		        	response.sendRedirect("addproduct.jsp?errorMessage=" + message);
 		        	

@@ -42,13 +42,10 @@ public class FlowerManager {
 			status = true;
 			return status;
 		} catch (InvalidStringEXception e) {
-			e.printStackTrace();
 			throw new TaskImpossibleException(e, e.getMessage());
 		} catch (ValidFlowerException e) {
-			e.printStackTrace();
 			throw new TaskImpossibleException(e.getMessage());
 		} catch (DBException|SQLException e) {
-			e.printStackTrace();
 			throw new DBException(e.getMessage());
 
 		}
@@ -79,8 +76,6 @@ public class FlowerManager {
 		}
 
 		catch (DBException|SQLException e) {
-
-			e.printStackTrace();
 			return false;
 		}
 
@@ -93,7 +88,6 @@ public class FlowerManager {
 			flowers = FlowerManagerDAO1.getFlower();
 			return flowers;
 		} catch (DBException | SQLException e) {
-			e.printStackTrace();
 			return flowers;
 		}
 

@@ -26,11 +26,11 @@ public class FlowerManager1 {
 	 * @return
 	 */
 	public static List<Flower> getFlowers(){
-		List<Flower> flowers = null;
+		List<Flower> flowers;
 		try {
 			flowers = FlowerManagerDAO1.getFlower();
 		} catch (Exception e) {
-			e.printStackTrace();
+			flowers=null;
 		}
 		return flowers;
 		
