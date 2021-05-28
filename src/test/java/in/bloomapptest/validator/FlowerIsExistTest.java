@@ -10,27 +10,56 @@ public class FlowerIsExistTest {
 	
 	@Test
 	public void availableFlowerTest1() {
-		Flower available=Validator.flowerIsExist("Natural", "Floral Boquet");
-		assertEquals("Natural",available.getCategory());
-		assertEquals("Floral Boquet",available.getType());
+		Flower available=null;
+		try {
+			available = Validator.flowerIsExist("Natural", "Floral Boquets");
+			assertEquals("Natural",available.getCategory());
+			assertEquals("Floral Boquets",available.getType());
+		} catch (Exception e) {
+			e.printStackTrace();
+			fail();
+		}
+
 	}
 	
 	@Test
 	public void availableFlowerTest2() {
-		Flower available=Validator.flowerIsExist("Artificial", "Normal Flowers");
-		assertEquals("Artificial",available.getCategory());
-		assertEquals("Normal Flowers",available.getType());
+		Flower available;
+		try {
+			available = Validator.flowerIsExist("Artificial", "Normal Flower");
+			assertEquals("Artificial",available.getCategory());
+			assertEquals("Normal Flower",available.getType());
+		} catch (Exception e) {
+			e.printStackTrace();
+			fail();
+		}
+		
 	}
 	@Test
 	public void invalidCategoryTest() {
-		Flower available=Validator.flowerIsExist("Artif", "Normal flowers");
-		assertEquals(null,available);
+		try {
+			Validator.flowerIsExist("Artif", "Normal flowers");
+		} catch (Exception e) {
+			e.printStackTrace();
+			String message=e.getMessage();
+			assertNull(null);
+			assertEquals("Flower not available",message);
+		}
+		
 	}
 	
 	@Test
 	public void invalidFlowerTypeTest() {
-		Flower available=Validator.flowerIsExist("Natural", "rose");
-		assertEquals(null,available);
+		Flower available = null;
+		try {
+			available = Validator.flowerIsExist("Natural", "rose");
+		} catch (Exception e) {
+			e.printStackTrace();
+			String message=e.getMessage();
+			assertEquals(null,available);
+			assertEquals("Flower not available",message);
+		}
+		
 	}
 
 }

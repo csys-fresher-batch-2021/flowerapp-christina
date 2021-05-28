@@ -2,7 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <%@ page import ="java.util.List" %>
 <%@ page import ="in.bloomapp.model.Flower" %>
-<%@ page import ="in.bloomapp.dao.FlowerManagerDAO" %>
+<%@ page import ="in.bloomapp.dao1.FlowerManagerDAO1" %>
 <!DOCTYPE html>
 <html lang="en">
 <%
@@ -31,7 +31,7 @@ String role = (String) session.getAttribute("ROLE");
 		
 			<tbody>
 		<%
-			final List<Flower> flowers = FlowerManagerDAO.getFlowers();
+			final List<Flower> flowers = FlowerManagerDAO1.getFlower();
 			int i=0;
 			for(Flower flower: flowers){
 				i++;
@@ -45,7 +45,7 @@ String role = (String) session.getAttribute("ROLE");
 			<td><a href="DeleteFlowerServlet?type=<%=flower.getType()%>&category=<%=flower.getCategory()%>"class="btn btn-danger">Delete</a></td>
 			 <%} %>
 				</tr>
-		<%} %>
+		<% } %>
 		</tbody>
 	</table>
 		 <% if (loggedInUsername != null && role != null && role.equalsIgnoreCase("ADMIN")){ %>
