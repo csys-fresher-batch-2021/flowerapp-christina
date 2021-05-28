@@ -17,9 +17,7 @@ public class FlowerManager1 {
 		List<Flower> flowersList = getFlowers();
 
 		Gson gson = new Gson();
-		String json = gson.toJson(flowersList);
-		System.out.println("Approach #2: GSON JAR \n" + json);
-		//System.out.println("Approach #1\n" + Flower.toJSON());
+		gson.toJson(flowersList);
 
 	}
 	
@@ -28,13 +26,13 @@ public class FlowerManager1 {
 	 * @return
 	 */
 	public static List<Flower> getFlowers(){
-		List<Flower> Flowers = null;
+		List<Flower> flowers = null;
 		try {
-			Flowers = FlowerManagerDAO1.getFlower();
+			flowers = FlowerManagerDAO1.getFlower();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return Flowers;
+		return flowers;
 		
 	}
 	

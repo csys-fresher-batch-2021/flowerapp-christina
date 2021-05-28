@@ -7,17 +7,23 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import in.bloomapp.exception.DBException;
 import in.bloomapp.model.Flower;
 import in.bloomapp.util.ConnectionUtil;
 
 public class FlowerManagerDAO1 {
+	
+	private FlowerManagerDAO1(){
+		
+	}
 
 	/**
 	 * Adds a flower to the database
 	 * @param newFlower
+	 * @throws SQLException 
 	 * @throws Exception
 	 */
-	public static void saveFlower(Flower newFlower) throws Exception {
+	public static void saveFlower(Flower newFlower) throws DBException, SQLException {
 
 		// Getting connection
 		Connection connection = null;
@@ -31,12 +37,11 @@ public class FlowerManagerDAO1 {
 			pst.setString(2, newFlower.getCategory());
 			pst.setInt(3, newFlower.getPrice());
 			// Executes the Query
-			int rows = pst.executeUpdate();
-			System.out.println("No of rows inserted :" + rows);
+			pst.executeUpdate();
 		} 
 		catch (SQLException e) {
 			e.printStackTrace();
-			throw new Exception("Unable to add flower");
+			throw new DBException("Unable to add flower");
 		} 
 		finally {
 			// Null Check - to avoid Null Pointer Exception
@@ -48,9 +53,10 @@ public class FlowerManagerDAO1 {
 	/**
 	 * remove a flower from the database
 	 * @param oldFlower
+	 * @throws SQLException 
 	 * @throws Exception
 	 */
-	public static void removeFlower(Flower oldFlower) throws Exception  {
+	public static void removeFlower(Flower oldFlower) throws DBException, SQLException  {
 		Connection connection = null;
 		PreparedStatement pst = null;
 		try {
@@ -60,13 +66,13 @@ public class FlowerManagerDAO1 {
 			pst = connection.prepareStatement(sql);
 			pst.setString(1, oldFlower.getType());
 			// Executes the Query
-			int rows = pst.executeUpdate();
-			System.out.println(rows + " row deleted");
+			pst.executeUpdate();
+			
 		} 
 		catch (SQLException e) {
 			//If cannot add flower shows exception
 			e.printStackTrace();
-			throw new Exception("Unable to delete flower");
+			throw new DBException("Unable to delete flower");
 		} 
 		finally {
 
@@ -78,11 +84,12 @@ public class FlowerManagerDAO1 {
 	/**
 	 * Gets the all flowers which is in the database
 	 * @return
+	 * @throws SQLException 
 	 * @throws Exception
 	 */
-	public static List<Flower> getFlower() throws Exception {
+	public static List<Flower> getFlower() throws DBException, SQLException {
 
-		List<Flower> flower = new ArrayList<Flower>();
+		List<Flower> flower = new ArrayList<>();
 		// Step 1: Get the connection
 		Connection con = ConnectionUtil.getConnection();
 		PreparedStatement pst = null;
@@ -111,7 +118,7 @@ public class FlowerManagerDAO1 {
 		//If unable to get flowers throws exception
 		catch (SQLException e) {
 			e.printStackTrace();
-			throw new Exception("Unable to fetch flowers");
+			throw new DBException("Unable to fetch flowers");
 		} 
 		finally {
 			//Closes the connection

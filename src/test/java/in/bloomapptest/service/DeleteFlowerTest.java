@@ -1,10 +1,8 @@
 package in.bloomapptest.service;
 
 import static org.junit.Assert.*;
-
 import org.junit.Test;
-
-import in.bloomapp.exception.taskImpossibleException;
+import in.bloomapp.exception.TaskImpossibleException;
 import in.bloomapp.service.FlowerManager;
 
 public class DeleteFlowerTest {
@@ -16,7 +14,7 @@ public class DeleteFlowerTest {
 		try {
 			delete = FlowerManager.deleteFlower("Natural", "Normal Flowers");
 			assertTrue(delete);
-		} catch (taskImpossibleException e) {
+		} catch (TaskImpossibleException e) {
 			e.printStackTrace();
 		}
 	}
@@ -28,7 +26,7 @@ public class DeleteFlowerTest {
 		try {
 			delete = FlowerManager.deleteFlower("Artificial", "Full decoration package");
 			assertTrue(delete);
-		} catch (taskImpossibleException e) {
+		} catch (TaskImpossibleException e) {
 			e.printStackTrace();
 		}
 	}
@@ -39,7 +37,7 @@ public class DeleteFlowerTest {
 		boolean delete = false;
 		try {
 			delete = FlowerManager.deleteFlower("christina", "rose");
-		} catch (taskImpossibleException e) {
+		} catch (TaskImpossibleException e) {
 
 			e.printStackTrace();
 			assertFalse(delete);
@@ -53,7 +51,7 @@ public class DeleteFlowerTest {
 		boolean delete = false;
 		try {
 			delete = FlowerManager.deleteFlower("natural", "rose");
-		} catch (taskImpossibleException e) {
+		} catch (TaskImpossibleException e) {
 			e.printStackTrace();
 		}
 		assertFalse(delete);
@@ -66,7 +64,7 @@ public class DeleteFlowerTest {
 		boolean delete = false;
 		try {
 			delete = FlowerManager.deleteFlower("Artificial", "rose");
-		} catch (taskImpossibleException e) {
+		} catch (TaskImpossibleException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -80,7 +78,7 @@ public class DeleteFlowerTest {
 		boolean delete=false;
 		try {
 			delete = FlowerManager.deleteFlower("           ", "rose");
-		} catch (taskImpossibleException e) {
+		} catch (TaskImpossibleException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

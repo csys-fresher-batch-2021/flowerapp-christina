@@ -1,8 +1,10 @@
 package in.bloomapp.validator;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 import in.bloomapp.dao1.FlowerManagerDAO1;
 import in.bloomapp.model.Flower;
+import in.bloomapp.exception.DBException;
 import in.bloomapp.exception.ValidFlowerException;
 
 public class Validator {
@@ -37,9 +39,11 @@ public class Validator {
 	 * @param type
 	 * @param category
 	 * @return
+	 * @throws SQLException 
+	 * @throws DBException 
 	 * @throws Exception 
 	 */
-	public static void flowerIsDuplicate(String type, String category) throws Exception {
+	public static void flowerIsDuplicate(String type, String category) throws ValidFlowerException, DBException, SQLException {
 		//returns true if the flower is already available
 		final List<Flower> flowers = FlowerManagerDAO1.getFlower();
 		for (Flower checkFlower : flowers) {
@@ -54,9 +58,11 @@ public class Validator {
 	 * @param category
 	 * @param type
 	 * @return
+	 * @throws SQLException 
+	 * @throws DBException 
 	 * @throws Exception 
 	 */
-	public static Flower flowerIsExist(String category,String type) throws Exception {
+	public static Flower flowerIsExist(String category,String type) throws ValidFlowerException, DBException, SQLException {
 
 		final List<Flower> flowers = FlowerManagerDAO1.getFlower();
 		for(Flower item : flowers) {

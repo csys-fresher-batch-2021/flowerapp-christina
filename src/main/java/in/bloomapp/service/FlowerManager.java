@@ -1,11 +1,12 @@
 package in.bloomapp.service;
 
-import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 import in.bloomapp.dao1.FlowerManagerDAO1;
+import in.bloomapp.exception.DBException;
 import in.bloomapp.exception.InvalidStringEXception;
+import in.bloomapp.exception.TaskImpossibleException;
 import in.bloomapp.exception.ValidFlowerException;
-import in.bloomapp.exception.taskImpossibleException;
 import in.bloomapp.model.Flower;
 import in.bloomapp.util.*;
 import in.bloomapp.validator.Validator;
@@ -21,38 +22,37 @@ public class FlowerManager {
 	 * 
 	 * @param newFlower
 	 * @return
-	 * @throws IOException
-	 * @throws ValidFlowerException 
-	 * @throws taskImpossibleException 
+	 * @throws ValidFlowerException
+	 * @throws DBException
+	 * @throws SQLException
+	 * @throws taskImpossibleException
 	 */
-	public static boolean addFlower(String category, String type, int price) throws IOException, ValidFlowerException, taskImpossibleException {
+	public static boolean addFlower(String category, String type, int price)
+			throws ValidFlowerException, TaskImpossibleException, DBException {
 
-		boolean status=false;
+		boolean status = false;
 		// checks for blank spaces
 		try {
 			IsValid.isValidString(type);
 			Validator.isCategory(category);
 			Validator.flowerIsDuplicate(type, category);
 			IsValid.isCharAllowed(type);
-				Flower newFlower = new Flower(category, type, price);
-				FlowerManagerDAO1.saveFlower(newFlower);
-				status=true;
+			Flower newFlower = new Flower(category, type, price);
+			FlowerManagerDAO1.saveFlower(newFlower);
+			status = true;
 			return status;
-		}
-		catch (InvalidStringEXception e) {
+		} catch (InvalidStringEXception e) {
 			e.printStackTrace();
-			throw new taskImpossibleException(e,e.getMessage());
-		}
-		catch(ValidFlowerException e) {
+			throw new TaskImpossibleException(e, e.getMessage());
+		} catch (ValidFlowerException e) {
 			e.printStackTrace();
-			throw new taskImpossibleException(e.getMessage());
-		} 
-		catch (Exception e) {
+			throw new TaskImpossibleException(e.getMessage());
+		} catch (DBException|SQLException e) {
 			e.printStackTrace();
-			throw new taskImpossibleException(e.getMessage());
-			
+			throw new DBException(e.getMessage());
+
 		}
-	
+
 	}
 
 	/**
@@ -61,25 +61,25 @@ public class FlowerManager {
 	 * @param category
 	 * @param type
 	 * @return
-	 * @throws ValidFlowerException 
-	 * @throws taskImpossibleException 
+	 * @throws SQLException 
+	 * @throws ValidFlowerException
+	 * @throws taskImpossibleException
 	 */
-	public static boolean deleteFlower(String category, String type) throws taskImpossibleException {
+	public static boolean deleteFlower(String category, String type) throws TaskImpossibleException{
 
 		// Checks for the category ,if deleted gives the success message and returns
 		// true
 
 		try {
-		Flower oldFlower = Validator.flowerIsExist(category, type);
+			Flower oldFlower = Validator.flowerIsExist(category, type);
 			FlowerManagerDAO1.removeFlower(oldFlower);
 			return true;
-		}
-		catch(ValidFlowerException e) {
-			throw new taskImpossibleException("Can't delete");
+		} catch (ValidFlowerException e) {
+			throw new TaskImpossibleException("Can't delete");
 		}
 
-		catch(Exception e) {
-			
+		catch (DBException|SQLException e) {
+
 			e.printStackTrace();
 			return false;
 		}
@@ -88,15 +88,14 @@ public class FlowerManager {
 
 	public static List<Flower> getFLowerList() {
 
-		List<Flower> Flowers;
+		List<Flower> flowers=null;
 		try {
-			Flowers = FlowerManagerDAO1.getFlower();
-			return Flowers;
-		} catch (Exception e) {
+			flowers = FlowerManagerDAO1.getFlower();
+			return flowers;
+		} catch (DBException | SQLException e) {
 			e.printStackTrace();
-			return null;
+			return flowers;
 		}
-		
-		
+
 	}
 }

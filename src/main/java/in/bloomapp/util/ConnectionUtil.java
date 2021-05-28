@@ -27,7 +27,6 @@ public static Connection getConnection() {
 
 		// Step 2: Get the Database Connection (SQLException)
 		connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
-		System.out.println(connection);
 	} 
 	catch (ClassNotFoundException | SQLException e) {
 		e.printStackTrace();
@@ -43,9 +42,10 @@ public static Connection getConnection() {
  * @param rs
  * @param pst
  * @param con
+ * @throws SQLException 
  * @throws Exception
  */
-public static void close(ResultSet rs,PreparedStatement pst, Connection con) throws Exception {
+public static void close(ResultSet rs,PreparedStatement pst, Connection con) throws SQLException{
 	// Null Check - to avoid Null Pointer Exception
 	if (rs != null) {
 		rs.close();

@@ -10,7 +10,7 @@ import org.junit.Test;
 import in.bloomapp.dao1.FlowerManagerDAO1;
 import in.bloomapp.model.Flower;
 
-public class removeFlower {
+public class RemoveFlower {
 	
 	@Before
 	public void addFlowerMock() {

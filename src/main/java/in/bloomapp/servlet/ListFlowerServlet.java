@@ -27,7 +27,6 @@ public class ListFlowerServlet extends HttpServlet {
 		// Step 2: Convert to Json string
 		Gson gson = new Gson();
 		String json = gson.toJson(list);
-		System.out.println("GSON JAR \n" +  json);
 
 		// Step 3: Write the json in response and flush it
 		PrintWriter out = response.getWriter();

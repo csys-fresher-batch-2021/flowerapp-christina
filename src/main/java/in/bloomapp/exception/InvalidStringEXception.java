@@ -21,7 +21,7 @@ public class InvalidStringEXception extends Exception {
 	 * @param e
 	 * @param message
 	 */
-	public InvalidStringEXception(InvalidStringEXception e,String message) {
+	public InvalidStringEXception(Exception e,String message) {
 		super(message, e);
 	}
 

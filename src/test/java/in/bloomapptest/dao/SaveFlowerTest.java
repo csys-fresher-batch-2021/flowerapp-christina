@@ -5,7 +5,7 @@ import org.junit.Test;
 import in.bloomapp.dao1.FlowerManagerDAO1;
 import in.bloomapp.model.Flower;
 
-public class saveFlowerTest {
+public class SaveFlowerTest {
 
 	@Test
 	public void testWithNewFLower() {

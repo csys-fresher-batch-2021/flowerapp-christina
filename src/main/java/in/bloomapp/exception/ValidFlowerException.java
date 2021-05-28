@@ -16,7 +16,7 @@ public class ValidFlowerException extends Exception {
 	 * @param e
 	 * @param message
 	 */
-	public ValidFlowerException(InvalidStringEXception e,String message) {
+	public ValidFlowerException(Exception e,String message) {
 		super(message, e);
 	}
 }

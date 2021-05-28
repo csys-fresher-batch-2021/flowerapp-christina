@@ -6,9 +6,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import in.bloomapp.exception.ValidFlowerException;
-import in.bloomapp.exception.taskImpossibleException;
 import in.bloomapp.service.FlowerManager;
 
 /**
@@ -36,7 +33,7 @@ public class DeleteFlowerServlet extends HttpServlet {
 				
 			}
 	        }
-	        catch(RuntimeException |  taskImpossibleException e){
+	        catch(Exception e){
 	        	
 	        	errorMessage=e.getMessage();
 	        	
