@@ -2,16 +2,20 @@ package in.bloomapptest.util;
 
 
 
-import java.sql.Connection;
-
+import static org.junit.Assert.fail;
+import in.bloomapp.exception.DBException;
 import in.bloomapp.util.ConnectionUtil;
 
 public class ConnectionUtilTest {
 
 		public static void main(String[] args) {
 
-			Connection connection = ConnectionUtil.getConnection();
-			System.out.println(connection);
+			try {
+				ConnectionUtil.getConnection();
+			} catch (DBException e) {
+				e.printStackTrace();
+				fail();
+			}
 		}
 	}
 

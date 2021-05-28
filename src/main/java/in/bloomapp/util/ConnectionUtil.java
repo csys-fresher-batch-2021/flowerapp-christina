@@ -6,7 +6,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import in.bloomapp.exception.DBException;
+
 public class ConnectionUtil {
+	
+
+	private ConnectionUtil() {
+		
+	}
 
 	private static final String DRIVER_CLASS_NAME = System.getenv("spring.datasource.driver-class-name");
 	private static final String DB_URL= System.getenv("spring.datasource.url");
@@ -16,8 +23,9 @@ public class ConnectionUtil {
 /**
  * Gets the database driver connection by its url
  * @return
+ * @throws DBException 
  */
-public static Connection getConnection() {
+public static Connection getConnection() throws DBException {
 
 	
 	Connection connection = null;
@@ -30,7 +38,7 @@ public static Connection getConnection() {
 	} 
 	catch (ClassNotFoundException | SQLException e) {
 		e.printStackTrace();
-		throw new RuntimeException("Unable to get the database connection");
+		throw new DBException("Unable to get the database connection");
 	}
 
 	return connection;

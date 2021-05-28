@@ -16,7 +16,6 @@ public class IsValid {
 	public static boolean isValidString(String checkString) throws InvalidStringEXception {
 	boolean validity=false;
 	if (checkString.trim().equals("")) {
-		//validity=true;
 		throw new InvalidStringEXception("Invalid String");
 	}
 	else {
