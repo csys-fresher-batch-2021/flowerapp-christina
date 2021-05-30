@@ -9,25 +9,34 @@ import in.bloomapp.validator.Validator;
 public class TestIsDuplicate {
 
 	@Test
-	public void test() {
+	public void testDuplicateInput() {
 		
 		//Test case with already available flower
 		
-		String category="artificial";
+		String category="Artificial";
 		String type="Floral Boquet";
-		boolean exists=Validator.flowerIsDuplicate(type, category);
-		assertEquals(true,exists);
+	    try {
+			Validator.flowerIsDuplicate(type, category);
+		} catch (Exception e) {
+			e.printStackTrace();
+			String message=e.getMessage();
+			assertEquals("Flower already available",message);
+		}
 	}
 	
 	@Test
-	public void test1() {
+	public void testNewFlower() {
 		
 		//Test case with new flower
 		
-		String category="artificila";
+		String category="artificial";
 		String type="Floral garland";
-		boolean exists=Validator.flowerIsDuplicate(type, category);
-		assertEquals(false,exists);
+		try {
+			Validator.flowerIsDuplicate(type, category);
+		} catch (Exception e) {
+			e.printStackTrace();
+			fail();		}
+
 	}
 
 }

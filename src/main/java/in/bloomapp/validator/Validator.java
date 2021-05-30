@@ -1,10 +1,11 @@
 package in.bloomapp.validator;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
-
-import in.bloomapp.dao.FlowerManagerDAO;
+import in.bloomapp.dao1.FlowerManagerDAO1;
 import in.bloomapp.model.Flower;
-
+import in.bloomapp.exception.DBException;
+import in.bloomapp.exception.ValidFlowerException;
 
 public class Validator {
 	 private Validator(){
@@ -15,20 +16,22 @@ public class Validator {
 	 * @param category
 	 * @return
 	 * @throws IOException
+	 * @throws ValidFlowerException 
 	 */
-	public static boolean isCategory(String category) throws IOException {
+	public static boolean isCategory(String category) throws ValidFlowerException {
 		boolean validity=false;
-		if(category.equalsIgnoreCase(FlowerManagerDAO.NATURAL)|| category.equalsIgnoreCase(FlowerManagerDAO.ARTIFICIAL)) {
+		if(category.equalsIgnoreCase("Natural")|| category.equalsIgnoreCase("Artificial")) {
 		
 			validity=true;
+			return validity;
 		
 		}
 		else {
 			
-			throw new IOException ("Invalid category");
+			throw new ValidFlowerException ("Invalid category");
 			
 		}
-		return validity;
+		
 	}
 	
 	/**
@@ -36,18 +39,18 @@ public class Validator {
 	 * @param type
 	 * @param category
 	 * @return
+	 * @throws SQLException 
+	 * @throws DBException 
+	 * @throws Exception 
 	 */
-	public static boolean flowerIsDuplicate(String type, String category) {
-		boolean exists = false;
+	public static void flowerIsDuplicate(String type, String category) throws ValidFlowerException, DBException, SQLException {
 		//returns true if the flower is already available
-		final List<Flower> flowers = FlowerManagerDAO.getFlowers();
+		final List<Flower> flowers = FlowerManagerDAO1.getFlower();
 		for (Flower checkFlower : flowers) {
 			if (checkFlower.getCategory().equalsIgnoreCase(category) && checkFlower.getType().equalsIgnoreCase(type)) {
-				exists=true;
-			}
-			
+				throw new ValidFlowerException("Flower already available");	
+			}	
 		}
-		return exists;	
 	}
 	
 	/**
@@ -55,10 +58,13 @@ public class Validator {
 	 * @param category
 	 * @param type
 	 * @return
+	 * @throws SQLException 
+	 * @throws DBException 
+	 * @throws Exception 
 	 */
-	public static Flower flowerIsExist(String category,String type) {
+	public static Flower flowerIsExist(String category,String type) throws ValidFlowerException, DBException, SQLException {
 
-		final List<Flower> flowers = FlowerManagerDAO.getFlowers();
+		final List<Flower> flowers = FlowerManagerDAO1.getFlower();
 		for(Flower item : flowers) {
 		
 			if (item.getType().equalsIgnoreCase(type) && item.getCategory().equalsIgnoreCase(category)) {
@@ -66,7 +72,7 @@ public class Validator {
 			}
 		
 		}
-		return null;
+		throw new ValidFlowerException("Flower not available");
 	}
 
 }

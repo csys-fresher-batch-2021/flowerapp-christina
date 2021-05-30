@@ -1,60 +1,87 @@
 package in.bloomapptest.service;
 
 import static org.junit.Assert.*;
-
 import org.junit.Test;
-
+import in.bloomapp.exception.TaskImpossibleException;
 import in.bloomapp.service.FlowerManager;
 
 public class DeleteFlowerTest {
 
 	@Test
-	public void test() {
-		//Test case with correct input in natural category
-		
-		boolean delete=FlowerManager.deleteFlower("Natural", "Normal Flowers");
-		assertTrue(delete);
+	public void withExistingFlower() {
+		//Test case with correct input in natural category		
+		boolean delete;
+		try {
+			delete = FlowerManager.deleteFlower("Natural", "Normal Flowers");
+			assertTrue(delete);
+		} catch (TaskImpossibleException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@Test
-	public void test1() {
-		//Test case with correct input in artificial flower type
-		
-		boolean delete=FlowerManager.deleteFlower("Artificial", "Full decoration package");
-		assertTrue(delete);
+	public void existingFlowerinArtificial() {
+		//Test case with correct input in artificial flower type		
+		boolean delete;
+		try {
+			delete = FlowerManager.deleteFlower("Artificial", "Full decoration package");
+			assertTrue(delete);
+		} catch (TaskImpossibleException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@Test
-	public void test2() {
+	public void withInvalidCategory() {
+		//Test case with incorrect category		
+		boolean delete = false;
+		try {
+			delete = FlowerManager.deleteFlower("christina", "rose");
+		} catch (TaskImpossibleException e) {
+
+			e.printStackTrace();
+			assertFalse(delete);
+		}
+	}
+	
+	@Test
+	public void withInvalidType() {
+		//Test case with incorrect type
+		
+		boolean delete = false;
+		try {
+			delete = FlowerManager.deleteFlower("natural", "rose");
+		} catch (TaskImpossibleException e) {
+			e.printStackTrace();
+		}
+		assertFalse(delete);
+	}
+	
+	
+	@Test
+	public void testWithInvalidType2() {
 		//Test case with incorrect category
-		
-		boolean delete=FlowerManager.deleteFlower("christina", "rose");
+		boolean delete = false;
+		try {
+			delete = FlowerManager.deleteFlower("Artificial", "rose");
+		} catch (TaskImpossibleException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		assertFalse(delete);
 	}
 	
 	@Test
-	public void test3() {
-		//Test case with incorrect category
-		
-		boolean delete=FlowerManager.deleteFlower("natural", "rose");
-		assertFalse(delete);
-	}
-	
-	
-	@Test
-	public void test4() {
-		//Test case with incorrect category
-		
-		boolean delete=FlowerManager.deleteFlower("Artificial", "rose");
-		assertFalse(delete);
-	}
-	
-	@Test
-	public void test5() {
+	public void testWithInvalidInput() {
 		//Test case with invalid input
 		
-		boolean delete=FlowerManager.deleteFlower("           ", "rose");
+		boolean delete=false;
+		try {
+			delete = FlowerManager.deleteFlower("           ", "rose");
+		} catch (TaskImpossibleException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		assertFalse(delete);
 	}
-
 }

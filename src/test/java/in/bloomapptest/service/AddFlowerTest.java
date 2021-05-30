@@ -1,17 +1,16 @@
 package in.bloomapptest.service;
 
 import static org.junit.Assert.*;
-
-import java.io.IOException;
-
 import org.junit.Test;
-
+import in.bloomapp.exception.DBException;
+import in.bloomapp.exception.TaskImpossibleException;
+import in.bloomapp.exception.ValidFlowerException;
 import in.bloomapp.service.FlowerManager;
 
 public class AddFlowerTest {
 
 	@Test
-	public void test() {
+	public void testWithValidInput() {
 		
 		//Test case with correct input
 		
@@ -23,7 +22,7 @@ public class AddFlowerTest {
 			
 		}
 		
-		catch (RuntimeException |IOException e) {
+		catch (Exception e) {
 			
 			e.printStackTrace();
 			fail();
@@ -31,7 +30,7 @@ public class AddFlowerTest {
 	}
 
 	@Test
-	public void test1() {
+	public void testWithCategory() {
 		
 		//Test case with wrong input
 		
@@ -40,7 +39,7 @@ public class AddFlowerTest {
 			
 		}
 		
-		catch (RuntimeException | IOException e) {
+		catch (Exception e) {
 			e.printStackTrace();
 			assertEquals("Invalid category",e.getMessage());
 		} 
@@ -48,16 +47,17 @@ public class AddFlowerTest {
 		
 	}
 	@Test
-	public void test2() {
+	public void testInvalidString() {
 		
 		//Test case with wrong input
 		
 		try {
+			
 			FlowerManager.addFlower("Natural","         ",300);
 			
 		}
 		
-		catch (RuntimeException | IOException e) {
+		catch (Exception e) {
 			e.printStackTrace();
 			assertEquals("Invalid input",e.getMessage());
 		} 

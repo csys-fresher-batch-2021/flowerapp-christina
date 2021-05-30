@@ -1,14 +1,14 @@
 package in.bloomapp.servlet;
 
 import java.io.IOException;
-
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import in.bloomapp.exception.DBException;
+import in.bloomapp.exception.TaskImpossibleException;
+import in.bloomapp.exception.ValidFlowerException;
 import in.bloomapp.service.FlowerManager;
 
 /**
@@ -28,9 +28,9 @@ public class AddFlowerServlet extends HttpServlet {
 		        int amount=0;
 				try {
 					amount = Integer.parseInt(price);
-				} catch (NumberFormatException e1) {
+				} catch (NumberFormatException e) {
 				
-					e1.printStackTrace();
+					e.printStackTrace();
 				}
 				
 				
@@ -44,12 +44,13 @@ public class AddFlowerServlet extends HttpServlet {
 					response.sendRedirect("addproduct.jsp?errorMessage=" + errorMessage);
 				}
 		        }
-		        catch(RuntimeException e){
-		        	
+		        catch(TaskImpossibleException | ValidFlowerException | DBException e){
+		        	e.printStackTrace();
 		        	String message=e.getMessage();
 		        	response.sendRedirect("addproduct.jsp?errorMessage=" + message);
 		        	
-		        }
+		        } 
+		 
 			}
 
 		

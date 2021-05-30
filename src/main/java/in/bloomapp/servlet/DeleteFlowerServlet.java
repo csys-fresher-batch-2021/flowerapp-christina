@@ -6,7 +6,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import in.bloomapp.service.FlowerManager;
 
 /**
@@ -34,8 +33,8 @@ public class DeleteFlowerServlet extends HttpServlet {
 				
 			}
 	        }
-	        catch(RuntimeException e){
-	        	
+	        catch(Exception e){
+	        	e.printStackTrace();
 	        	errorMessage=e.getMessage();
 	        	
 	        }

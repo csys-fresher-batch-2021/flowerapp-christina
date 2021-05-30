@@ -10,9 +10,7 @@
 <jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
 		<h3>Add Flowers</h3>
-		
-		<form action="AddFlowerServlet" method="get">
-		
+		<form action="AddFlowerServlet" method="get">		
 		<label for="Category">Flower Category</label>
 		<input type="text" name="Category" placeholder="Enter Flower Category" pattern="[a-zA-Z0-9\s]{3,}" required autofocus />
 		<br/>
