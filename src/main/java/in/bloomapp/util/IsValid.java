@@ -79,7 +79,7 @@ public class IsValid {
 	      Pattern pattern = Pattern.compile(regex);  
 		   Matcher matcher = pattern.matcher(mobileNo);  
 		   boolean status= matcher.matches();
-		   if( status==false) {
+		   if( !status) {
 			   throw new InvalidInputException("Please enter valid Mobile number");
 		   }
 	}
@@ -98,7 +98,7 @@ public class IsValid {
      	 Pattern pattern = Pattern.compile(regex);  
 		   Matcher matcher = pattern.matcher(password);  
 		   boolean status= matcher.matches();
-		   if( status==false) {
+		   if( !status) {
 			   throw new InvalidInputException("Please enter valid email");
 		   }
 	}	
