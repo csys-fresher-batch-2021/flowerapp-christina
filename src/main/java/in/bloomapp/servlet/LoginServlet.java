@@ -44,6 +44,7 @@ public class LoginServlet extends HttpServlet {
 				String msg = "Data base server is low";
 				RequestDispatcher rd = request.getRequestDispatcher("Login.jsp?errorMessage=" + msg);
 				rd.forward(request, response);
+				e.printStackTrace();
 			}
 		}
 
