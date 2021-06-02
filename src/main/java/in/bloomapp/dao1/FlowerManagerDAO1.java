@@ -23,7 +23,7 @@ public class FlowerManagerDAO1 {
 	 * @throws SQLException 
 	 * @throws Exception
 	 */
-	public static void saveFlower(Flower newFlower) throws DBException, SQLException {
+	public static void saveFlower(Flower newFlower) throws DBException {
 
 		// Getting connection
 		Connection connection = null;
@@ -44,7 +44,7 @@ public class FlowerManagerDAO1 {
 		} 
 		finally {
 			// Null Check - to avoid Null Pointer Exception
-			ConnectionUtil.close(null, pst, connection);
+			ConnectionUtil.close(pst, connection);
 		}
 
 	}
@@ -55,7 +55,7 @@ public class FlowerManagerDAO1 {
 	 * @throws SQLException 
 	 * @throws Exception
 	 */
-	public static void removeFlower(Flower oldFlower) throws DBException, SQLException  {
+	public static void removeFlower(Flower oldFlower) throws DBException{
 		Connection connection = null;
 		PreparedStatement pst = null;
 		try {
@@ -85,7 +85,7 @@ public class FlowerManagerDAO1 {
 	 * @throws SQLException 
 	 * @throws Exception
 	 */
-	public static List<Flower> getFlower() throws DBException, SQLException {
+	public static List<Flower> getFlower() throws DBException{
 
 		List<Flower> flower = new ArrayList<>();
 		// Step 1: Get the connection

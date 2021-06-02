@@ -4,8 +4,8 @@ import java.sql.SQLException;
 import java.util.List;
 import in.bloomapp.dao1.FlowerManagerDAO1;
 import in.bloomapp.exception.DBException;
-import in.bloomapp.exception.InvalidStringEXception;
-import in.bloomapp.exception.TaskImpossibleException;
+import in.bloomapp.exception.InvalidInputException;
+import in.bloomapp.exception.ServiceException;
 import in.bloomapp.exception.ValidFlowerException;
 import in.bloomapp.model.Flower;
 import in.bloomapp.util.*;
@@ -28,7 +28,7 @@ public class FlowerManager {
 	 * @throws taskImpossibleException
 	 */
 	public static boolean addFlower(String category, String type, int price)
-			throws ValidFlowerException, TaskImpossibleException, DBException {
+			throws ValidFlowerException, ServiceException, DBException {
 
 		boolean status = false;
 		// checks for blank spaces
@@ -41,10 +41,10 @@ public class FlowerManager {
 			FlowerManagerDAO1.saveFlower(newFlower);
 			status = true;
 			return status;
-		} catch (InvalidStringEXception e) {
-			throw new TaskImpossibleException(e, e.getMessage());
+		} catch (InvalidInputException e) {
+			throw new ServiceException(e, e.getMessage());
 		} catch (ValidFlowerException e) {
-			throw new TaskImpossibleException(e.getMessage());
+			throw new ServiceException(e.getMessage());
 		} catch (DBException|SQLException e) {
 			throw new DBException(e.getMessage());
 
@@ -62,7 +62,7 @@ public class FlowerManager {
 	 * @throws ValidFlowerException
 	 * @throws taskImpossibleException
 	 */
-	public static boolean deleteFlower(String category, String type) throws TaskImpossibleException{
+	public static boolean deleteFlower(String category, String type) throws ServiceException{
 
 		// Checks for the category ,if deleted gives the success message and returns
 		// true
@@ -72,7 +72,7 @@ public class FlowerManager {
 			FlowerManagerDAO1.removeFlower(oldFlower);
 			return true;
 		} catch (ValidFlowerException e) {
-			throw new TaskImpossibleException("Can't delete");
+			throw new ServiceException("Can't delete");
 		}
 
 		catch (DBException|SQLException e) {
@@ -87,7 +87,7 @@ public class FlowerManager {
 		try {
 			flowers = FlowerManagerDAO1.getFlower();
 			return flowers;
-		} catch (DBException | SQLException e) {
+		} catch (DBException e) {
 			return flowers;
 		}
 

@@ -1,13 +1,13 @@
 package in.bloomapp.exception;
 
 
-public class TaskImpossibleException extends Exception {
+public class ServiceException extends Exception {
 	private static final long serialVersionUID = 1L;
 	/**
 	 * If a task cannot be completed because of error or exception this type of exception is used
 	 * @param message
 	 */
-	public TaskImpossibleException(String message) {
+	public ServiceException(String message) {
 		super(message);
 	}
 
@@ -17,7 +17,7 @@ public class TaskImpossibleException extends Exception {
 	 * @param e
 	 * @param message
 	 */
-	public TaskImpossibleException(Exception e,String message) {
+	public ServiceException(Exception e,String message) {
 		super(message, e);
 	}
 	

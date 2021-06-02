@@ -1,6 +1,6 @@
 package in.bloomapp.exception;
 
-public class InvalidStringEXception extends Exception {
+public class InvalidInputException extends Exception {
 
 	/**
 	 * 
@@ -11,7 +11,7 @@ public class InvalidStringEXception extends Exception {
 	 * if the string contains invalid characters this type of exception is used
 	 * @param message
 	 */
-	public InvalidStringEXception(String message) {
+	public InvalidInputException(String message) {
 		super(message);
 	}
 
@@ -21,7 +21,7 @@ public class InvalidStringEXception extends Exception {
 	 * @param e
 	 * @param message
 	 */
-	public InvalidStringEXception(Exception e,String message) {
+	public InvalidInputException(Exception e,String message) {
 		super(message, e);
 	}
 
