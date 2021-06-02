@@ -11,6 +11,10 @@ import in.bloomapp.model.User;
 import in.bloomapp.util.ConnectionUtil;
 
 public class UserManagerDAO {
+	
+	private UserManagerDAO() {
+		
+	}
 
 	/**
 	 * Registered user details will be saved in a data base
