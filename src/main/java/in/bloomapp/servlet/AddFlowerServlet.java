@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import in.bloomapp.exception.DBException;
-import in.bloomapp.exception.TaskImpossibleException;
+import in.bloomapp.exception.ServiceException;
 import in.bloomapp.exception.ValidFlowerException;
 import in.bloomapp.service.FlowerManager;
 
@@ -44,7 +44,7 @@ public class AddFlowerServlet extends HttpServlet {
 					response.sendRedirect("addproduct.jsp?errorMessage=" + errorMessage);
 				}
 		        }
-		        catch(TaskImpossibleException | ValidFlowerException | DBException e){
+		        catch(ServiceException | ValidFlowerException | DBException e){
 		        	e.printStackTrace();
 		        	String message=e.getMessage();
 		        	response.sendRedirect("addproduct.jsp?errorMessage=" + message);

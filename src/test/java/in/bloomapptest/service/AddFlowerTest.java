@@ -2,9 +2,6 @@ package in.bloomapptest.service;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
-import in.bloomapp.exception.DBException;
-import in.bloomapp.exception.TaskImpossibleException;
-import in.bloomapp.exception.ValidFlowerException;
 import in.bloomapp.service.FlowerManager;
 
 public class AddFlowerTest {

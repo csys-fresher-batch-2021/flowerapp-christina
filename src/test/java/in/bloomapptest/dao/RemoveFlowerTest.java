@@ -1,13 +1,10 @@
 package in.bloomapptest.dao;
 
 import static org.junit.Assert.*;
-
-import java.sql.SQLException;
-
 import org.junit.Before;
 import org.junit.Test;
-
 import in.bloomapp.dao1.FlowerManagerDAO1;
+import in.bloomapp.exception.DBException;
 import in.bloomapp.model.Flower;
 
 public class RemoveFlowerTest {
@@ -41,13 +38,10 @@ public class RemoveFlowerTest {
 		try {
 			FlowerManagerDAO1.removeFlower(oldFlower);
 			
-		} catch (SQLException e) {
+		} catch (DBException e) {
 			e.printStackTrace();
 			String message=e.getMessage();
 			assertEquals("Unable to delete flower",message);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 	}
 	

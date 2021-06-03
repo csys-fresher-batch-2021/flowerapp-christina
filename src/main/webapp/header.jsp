@@ -36,7 +36,7 @@ String role = (String) session.getAttribute("ROLE");
         <a class="nav-link" href="Login.jsp">Login</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Register</a>
+        <a class="nav-link" href="registerUser.jsp">Register</a>
       </li>
       <%} else { %>
          <li class="nav-item">

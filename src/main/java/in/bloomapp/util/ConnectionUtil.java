@@ -49,11 +49,14 @@ public static Connection getConnection() throws DBException {
  * @param rs
  * @param pst
  * @param con
+ * @throws DBException 
  * @throws SQLException 
  * @throws Exception
  */
-public static void close(ResultSet rs,PreparedStatement pst, Connection con) throws SQLException{
+public static void close(ResultSet rs,PreparedStatement pst, Connection con) throws DBException {
 	// Null Check - to avoid Null Pointer Exception
+	
+	try {
 	if (rs != null) {
 		rs.close();
 	}
@@ -63,5 +66,31 @@ public static void close(ResultSet rs,PreparedStatement pst, Connection con) thr
 	if (con != null) {
 		con.close();
 	}
+	}
+	catch(SQLException e) {
+		throw new DBException("Cannot close connection");
+	}
+}
+
+/**
+ * Closes the data base driver connection
+ * @param pst
+ * @param con
+ * @throws DBException
+ */
+public static void close(PreparedStatement pst, Connection con) throws DBException{
+	// Null Check - to avoid Null Pointer Exception
+
+	try {
+		if (pst != null) {
+			pst.close();
+		}
+		if (con != null) {
+			con.close();
+		}
+		}
+		catch(SQLException e) {
+			throw new DBException("Cannot close connection");
+		}
 }
 }
