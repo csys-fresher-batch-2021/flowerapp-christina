@@ -86,7 +86,6 @@ public class UserManagerDAO {
 				String email = rs.getString("email");
 				long mobileNo = rs.getLong("mobileNo");
 				String address = rs.getString("address");
-				//String mobileNo1 = Long.toString(mobileNo);
 				// Store the data in model
 				User subject = new User(name, password, email, mobileNo, address);
 				// Store all flowers in list
