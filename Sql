@@ -1,0 +1,20 @@
+create table flowersData 
+(                           id serial primary key ,
+						  category varchar(100) not null,
+						    name varchar(100) not null,
+						  price int not null,
+unique (name)
+);
+select * from flowersData;
+
+
+create table  user_data(
+                          id serial primary key ,
+						  name varchar(100) not null,
+					       password varchar(100) not null,
+						    email varchar(100) not null,
+						  mobileNo bigint not null,
+					   address varchar(200) not null,
+unique (name)
+);
+select * from  user_data;
