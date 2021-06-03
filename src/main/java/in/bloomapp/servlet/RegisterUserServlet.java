@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import in.bloomapp.exception.DBException;
-import in.bloomapp.exception.UserServiceException;
+import in.bloomapp.exception.InvalidInputException;
 import in.bloomapp.userservice.UserManager;
 
 /**
@@ -35,7 +35,7 @@ public class RegisterUserServlet extends HttpServlet {
 				response.sendRedirect("registerUser.jsp?errorMessage=" + errorMessage);
 			}
 	        }
-	        catch( DBException | UserServiceException e){
+	        catch( DBException | InvalidInputException e){
 	        	e.printStackTrace();
 	        	String message=e.getMessage();
 	        	response.sendRedirect("registerUser.jsp?errorMessage=" + message);

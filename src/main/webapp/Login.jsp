@@ -27,7 +27,7 @@
 		<input type="text" name="username" placeholder="User Name" pattern="[a-zA-Z0-9\s]{3,}" required autofocus />
 		<br/>
 		<label for="password">Password</label>
-		<input type="password" name="password" placeholder="Password"  required autofocus />
+		<input type="password" name="password" placeholder="Password"  required/>
 		<br/>
 		<button type="submit" class="btn btn-info">Submit</button>
 		<button type="reset" class="btn btn-danger">Reset</button>

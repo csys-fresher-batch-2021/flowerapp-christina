@@ -23,27 +23,23 @@ public class UserManager {
 	 * @return
 	 * @throws UserServiceException
 	 * @throws DBException
+	 * @throws InvalidInputException 
 	 */
-	public static boolean addUser(String userName,String password,String email,String mobileNo,String address) throws UserServiceException, DBException {
+	public static boolean addUser(String userName,String password,String email,String mobileNo,String address) throws DBException, InvalidInputException {
 
 		boolean status = false;
 		// checks for blank spaces
-		try {
 			IsValid.isValidString(userName);
 			IsValid.isCharAllowed(userName);
 			IsValid.isValidPassword(password);
 			IsValid.isValidMobileNo(mobileNo);
 			IsValid.isValidEmail(email);
 			IsValid.isValidString(address);
-			User newUser = new User(userName,password,email,mobileNo,address);
+			long mobileNo1 = Long.parseLong(mobileNo);
+			User newUser = new User(userName,password,email,mobileNo1,address);
 			UserManagerDAO.save(newUser);
 			status = true;
 			return status;
-		} catch (InvalidInputException e) {
-			throw new UserServiceException(e, e.getMessage());
-		}  catch (DBException e) {
-			throw new DBException(e.getMessage());
-		}
 
 	}
 	public static void deleteUser() {
@@ -51,7 +47,7 @@ public class UserManager {
 	}
 	
 	public static void updateUser() {
-		//to do
+		//to do1
 	}
 	public static void listUser() {
 		//to do

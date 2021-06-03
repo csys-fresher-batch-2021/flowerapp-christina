@@ -10,7 +10,7 @@ public class User {
 	private String name;
 	private String password; 
 	private String email;
-	private String mobileNo;
+	private Long mobileNo;
 	private String address;
 	
 	@SuppressWarnings("unused")
@@ -45,7 +45,7 @@ public class User {
 	 *  Getter method for the field mobile number
 	 * @return
 	 */
-	public String getMobileNo() {
+	public Long getMobileNo() {
 		return mobileNo;
 	}
 
@@ -63,7 +63,7 @@ public class User {
 	 * @param type
 	 * @param price
 	 */
-	public User(String name, String password, String email, String mobileNo, String address) {
+	public User(String name, String password, String email, Long mobileNo, String address) {
 		super();
 		this.name = name;
 		this.password = password;
@@ -75,7 +75,7 @@ public class User {
 	
 	@Override
 	public String toString() {
-		return "User [name=" + name + ", password=" + password + ", email=" + email + ", mobileNo=" + mobileNo
+		return "User [name=" + name + ", email=" + email + ", mobileNo=" + mobileNo
 				+ ", address=" + address + "]";
 	}
 

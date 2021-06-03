@@ -28,14 +28,13 @@ public class UserManagerDAO {
 		PreparedStatement pst = null;
 		try {
 			connection = ConnectionUtil.getConnection();
-			long mobileNo = Long.parseLong(newUser.getMobileNo());
 			// Prepare data to insert into the driver
 			String sql = "insert into user_data (name,password,email,mobileNo,address) values (?,?,?,?,?)";
 			pst = connection.prepareStatement(sql);
 			pst.setString(1, newUser.getName());
 			pst.setString(2, newUser.getPassword());
 			pst.setString(3, newUser.getEmail());
-			pst.setLong(4, mobileNo);
+			pst.setLong(4, newUser.getMobileNo());
 			pst.setString(5, newUser.getAddress());
 			// Executes the Query
 			pst.executeUpdate();
@@ -87,9 +86,9 @@ public class UserManagerDAO {
 				String email = rs.getString("email");
 				long mobileNo = rs.getLong("mobileNo");
 				String address = rs.getString("address");
-				String mobileNo1 = Long.toString(mobileNo);
+				//String mobileNo1 = Long.toString(mobileNo);
 				// Store the data in model
-				User subject = new User(name, password, email, mobileNo1, address);
+				User subject = new User(name, password, email, mobileNo, address);
 				// Store all flowers in list
 				user.add(subject);
 			}
