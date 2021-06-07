@@ -51,11 +51,8 @@ public class AddFlowerServlet extends HttpServlet {
 		        	
 		        } 
 		 
-			}
-
-		
-
 	}
+}
 
 	
 

@@ -70,7 +70,7 @@ public class IsValid {
 	}
 	
 	/**
-	 * Checks idf the given mobile number is a valid mobile number
+	 * Checks if the given mobile number is a valid mobile number
 	 * @param mobileNo
 	 * @throws InvalidInputException
 	 */
