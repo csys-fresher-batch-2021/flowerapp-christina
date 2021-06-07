@@ -26,7 +26,6 @@ String role = (String) session.getAttribute("ROLE");
 				<th scope="col" id="category">Category</th>
 				<th scope="col"id="type">Type</th>
 				<th scope="col"id="price">Price</th>
-				<th scope="col"id="Quantity">Quantity</th>
 			</tr>
 		</thead>
 		

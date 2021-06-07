@@ -11,7 +11,7 @@ public class CartManager {
 		
 	}
 
-	public static final List<Flower> order = new ArrayList<>();
+	private static final List<Flower> order = new ArrayList<>();
 	
 	/**
 	 * Adds the item to the cart
