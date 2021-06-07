@@ -5,10 +5,11 @@ import in.bloomapp.model.Flower;
 import in.bloomapp.service.CartManager;
 
 public class CartValidation {
-	
-	private CartValidation() {
+	private CartValidation(){
 		
 	}
+	
+	
 
 	/**
 	 * Checks if the product is already available in the cart
