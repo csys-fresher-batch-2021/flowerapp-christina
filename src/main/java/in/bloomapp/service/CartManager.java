@@ -6,17 +6,22 @@ import in.bloomapp.model.Flower;
 import in.bloomapp.validator.CartValidation;
 
 public class CartManager {
+	
+	private CartManager() {
+		
+	}
 
-	public static List<Flower> order = new ArrayList<>();
-
+	public static final List<Flower> order = new ArrayList<>();
+	
 	/**
 	 * Adds the item to the cart
 	 * @param item
 	 * @param username
 	 * @return
 	 */
-	public static boolean addToCart(Flower item, String username) {
+	public static boolean addToCart(Flower item) {
 
+		
 		if (CartValidation.isAdded(item)) {
 			for (Flower subject : order) {
 
@@ -29,7 +34,7 @@ public class CartManager {
 		}
 		return true;
 	}
-
+	
 	/**
 	 * Gets the temporary cart list
 	 * @return
