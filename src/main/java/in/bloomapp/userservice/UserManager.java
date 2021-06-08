@@ -7,7 +7,6 @@ import in.bloomapp.exception.UserServiceException;
 import in.bloomapp.model.User;
 import in.bloomapp.util.IsValid;
 import in.bloomapp.validator.UserValidator;
-import sun.security.validator.ValidatorException;
 
 public class UserManager {
 
@@ -27,7 +26,7 @@ public class UserManager {
 	 * @throws InvalidInputException 
 	 * @throws ValidatorException 
 	 */
-	public static boolean addUser(String userName,String password,String email,String mobileNo,String address) throws DBException, InvalidInputException, ValidatorException {
+	public static boolean addUser(String userName,String password,String email,String mobileNo,String address) throws DBException, InvalidInputException, UserValidator {
 
 		boolean status = false;
 		// checks for blank spaces
