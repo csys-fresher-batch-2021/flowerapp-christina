@@ -31,9 +31,7 @@ public class AddFlowerServlet extends HttpServlet {
 				} catch (NumberFormatException e) {
 				
 					e.printStackTrace();
-				}
-				
-				
+				}	
 		        try {
 				boolean isAdded = FlowerManager.addFlower(category,type,amount);
 				if (isAdded) {
@@ -50,7 +48,6 @@ public class AddFlowerServlet extends HttpServlet {
 		        	response.sendRedirect("addproduct.jsp?errorMessage=" + message);
 		        	
 		        } 
-		 
 	}
 }
 
