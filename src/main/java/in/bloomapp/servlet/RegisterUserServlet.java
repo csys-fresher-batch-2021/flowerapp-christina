@@ -1,6 +1,8 @@
 package in.bloomapp.servlet;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import in.bloomapp.exception.DBException;
 import in.bloomapp.exception.InvalidInputException;
 import in.bloomapp.userservice.UserManager;
+import sun.security.validator.ValidatorException;
 
 /**
  * Servlet implementation class RegisterUser
@@ -28,18 +31,25 @@ public class RegisterUserServlet extends HttpServlet {
 	        try {
 			boolean isAdded = UserManager.addUser(name,password,email,mobileNo,address);
 			if (isAdded) {
-				response.sendRedirect("Login.jsp");
+				String message="Registration successfull";
+				RequestDispatcher rd = request.getRequestDispatcher("Login.jsp?infoMessage=" + message);
+				rd.forward(request, response);
+				//response.sendRedirect("Login.jsp");
+				
 			} 
 			else {
 				String errorMessage = "Unable to register";
-				response.sendRedirect("registerUser.jsp?errorMessage=" + errorMessage);
+				//response.sendRedirect("registerUser.jsp?errorMessage=" + Message);
+				RequestDispatcher rd = request.getRequestDispatcher("registerUser.jsp?errorMessage=" + errorMessage);
+				rd.forward(request, response);
 			}
 	        }
-	        catch( DBException | InvalidInputException e){
-	        	e.printStackTrace();
-	        	String message=e.getMessage();
-	        	response.sendRedirect("registerUser.jsp?errorMessage=" + message);
-	        	
+	        catch( DBException | InvalidInputException |ValidatorException e){
+	        	String errorMessage=e.getMessage();
+	        	//response.sendRedirect("registerUser.jsp?errorMessage=" + message);
+	        	RequestDispatcher rd = request.getRequestDispatcher("registerUser.jsp?errorMessage=" + errorMessage);
+				rd.forward(request, response);
+				e.printStackTrace();
 	        } 
 	}
 

@@ -4,6 +4,7 @@ import java.util.List;
 import in.bloomapp.dao1.UserManagerDAO;
 import in.bloomapp.exception.DBException;
 import in.bloomapp.model.User;
+import sun.security.validator.ValidatorException;
 
 public class UserValidator {
 	
@@ -27,6 +28,16 @@ public class UserValidator {
 			}
 		}
 		return status;
+	}
+	
+	public static void isAlreadyRegistered(Long mobileNo) throws DBException, ValidatorException {
+		final List<User> users = UserManagerDAO.get();
+		for(User user : users) {
+		
+			if (mobileNo==user.getMobileNo()) {
+				throw new ValidatorException("Mobile number already registered");
+			}
+		}
 	}
 
 }

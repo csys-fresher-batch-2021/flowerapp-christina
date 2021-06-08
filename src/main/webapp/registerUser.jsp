@@ -10,6 +10,18 @@
 <jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
 		<h3>Registration page</h3>
+			<%
+		String Message = request.getParameter("infoMessage");
+		if(Message != null){
+			out.println("<font color='green'>" + Message + "</font>");
+		}
+		%>
+		<%
+		String Msg = request.getParameter("errorMessage");
+		if(Msg != null){
+			out.println("<font color='red'>" + Msg + "</font>");
+		}
+		%>
 		<form action="RegisterUserServlet" method="post">		
 		<label for="Name">User Name:</label>
 		<input type="text" name="Name" placeholder="Enter your name" pattern="[a-zA-Z0-9\s]{3,}" required autofocus />

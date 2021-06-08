@@ -50,12 +50,8 @@ public class AddFlowerServlet extends HttpServlet {
 		        	response.sendRedirect("addproduct.jsp?errorMessage=" + message);
 		        	
 		        } 
-		 
-			}
-
-		
-
 	}
+}
 
 	
 

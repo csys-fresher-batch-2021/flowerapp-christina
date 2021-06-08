@@ -40,7 +40,7 @@ public class UserManagerDAO {
 			pst.executeUpdate();
 		} 
 		catch (SQLException | DBException e) {
-			throw new DBException("Unable to add flower");
+			throw new DBException("Unable to add user");
 		} 
 		finally {
 			ConnectionUtil.close(null, pst, connection);

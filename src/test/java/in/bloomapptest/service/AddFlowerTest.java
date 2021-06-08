@@ -29,8 +29,7 @@ public class AddFlowerTest {
 	@Test
 	public void testWithCategory() {
 		
-		//Test case with wrong input
-		
+		//Test case with wrong input		
 		try {
 			FlowerManager.addFlower("Natur","Normal Flower",300);
 			
