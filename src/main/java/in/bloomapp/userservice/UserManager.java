@@ -4,9 +4,11 @@ import in.bloomapp.dao1.UserManagerDAO;
 import in.bloomapp.exception.DBException;
 import in.bloomapp.exception.InvalidInputException;
 import in.bloomapp.exception.UserServiceException;
+import in.bloomapp.exception.UserValidationException;
 import in.bloomapp.model.User;
 import in.bloomapp.util.IsValid;
 import in.bloomapp.validator.UserValidator;
+
 
 public class UserManager {
 
@@ -24,9 +26,10 @@ public class UserManager {
 	 * @throws UserServiceException
 	 * @throws DBException
 	 * @throws InvalidInputException 
+	 * @throws UserValidationException 
 	 * @throws ValidatorException 
 	 */
-	public static boolean addUser(String userName,String password,String email,String mobileNo,String address) throws DBException, InvalidInputException, UserValidator {
+	public static boolean addUser(String userName,String password,String email,String mobileNo,String address) throws DBException, InvalidInputException, UserValidationException {
 
 		boolean status = false;
 		// checks for blank spaces
@@ -73,4 +76,3 @@ public class UserManager {
 		
 	}
 }
-
