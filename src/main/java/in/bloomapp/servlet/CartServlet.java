@@ -14,6 +14,11 @@ import in.bloomapp.service.CartManager;
  * Servlet implementation class CartServlet
  */
 @WebServlet("/CartServlet")
+/**
+ * gets item from the display and adds it to cart
+ * @author chri2631
+ *
+ */
 public class CartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -24,9 +29,9 @@ public class CartServlet extends HttpServlet {
 		String category = request.getParameter("category");
 		String type = request.getParameter("type");
 		String price = request.getParameter("price");
-		int price1 = Integer.parseInt(price);
+		int parsedPrice = Integer.parseInt(price);
 		int quantity = 1;
-		Flower newOrder = new Flower(category, type, price1, quantity);
+		Flower newOrder = new Flower(category, type, parsedPrice, quantity);
 		CartManager.addToCart(newOrder);
 		response.sendRedirect("displayFlowers.jsp");
 

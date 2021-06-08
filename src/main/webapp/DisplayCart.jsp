@@ -48,7 +48,7 @@ String role = (String) session.getAttribute("ROLE");
 		</tbody>
 	</table>
 		 		 <% if (loggedInUsername != null && role != null && role.equalsIgnoreCase("USER")){ %>
-		 		 <a href="displayFlower.jsp" class="btn btn-success">FLower</a>
+		 		 <a href="displayFlowers.jsp" class="btn btn-success">FLower</a>
 		 		<%}%>	 		 
 </main>
 </body>

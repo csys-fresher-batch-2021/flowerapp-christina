@@ -16,7 +16,7 @@ public class CartValidation {
 	 * @param flower
 	 * @return
 	 */
-	public static boolean isAdded(Flower flower) {
+	public static boolean isAddedToCart(Flower flower) {
 		boolean isAdded=false;
 		List<Flower> order=CartManager.getOrder();
 		for (Flower item:order) {

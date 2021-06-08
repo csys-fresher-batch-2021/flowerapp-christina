@@ -22,7 +22,7 @@ public class CartManager {
 	public static boolean addToCart(Flower item) {
 
 		
-		if (CartValidation.isAdded(item)) {
+		if (CartValidation.isAddedToCart(item)) {
 			for (Flower subject : order) {
 
 				if ((subject.getCategory().equals(item.getCategory())) && (subject.getType().equals(item.getType()))) {

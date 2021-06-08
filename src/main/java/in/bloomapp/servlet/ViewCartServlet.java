@@ -11,6 +11,11 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class ViewCart
  */
 @WebServlet("/ViewCartServlet")
+/**
+ * Gets the item from the cart and shows it to user
+ * @author chri2631
+ *
+ */
 public class ViewCartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
       
