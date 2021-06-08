@@ -31,9 +31,7 @@ public class AddFlowerServlet extends HttpServlet {
 				} catch (NumberFormatException e) {
 				
 					e.printStackTrace();
-				}
-				
-				
+				}	
 		        try {
 				boolean isAdded = FlowerManager.addFlower(category,type,amount);
 				if (isAdded) {
