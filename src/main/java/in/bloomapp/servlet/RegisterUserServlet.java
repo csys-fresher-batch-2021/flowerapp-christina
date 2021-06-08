@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import in.bloomapp.exception.DBException;
 import in.bloomapp.exception.InvalidInputException;
 import in.bloomapp.userservice.UserManager;
-import sun.security.validator.ValidatorException;
+import in.bloomapp.validator.UserValidator;
 
 /**
  * Servlet implementation class RegisterUser
@@ -44,7 +44,7 @@ public class RegisterUserServlet extends HttpServlet {
 				rd.forward(request, response);
 			}
 	        }
-	        catch( DBException | InvalidInputException |ValidatorException e){
+	        catch( DBException | InvalidInputException |UserValidator e){
 	        	String errorMessage=e.getMessage();
 	        	//response.sendRedirect("registerUser.jsp?errorMessage=" + message);
 	        	RequestDispatcher rd = request.getRequestDispatcher("registerUser.jsp?errorMessage=" + errorMessage);
