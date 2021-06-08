@@ -28,7 +28,7 @@ public class CartManager {
 				if ((subject.getCategory().equals(item.getCategory())) && (subject.getType().equals(item.getType()))) {
 					subject.setQuantity(subject.getQuantity() + 1);
 				}
-				
+
 			}
 		} else {
 			order.add(item);
