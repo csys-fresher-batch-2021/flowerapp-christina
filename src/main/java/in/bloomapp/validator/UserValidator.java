@@ -3,8 +3,8 @@ package in.bloomapp.validator;
 import java.util.List;
 import in.bloomapp.dao1.UserManagerDAO;
 import in.bloomapp.exception.DBException;
-import in.bloomapp.model.User;
 import in.bloomapp.exception.UserValidationException;
+import in.bloomapp.model.User;
 
 public class UserValidator {
 	

@@ -26,6 +26,8 @@ String role = (String) session.getAttribute("ROLE");
 				<th scope="col" id="category">Category</th>
 				<th scope="col"id="type">Type</th>
 				<th scope="col"id="price">Price</th>
+				<th scope="col"id="quantity">Price</th>
+				
 			</tr>
 		</thead>
 		
@@ -45,7 +47,6 @@ String role = (String) session.getAttribute("ROLE");
 			<td><a href="DeleteFlowerServlet?type=<%=flower.getType()%>&category=<%=flower.getCategory()%>"class="btn btn-danger">Delete</a></td>
 			 <%} %> 
 			 <% if (loggedInUsername != null && role != null && role.equalsIgnoreCase("USER")){ %>
-			 <td>
 			<td><a href="CartServlet?type=<%=flower.getType()%>&category=<%=flower.getCategory()%>&price=<%=flower.getPrice()%>
 			&username=<%=loggedInUsername%>" class="btn btn-success">ADD</a></td>
 				<%}%>

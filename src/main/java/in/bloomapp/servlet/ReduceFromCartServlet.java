@@ -6,40 +6,37 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import in.bloomapp.exception.DBException;
 import in.bloomapp.model.Flower;
 import in.bloomapp.service.CartManager;
 
 /**
- * Servlet implementation class CartServlet
+ * Servlet implementation class ReduceFromCartServlet
  */
-@WebServlet("/CartServlet")
-/**
- * gets item from the display and adds it to cart
- * 
- * @author chri2631
- *
- */
-public class CartServlet extends HttpServlet {
+@WebServlet("/ReduceFromCartServlet")
+public class ReduceFromCartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * call to reduce quantity in cart
+	 */
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			String category = request.getParameter("category");
 			String type = request.getParameter("type");
 			String price = request.getParameter("price");
 			String userName = request.getParameter("username");
 			int parsedPrice = Integer.parseInt(price);
-			Flower newOrder = new Flower(category, type, parsedPrice, 1, userName);
-			CartManager.addToCart(newOrder);
+			String quantity = request.getParameter("quantity");
+			int parsedQuantity = Integer.parseInt(quantity);
+			Flower newOrder = new Flower(category, type, parsedPrice, parsedQuantity, userName);
+			CartManager.reduceQuantity(newOrder);
 		} catch (DBException e) {
 			e.printStackTrace();
 		}
-		response.sendRedirect("displayFlowers.jsp");
+		response.sendRedirect("DisplayCart.jsp");
 
 	}
+
 }

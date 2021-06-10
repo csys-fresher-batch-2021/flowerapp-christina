@@ -17,9 +17,9 @@ String role = (String) session.getAttribute("ROLE");
 
 <jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
-		<h1 style="color:pink">Flowers available</h1>
+		<h1 style="color:pink">FLower Cart</h1>
 	<table class="table table-border">
-	<caption style="color:white">Flowers available</caption>
+	<caption style="color:black">Flowers available</caption>
 		<thead>
 			<tr>
 				<th scope="col" id= "serialnumber">S.NO</th>
@@ -27,12 +27,15 @@ String role = (String) session.getAttribute("ROLE");
 				<th scope="col"id="type">Type</th>
 				<th scope="col"id="price">Price</th>
 				<th scope="col"id="Quantity">Quantity</th>
+				<th scope="col"id="reduce">Reduce quantity</th>
+				<th scope="col"id="Quantity">delete</th>
+				
 			</tr>
 		</thead>
 		
 			<tbody>
 		<%
-			final List<Flower> flowers = CartManager.getOrder();
+		    final List<Flower> flowers = CartManager.getOrder(loggedInUsername);
 			int i=0;
 			for(Flower flower: flowers){
 				i++;
@@ -43,6 +46,10 @@ String role = (String) session.getAttribute("ROLE");
 			<td><%=flower.getType()%></td>
 			<td>Rs.<%=flower.getPrice()%>/-</td>
 		    <td><%=flower.getQuantity() %></td>
+		    <td> <a href="ReduceFromCartServlet?type=<%=flower.getType()%>&category=<%=flower.getCategory()%>&price=<%=flower.getPrice()%>
+			&username=<%=loggedInUsername%>&quantity=<%=flower.getQuantity()%>" class="btn btn-danger">-</a></td>
+				<td> <a href="DeleteFromCartServlet?type=<%=flower.getType()%>&category=<%=flower.getCategory()%>&price=<%=flower.getPrice()%>
+			&username=<%=loggedInUsername%>&quantity=<%=flower.getQuantity()%>"  class="btn btn-danger">Delete</a></td>
 				</tr>
 			<%}%>	
 		</tbody>
@@ -52,4 +59,3 @@ String role = (String) session.getAttribute("ROLE");
 		 		<%}%>	 		 
 </main>
 </body>
-</html>

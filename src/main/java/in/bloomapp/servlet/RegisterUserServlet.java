@@ -46,9 +46,11 @@ public class RegisterUserServlet extends HttpServlet {
 	        catch( DBException | InvalidInputException |UserValidationException e){
 	        	String errorMessage=e.getMessage();
 	        	RequestDispatcher rd = request.getRequestDispatcher("registerUser.jsp?errorMessage=" + errorMessage);
-			rd.forward(request, response);
-			e.printStackTrace();
+			    	rd.forward(request, response);
+			    	e.printStackTrace();
+
 	        } 
+	        
 	}
 
 }
