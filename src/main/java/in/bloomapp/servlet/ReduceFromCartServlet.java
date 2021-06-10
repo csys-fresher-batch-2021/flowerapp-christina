@@ -20,6 +20,7 @@ public class ReduceFromCartServlet extends HttpServlet {
 	/**
 	 * call to reduce quantity in cart
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String category = request.getParameter("category");
 		String type = request.getParameter("type");
