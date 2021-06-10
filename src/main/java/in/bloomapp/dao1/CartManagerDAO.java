@@ -90,7 +90,6 @@ public class CartManagerDAO {
 		 * @throws DBException
 		 */
 		public static void delete(Flower flower) throws DBException{
-			System.out.println("delete"+flower);
 			Connection connection = null;
 			PreparedStatement pst = null;
 			try {
