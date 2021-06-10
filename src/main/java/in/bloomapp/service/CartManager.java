@@ -26,7 +26,6 @@ public class CartManager {
 			CartManagerDAO.update(item);
 		} 
 		else {
-			System.out.println();
 			CartManagerDAO.save(item);
 		}
 		return true;
@@ -71,9 +70,7 @@ public class CartManager {
 				buyerzCart.add(item);
 			}
 		}
-		
-
-		return buyerzCart;
+			return buyerzCart;
 
 	}
 	
