@@ -22,8 +22,7 @@ public class DeleteFromCartServlet extends HttpServlet {
 	 * call to delete item from cart
 	 */
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			String category = request.getParameter("category");
 			String type = request.getParameter("type");

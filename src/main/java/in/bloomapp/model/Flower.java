@@ -14,7 +14,7 @@ public class Flower {
 	private int quantity;
 	private String buyer;
 	private LocalDate date;
-	
+
 	
 	/**
 	 *  Getter method for the field flower category
@@ -51,11 +51,11 @@ public class Flower {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	
-	
+
 	public String getBuyer() {
 		return buyer;
 	}
+  
 	/**
 	 *  Getter method for the field registered date
 	 * @return
@@ -86,6 +86,7 @@ public class Flower {
 		this.setQuantity(quantity);	
 	}
 	
+
 	
 	public Flower(String category, String type, int price,int quantity, String buyer) {
 		this.category = category;

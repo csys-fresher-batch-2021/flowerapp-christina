@@ -6,7 +6,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import in.bloomapp.exception.DBException;
 import in.bloomapp.model.Flower;
 import in.bloomapp.service.CartManager;
@@ -22,8 +21,7 @@ public class ReduceFromCartServlet extends HttpServlet {
 	 * call to reduce quantity in cart
 	 */
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			String category = request.getParameter("category");
 			String type = request.getParameter("type");

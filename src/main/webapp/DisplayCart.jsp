@@ -59,4 +59,3 @@ String role = (String) session.getAttribute("ROLE");
 		 		<%}%>	 		 
 </main>
 </body>
-</html>

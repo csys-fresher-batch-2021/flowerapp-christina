@@ -9,6 +9,7 @@ import in.bloomapp.model.User;
 import in.bloomapp.util.IsValid;
 import in.bloomapp.validator.UserValidator;
 
+
 public class UserManager {
 
 	private UserManager() {
@@ -75,4 +76,3 @@ public class UserManager {
 		
 	}
 }
-
