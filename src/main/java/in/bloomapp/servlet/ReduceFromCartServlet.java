@@ -17,19 +17,22 @@ import in.bloomapp.service.CartManager;
 @WebServlet("/ReduceFromCartServlet")
 public class ReduceFromCartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+
 	/**
 	 * call to reduce quantity in cart
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String category = request.getParameter("category");
-		String type = request.getParameter("type");
-		String price = request.getParameter("price");
-		String userName=request.getParameter("username");
-		int parsedPrice = Integer.parseInt(price);
-		String quantity = request.getParameter("quantity");
-		int parsedQuantity = Integer.parseInt(quantity);
-		Flower newOrder = new Flower(category, type, parsedPrice, parsedQuantity,userName);
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		try {
+			String category = request.getParameter("category");
+			String type = request.getParameter("type");
+			String price = request.getParameter("price");
+			String userName = request.getParameter("username");
+			int parsedPrice = Integer.parseInt(price);
+			String quantity = request.getParameter("quantity");
+			int parsedQuantity = Integer.parseInt(quantity);
+			Flower newOrder = new Flower(category, type, parsedPrice, parsedQuantity, userName);
 			CartManager.reduceQuantity(newOrder);
 		} catch (DBException e) {
 			e.printStackTrace();
@@ -37,6 +40,5 @@ public class ReduceFromCartServlet extends HttpServlet {
 		response.sendRedirect("DisplayCart.jsp");
 
 	}
-
 
 }

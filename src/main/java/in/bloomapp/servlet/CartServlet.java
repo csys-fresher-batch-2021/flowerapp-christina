@@ -17,6 +17,7 @@ import in.bloomapp.service.CartManager;
 @WebServlet("/CartServlet")
 /**
  * gets item from the display and adds it to cart
+ * 
  * @author chri2631
  *
  */
@@ -27,13 +28,13 @@ public class CartServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String category = request.getParameter("category");
-		String type = request.getParameter("type");
-		String price = request.getParameter("price");
-		String userName=request.getParameter("username");
-		int parsedPrice = Integer.parseInt(price);	
-		Flower newOrder = new Flower(category, type, parsedPrice,1,userName);
 		try {
+			String category = request.getParameter("category");
+			String type = request.getParameter("type");
+			String price = request.getParameter("price");
+			String userName = request.getParameter("username");
+			int parsedPrice = Integer.parseInt(price);
+			Flower newOrder = new Flower(category, type, parsedPrice, 1, userName);
 			CartManager.addToCart(newOrder);
 		} catch (DBException e) {
 			e.printStackTrace();

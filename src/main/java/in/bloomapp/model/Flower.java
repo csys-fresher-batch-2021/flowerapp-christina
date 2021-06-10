@@ -65,7 +65,7 @@ public class Flower {
 	}
 
 	/**
-	 * Construct class for the main model class
+	 * Constructor classs for the main model class
 	 * @param category
 	 * @param type
 	 * @param price
