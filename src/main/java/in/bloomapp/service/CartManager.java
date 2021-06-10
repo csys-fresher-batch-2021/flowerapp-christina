@@ -71,9 +71,7 @@ public class CartManager {
 				buyerzCart.add(item);
 			}
 		}
-		
-
-		return buyerzCart;
+			return buyerzCart;
 
 	}
 	
