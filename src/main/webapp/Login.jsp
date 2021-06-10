@@ -31,8 +31,6 @@
 		<br/>
 		<button type="submit" class="btn btn-info">Submit</button>
 		<button type="reset" class="btn btn-danger">Reset</button>
-	
-
 </form>
 </main>
 </body>
