@@ -26,7 +26,6 @@ public class CartManager {
 			CartManagerDAO.update(item);
 		} 
 		else {
-			System.out.println();
 			CartManagerDAO.save(item);
 		}
 		return true;
