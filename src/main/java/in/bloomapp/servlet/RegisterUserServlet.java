@@ -33,12 +33,7 @@ public class RegisterUserServlet extends HttpServlet {
 	        String mobileNo= request.getParameter("mobileNo");
 	        String address = request.getParameter("address");
 	        Long parsedMobileNo = null;
-			try {
-				parsedMobileNo = Long.parseLong(mobileNo);
-			} catch (NumberFormatException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			parsedMobileNo = Long.parseLong(mobileNo);
 	        
 	        User user=new User();
 	        user.setName(name);

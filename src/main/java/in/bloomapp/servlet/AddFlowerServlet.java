@@ -45,34 +45,27 @@ public class AddFlowerServlet extends HttpServlet {
 				try {
 				boolean isAdded = FlowerManager.addFlower(category,type,amount);
 				if (isAdded) {
-					//response.sendRedirect("displayFlowers.jsp");
 					message="true";
-					PrintWriter out = response.getWriter();
-					JsonObject obj = new JsonObject(); 
-					obj.addProperty("IS_ADDED", message);
-					out.println(obj);
-					out.flush();
 				} 
 		        }
 				catch(DBException e) {
 					message = "Unable to add new flower";
-					PrintWriter out = response.getWriter();
-					JsonObject obj = new JsonObject();
-					obj.addProperty("IS_ADDED", message);
-					out.println(obj);
-					out.flush();
+					
 					
 				}
 		        catch(ServiceException | ValidFlowerException e){
 		        	e.printStackTrace();
 		        	message=e.getMessage();
-		        	PrintWriter out = response.getWriter();
-					JsonObject obj = new JsonObject(); 
+		        	
+		        } 
+				
+				finally {
+					PrintWriter out = response.getWriter();
+					JsonObject obj = new JsonObject();
 					obj.addProperty("IS_ADDED", message);
 					out.println(obj);
 					out.flush();
-		        	
-		        } 
+				}
 				
 	}
 }

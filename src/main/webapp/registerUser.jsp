@@ -80,7 +80,6 @@
 					
 				else{
 					document.getElementById('testLabel').innerHTML = (res.IS_ADDED);
-					//window.location.href="registerUser.jsp";
 				}
 			});
 		}

@@ -13,6 +13,9 @@ import in.bloomapp.validator.Validator;
 
 public class FlowerManager {
 
+	private FlowerManager() {
+		
+	}
 	/**
 	 * checks for the input category and appends the flower type in that category
 	 * 
