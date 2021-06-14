@@ -13,7 +13,8 @@ public class DisplayFlowerTest {
 	
 		List<Flower> flowers=null;
 		try {
-			flowers=FlowerManagerDAO1.getFlower();
+			FlowerManagerDAO1 flowerManagerDAO1=new FlowerManagerDAO1();
+			flowers=flowerManagerDAO1.getFlower();
 			System.out.println(flowers);
 			assertSame(6,flowers.size());
 		} catch (Exception e) {
@@ -27,7 +28,8 @@ public class DisplayFlowerTest {
 	
 		List<Flower> flowers=null;
 		try {
-			flowers=FlowerManagerDAO1.getFlower();
+			FlowerManagerDAO1 flowerManagerDAO1=new FlowerManagerDAO1();
+			flowers=flowerManagerDAO1.getFlower();
 		} catch (Exception e) {
 	
 			assertNotNull(flowers.size());

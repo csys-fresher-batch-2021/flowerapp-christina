@@ -13,6 +13,7 @@ public class CartManager {
 		
 	}
 	
+	
 	/**
 	 * Adds the item to the cart
 	 * if the item is already available updates the quantity
@@ -22,11 +23,12 @@ public class CartManager {
 	 */
 	public static boolean addToCart(Flower item) throws DBException{
 
+		CartManagerDAO cartManagerDAO = new CartManagerDAO();
 		if (CartValidation.isAddedToCart(item)) {
-			CartManagerDAO.update(item);
+			cartManagerDAO.update(item);
 		} 
 		else {
-			CartManagerDAO.save(item);
+			cartManagerDAO.save(item);
 		}
 		return true;
 	}
@@ -37,7 +39,8 @@ public class CartManager {
 	 * @throws DBException
 	 */
 	public static void deleteFromCart(Flower item) throws DBException {
-		CartManagerDAO.delete(item);
+		CartManagerDAO cartManagerDAO = new CartManagerDAO();
+		cartManagerDAO.delete(item);
 		
 	}
 	
@@ -47,12 +50,14 @@ public class CartManager {
 	 * @throws DBException
 	 */
 	public static void reduceQuantity(Flower item) throws DBException {
+		
+		CartManagerDAO cartManagerDAO = new CartManagerDAO();
 		if(item.getQuantity()>1) {
 		
 		item.setQuantity(item.getQuantity() - 1);
-		CartManagerDAO.update(item);}
+		cartManagerDAO.update(item);}
 		else {
-			CartManagerDAO.delete(item);
+			cartManagerDAO.delete(item);
 		}
 		
 	}
@@ -63,7 +68,9 @@ public class CartManager {
 	 * @throws DBException 
 	 */
 	public static List<Flower> getOrder(String userName) throws DBException {
-		List<Flower> cart= CartManagerDAO.getCart(userName);
+		
+		CartManagerDAO cartManagerDAO = new CartManagerDAO();
+		List<Flower> cart= cartManagerDAO.getCart(userName);
 		List<Flower> buyerzCart= new ArrayList<>();
 		for (Flower item:cart) {
 			if(item.getBuyer().equals(userName)){			

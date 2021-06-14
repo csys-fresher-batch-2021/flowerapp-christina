@@ -2,7 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <%@ page import ="java.util.List" %>
 <%@ page import ="in.bloomapp.model.Flower" %>
-<%@ page import ="in.bloomapp.dao1.FlowerManagerDAO1" %>
+<%@ page import ="in.bloomapp.service.FlowerManager" %>
 <!DOCTYPE html>
 <html lang="en">
 <%
@@ -26,14 +26,18 @@ String role = (String) session.getAttribute("ROLE");
 				<th scope="col" id="category">Category</th>
 				<th scope="col"id="type">Type</th>
 				<th scope="col"id="price">Price</th>
-				<th scope="col"id="quantity">Price</th>
-				
+				<% if (loggedInUsername != null && role != null && role.equalsIgnoreCase("USER")){ %>
+				<th scope="col"id="quantity">Add</th>
+				<% } %>
+				<% if (loggedInUsername != null && role != null && role.equalsIgnoreCase("ADMIN")){ %>
+				<th scope="col"id="delete">Delete</th>
+				<% } %>
 			</tr>
 		</thead>
 		
 			<tbody>
 		<%
-			final List<Flower> flowers = FlowerManagerDAO1.getFlower();
+			final List<Flower> flowers = FlowerManager.getFLowerList();
 			int i=0;
 			for(Flower flower: flowers){
 				i++;

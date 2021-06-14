@@ -9,8 +9,12 @@ public class SaveFlowerTest {
 
 	@Test
 	public void testWithNewFLower() {
-		Flower newFlower= new Flower("Natural","Rose pack", 100);
+		Flower newFlower= new Flower();
+		newFlower.setCategory("Natural");
+		newFlower.setType("Rose pack");
+		newFlower.setPrice(100);
 		try {
+			FlowerManagerDAO1 FlowerManagerDAO1=new FlowerManagerDAO1();
 			FlowerManagerDAO1.saveFlower(newFlower);
 			
 		} catch (Exception e) {
@@ -21,9 +25,13 @@ public class SaveFlowerTest {
 	
 	@Test
 	public void withAlreadyAvailableFlower() {
-		Flower newFlower= new Flower("Natural","Rose pack", 100);
+		Flower newFlower= new Flower();
+		newFlower.setCategory("Natural");
+		newFlower.setType("Rose pack");
+		newFlower.setPrice(100);
 		try {
-			FlowerManagerDAO1.saveFlower(newFlower);
+			FlowerManagerDAO1 flowerManagerDAO1= new FlowerManagerDAO1();
+			flowerManagerDAO1.saveFlower(newFlower);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

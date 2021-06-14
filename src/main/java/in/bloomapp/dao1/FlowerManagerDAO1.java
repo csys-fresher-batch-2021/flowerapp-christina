@@ -13,9 +13,7 @@ import in.bloomapp.util.ConnectionUtil;
 
 public class FlowerManagerDAO1 {
 	
-	private FlowerManagerDAO1(){
-		
-	}
+
 
 	/**
 	 * Adds a flower to the database
@@ -23,7 +21,7 @@ public class FlowerManagerDAO1 {
 	 * @throws SQLException 
 	 * @throws Exception
 	 */
-	public static void saveFlower(Flower newFlower) throws DBException {
+	public void saveFlower(Flower newFlower) throws DBException {
 
 		// Getting connection
 		Connection connection = null;
@@ -55,7 +53,7 @@ public class FlowerManagerDAO1 {
 	 * @throws SQLException 
 	 * @throws Exception
 	 */
-	public static void removeFlower(Flower oldFlower) throws DBException{
+	public void removeFlower(Flower oldFlower) throws DBException{
 		Connection connection = null;
 		PreparedStatement pst = null;
 		try {
@@ -85,7 +83,7 @@ public class FlowerManagerDAO1 {
 	 * @throws SQLException 
 	 * @throws Exception
 	 */
-	public static List<Flower> getFlower() throws DBException{
+	public List<Flower> getFlower() throws DBException{
 
 		List<Flower> flower = new ArrayList<>();
 		// Step 1: Get the connection
@@ -108,7 +106,11 @@ public class FlowerManagerDAO1 {
 				String name = rs.getString("name");
 				int price = rs.getInt("price");
 				// Store the data in model
-				Flower subject = new Flower(category, name, price);
+				Flower subject = new Flower();
+				
+				subject.setCategory(category);
+				subject.setType(name);
+				subject.setPrice(price);
 				// Store all flowers in list
 				flower.add(subject);
 			}

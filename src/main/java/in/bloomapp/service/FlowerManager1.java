@@ -26,9 +26,11 @@ public class FlowerManager1 {
 	 * @return
 	 */
 	public static List<Flower> getFlowers(){
+		
+		FlowerManagerDAO1 flowerManagerDAO1=new FlowerManagerDAO1();
 		List<Flower> flowers;
 		try {
-			flowers = FlowerManagerDAO1.getFlower();
+			flowers = flowerManagerDAO1.getFlower();
 		} catch (Exception e) {
 			flowers=null;
 		}

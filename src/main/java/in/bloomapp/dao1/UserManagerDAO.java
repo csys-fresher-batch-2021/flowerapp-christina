@@ -12,9 +12,6 @@ import in.bloomapp.util.ConnectionUtil;
 
 public class UserManagerDAO {
 	
-	private UserManagerDAO() {
-		
-	}
 
 	/**
 	 * Registered user details will be saved in a data base
@@ -22,7 +19,7 @@ public class UserManagerDAO {
 	 * @param newUser
 	 * @throws DBException
 	 */
-	public static void save(User newUser) throws DBException {
+	public void save(User newUser) throws DBException {
 		// Getting connection
 		Connection connection = null;
 		PreparedStatement pst = null;
@@ -62,7 +59,7 @@ public class UserManagerDAO {
 	 * @return
 	 * @throws DBException
 	 */
-	public static List<User> get() throws DBException {
+	public List<User> get() throws DBException {
 
 		List<User> user = new ArrayList<>();
 		// Step 1: Get the connection
@@ -87,7 +84,12 @@ public class UserManagerDAO {
 				long mobileNo = rs.getLong("mobileNo");
 				String address = rs.getString("address");
 				// Store the data in model
-				User subject = new User(name, password, email, mobileNo, address);
+				User subject = new User();
+				subject.setName(name);
+				subject.setPassword(password);
+				subject.setEmail(email);
+				subject.setMobileNo(mobileNo);
+				subject.setAddress(address);
 				// Store all flowers in list
 				user.add(subject);
 			}

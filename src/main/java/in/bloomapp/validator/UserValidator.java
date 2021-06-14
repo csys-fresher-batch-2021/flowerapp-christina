@@ -20,7 +20,8 @@ public class UserValidator {
 	 */
 	public static boolean userIsExist(String userName,String password) throws DBException {
 		boolean status=false;
-		final List<User> users = UserManagerDAO.get();
+		UserManagerDAO userManagerDAO=new UserManagerDAO();
+		final List<User> users = userManagerDAO.get();
 		for(User user : users) {
 		
 			if (user.getName().equalsIgnoreCase(userName) && user.getPassword().equals(password)) {
@@ -31,7 +32,8 @@ public class UserValidator {
 	}
 	
 	public static void isAlreadyRegistered(Long mobileNo) throws DBException, UserValidationException {
-		final List<User> users = UserManagerDAO.get();
+		UserManagerDAO userManagerDAO=new UserManagerDAO();
+		final List<User> users = userManagerDAO.get();
 		for(User user : users) {
 		
 			if (mobileNo==user.getMobileNo()) {
