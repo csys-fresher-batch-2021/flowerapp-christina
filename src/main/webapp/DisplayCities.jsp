@@ -4,7 +4,7 @@
 <%@ page import ="in.bloomapp.model.City" %>
 <%@ page import ="in.bloomapp.service.CityManager" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>Display Cities</title>
