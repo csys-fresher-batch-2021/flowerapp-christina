@@ -11,9 +11,14 @@ public class RemoveFlowerTest {
 	
 	@Before
 	public void addFlowerMock() {
-		Flower newFlower= new Flower("Natural","Rose pack", 100);
+		Flower newFlower= new Flower();	
+		newFlower.setCategory("Natural");
+		newFlower.setType("Rose pack");
+		newFlower.setPrice(100);
+		
 		try {
-			FlowerManagerDAO1.saveFlower(newFlower);
+			FlowerManagerDAO1 flowerManagerDAO1=new FlowerManagerDAO1();
+			flowerManagerDAO1.saveFlower(newFlower);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -22,9 +27,14 @@ public class RemoveFlowerTest {
 
 	@Test
 	public void validInput() {
-		Flower oldFlower=new Flower("Natural","Rose pack", 100);
+		Flower oldFlower=new Flower();
+		oldFlower.setCategory("Natural");
+		oldFlower.setType("Rose pack");
+		oldFlower.setPrice(100);
+		
 		try {
-			FlowerManagerDAO1.removeFlower(oldFlower);
+			FlowerManagerDAO1 flowerManagerDAO1=new FlowerManagerDAO1();
+			flowerManagerDAO1.removeFlower(oldFlower);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -34,9 +44,13 @@ public class RemoveFlowerTest {
 	
 	@Test
 	public void invalidInput() {
-		Flower oldFlower=new Flower("Natur","Rose pack", 100);
+		Flower oldFlower=new Flower();
+		oldFlower.setCategory("Natur");
+		oldFlower.setType("Rose pack");
+		oldFlower.setPrice(100);
 		try {
-			FlowerManagerDAO1.removeFlower(oldFlower);
+			FlowerManagerDAO1 flowerManagerDAO1=new FlowerManagerDAO1();
+			flowerManagerDAO1.removeFlower(oldFlower);
 			
 		} catch (DBException e) {
 			e.printStackTrace();

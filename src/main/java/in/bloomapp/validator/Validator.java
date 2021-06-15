@@ -45,7 +45,8 @@ public class Validator {
 	 */
 	public static void flowerIsDuplicate(String type, String category) throws ValidFlowerException, DBException, SQLException {
 		//returns true if the flower is already available
-		final List<Flower> flowers = FlowerManagerDAO1.getFlower();
+		FlowerManagerDAO1 flowerManagerDAO1=new FlowerManagerDAO1();
+		final List<Flower> flowers = flowerManagerDAO1.getFlower();
 		for (Flower checkFlower : flowers) {
 			if (checkFlower.getCategory().equalsIgnoreCase(category) && checkFlower.getType().equalsIgnoreCase(type)) {
 				throw new ValidFlowerException("Flower already available");	
@@ -64,7 +65,8 @@ public class Validator {
 	 */
 	public static Flower flowerIsExist(String category,String type) throws ValidFlowerException, DBException, SQLException {
 
-		final List<Flower> flowers = FlowerManagerDAO1.getFlower();
+		FlowerManagerDAO1 flowerManagerDAO1=new FlowerManagerDAO1();
+		final List<Flower> flowers = flowerManagerDAO1.getFlower();
 		for(Flower item : flowers) {
 		
 			if (item.getType().equalsIgnoreCase(type) && item.getCategory().equalsIgnoreCase(category)) {

@@ -34,7 +34,12 @@ public class CartServlet extends HttpServlet {
 			String price = request.getParameter("price");
 			String userName = request.getParameter("username");
 			int parsedPrice = Integer.parseInt(price);
-			Flower newOrder = new Flower(category, type, parsedPrice, 1, userName);
+			Flower newOrder = new Flower();
+			newOrder.setCategory(category);
+			newOrder.setType(type);
+			newOrder.setPrice(parsedPrice);
+			newOrder.setQuantity(1);
+			newOrder.setBuyer(userName);
 			CartManager.addToCart(newOrder);
 		} catch (DBException e) {
 			e.printStackTrace();

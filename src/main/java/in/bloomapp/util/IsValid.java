@@ -74,10 +74,11 @@ public class IsValid {
 	 * @param mobileNo
 	 * @throws InvalidInputException
 	 */
-	public static void isValidMobileNo(String mobileNo) throws InvalidInputException {
+	public static void isValidMobileNo(Long mobileNo) throws InvalidInputException {
+		String mobileNum=mobileNo.toString();
 		 String regex = "(0/91)?[6-9][0-9]{9}";
 	      Pattern pattern = Pattern.compile(regex);  
-		   Matcher matcher = pattern.matcher(mobileNo);  
+		   Matcher matcher = pattern.matcher(mobileNum);  
 		   boolean status= matcher.matches();
 		   if( !status) {
 			   throw new InvalidInputException("Please enter valid Mobile number");
@@ -99,7 +100,7 @@ public class IsValid {
 		   Matcher matcher = pattern.matcher(password);  
 		   boolean status= matcher.matches();
 		   if( !status) {
-			   throw new InvalidInputException("Please enter valid email");
+			   throw new InvalidInputException("Please enter valid password");
 		   }
 	}	
 }

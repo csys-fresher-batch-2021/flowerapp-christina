@@ -1,16 +1,17 @@
 package in.bloomapp.servlet;
 
 import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import com.google.gson.JsonObject;
 import in.bloomapp.exception.DBException;
 import in.bloomapp.exception.InvalidInputException;
 import in.bloomapp.exception.UserValidationException;
+import in.bloomapp.model.User;
 import in.bloomapp.userservice.UserManager;
 
 
@@ -23,32 +24,43 @@ public class RegisterUserServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-			String name = request.getParameter("Name");
-	        String password = request.getParameter("Password");
-	        String email= request.getParameter("Email");
-	        String mobileNo= request.getParameter("MobileNo");
-	        String address = request.getParameter("Address");
-			
-	        try {
-			boolean isAdded = UserManager.addUser(name,password,email,mobileNo,address);
+		 String errorMessage=null;
+		  try {
+			  
+			String name = request.getParameter("name");
+	        String password = request.getParameter("password");
+	        String email= request.getParameter("email");
+	        String mobileNo= request.getParameter("mobileNo");
+	        String address = request.getParameter("address");
+	        Long parsedMobileNo = null;
+			parsedMobileNo = Long.parseLong(mobileNo);
+	        
+	        User user=new User();
+	        user.setName(name);
+	        user.setPassword(password);
+	        user.setEmail(email);
+	        user.setMobileNo(parsedMobileNo);
+	        user.setAddress(address);
+	       
+	        PrintWriter out = response.getWriter();
+	      
+			boolean isAdded = UserManager.addUser(user);
 			if (isAdded) {
 				String message="Registration successfull";
-				RequestDispatcher rd = request.getRequestDispatcher("Login.jsp?infoMessage=" + message);
-				rd.forward(request, response);
-				
-			} 
-			else {
-				String errorMessage = "Unable to register";
-				RequestDispatcher rd = request.getRequestDispatcher("registerUser.jsp?errorMessage=" + errorMessage);
-				rd.forward(request, response);
-			}
+				JsonObject obj = new JsonObject(); 
+				obj.addProperty("IS_ADDED", message);
+				out.println(obj);
+				out.flush();
 	        }
+		  }
 	        catch( DBException | InvalidInputException |UserValidationException e){
-	        	String errorMessage=e.getMessage();
-	        	RequestDispatcher rd = request.getRequestDispatcher("registerUser.jsp?errorMessage=" + errorMessage);
-			    	rd.forward(request, response);
-			    	e.printStackTrace();
-
+	        	errorMessage=e.getMessage();
+	        	PrintWriter out = response.getWriter();
+				JsonObject obj = new JsonObject();
+				obj.addProperty("IS_ADDED",errorMessage);
+				out.println(obj);
+				out.flush();
+			    e.printStackTrace();
 	        } 
 	        
 	}

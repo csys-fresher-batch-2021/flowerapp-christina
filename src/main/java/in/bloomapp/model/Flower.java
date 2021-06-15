@@ -16,34 +16,18 @@ public class Flower {
 	private LocalDate date;
 
 	
-	/**
-	 *  Getter method for the field flower category
-	 * @return
-	 */
 	public String getCategory() {
 		return category;
 	}
 
-	/**
-	 * Getter method for the field flower type 
-	 * @return
-	 */
 	public String getType() {
 		return type;
 	}
 
-	/**
-	 *  Getter method for the field flower price
-	 * @return
-	 */
 	public int getPrice() {
 		return price;
 	}
 	
-	/**
-	 *  Getter method for the field flower quantity
-	 * @return
-	 */
 	public int getQuantity() {
 		return quantity;
 	}
@@ -56,58 +40,30 @@ public class Flower {
 		return buyer;
 	}
   
-	/**
-	 *  Getter method for the field registered date
-	 * @return
-	 */
 	public LocalDate getDate() {
 		return date;
 	}
 
-	/**
-	 * Constructor classs for the main model class
-	 * @param category
-	 * @param type
-	 * @param price
-	 */
+	public void setCategory(String category) {
+		this.category = category;
+	}
 
-	public Flower(String category, String type, int price) {
-		super();
-		this.category = category;
+	public void setType(String type) {
 		this.type = type;
-		this.price = price;
-		
 	}
-	
-	public Flower(String category, String type, int price,int quantity) {
-		this.category = category;
-		this.type = type;
-		this.price = price;
-		this.setQuantity(quantity);	
-	}
-	
 
-	
-	public Flower(String category, String type, int price,int quantity, String buyer) {
-		this.category = category;
-		this.type = type;
+	public void setPrice(int price) {
 		this.price = price;
-		this.setQuantity(quantity);	
-		this.buyer=buyer;
+	}
+
+	public void setBuyer(String buyer) {
+		this.buyer = buyer;
+	}
+
+	public void setDate(LocalDate date) {
+		this.date = date;
 	}
 	
-	
-	public Flower(String category, String type, int price,LocalDate date,int quantity) {
-		this.category = category;
-		this.type = type;
-		this.price = price;
-		this.date= date;
-		this.setQuantity(quantity);	
-	}
-	@SuppressWarnings("unused")
-	private Flower() {
-		
-	}
 	@Override
 	public String toString() {
 		return "Flower [category=" + category + ", type=" + type + ", price=" + price +"]";

@@ -14,9 +14,8 @@ import in.bloomapp.validator.Validator;
 public class FlowerManager {
 
 	private FlowerManager() {
-		// Default constructor
+		
 	}
-
 	/**
 	 * checks for the input category and appends the flower type in that category
 	 * 
@@ -30,6 +29,7 @@ public class FlowerManager {
 	public static boolean addFlower(String category, String type, int price)
 			throws ValidFlowerException, ServiceException, DBException {
 
+		FlowerManagerDAO1 flowerManagerDAO1=new FlowerManagerDAO1();
 		boolean status = false;
 		// checks for blank spaces
 		try {
@@ -37,8 +37,11 @@ public class FlowerManager {
 			Validator.isCategory(category);
 			Validator.flowerIsDuplicate(type, category);
 			IsValid.isCharAllowed(type);
-			Flower newFlower = new Flower(category, type, price);
-			FlowerManagerDAO1.saveFlower(newFlower);
+			Flower newFlower = new Flower();
+			newFlower.setCategory(category);
+			newFlower.setType(type);
+			newFlower.setPrice(price);
+			flowerManagerDAO1.saveFlower(newFlower);
 			status = true;
 			return status;
 		} catch (InvalidInputException e) {
@@ -67,9 +70,10 @@ public class FlowerManager {
 		// Checks for the category ,if deleted gives the success message and returns
 		// true
 
+		FlowerManagerDAO1 flowerManagerDAO1=new FlowerManagerDAO1();
 		try {
 			Flower oldFlower = Validator.flowerIsExist(category, type);
-			FlowerManagerDAO1.removeFlower(oldFlower);
+			flowerManagerDAO1.removeFlower(oldFlower);
 			return true;
 		} catch (ValidFlowerException e) {
 			throw new ServiceException("Can't delete");
@@ -81,11 +85,16 @@ public class FlowerManager {
 
 	}
 
+	/**
+	 * gets the list of flowers from database
+	 * @return
+	 */
 	public static List<Flower> getFLowerList() {
 
+		FlowerManagerDAO1 flowerManagerDAO1=new FlowerManagerDAO1();
 		List<Flower> flowers=null;
 		try {
-			flowers = FlowerManagerDAO1.getFlower();
+			flowers = flowerManagerDAO1.getFlower();
 			return flowers;
 		} catch (DBException e) {
 			return flowers;

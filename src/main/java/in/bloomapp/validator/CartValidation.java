@@ -19,7 +19,8 @@ public class CartValidation {
 	 */
 	public static boolean isAddedToCart(Flower flower) throws DBException {
 		boolean isAdded=false;
-		List<Flower> order=CartManagerDAO.getCart(flower.getBuyer());
+		CartManagerDAO cartManagerDAO=new CartManagerDAO();
+		List<Flower> order=cartManagerDAO.getCart(flower.getBuyer());
 		for (Flower item:order) {
 			
 			if( (flower.getCategory().equals(item.getCategory()))&& (flower.getType().equals(item.getType()))) {

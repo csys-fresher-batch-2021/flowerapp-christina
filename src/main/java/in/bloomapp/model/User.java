@@ -13,64 +13,44 @@ public class User {
 	private Long mobileNo;
 	private String address;
 	
-	@SuppressWarnings("unused")
-	private User(){
-		
-	}
-	/**
-	 *  Getter method for the field name(userName)
-	 * @return
-	 */
 	public String getName() {
 		return name;
 	}
 
-	/**
-	 *  Getter method for the field password
-	 * @return
-	 */
 	public String getPassword() {
 		return password;
 	}
 
-	/**
-	 *  Getter method for the field email
-	 * @return
-	 */
 	public String getEmail() {
 		return email;
 	}
 
-	/**
-	 *  Getter method for the field mobile number
-	 * @return
-	 */
 	public Long getMobileNo() {
 		return mobileNo;
 	}
 
-	/**
-	 *  Getter method for the field address
-	 * @return
-	 */
 	public String getAddress() {
 		return address;
 	}
 	
-	/**
-	 * Construct class for the main model class
-	 * @param category
-	 * @param type
-	 * @param price
-	 */
-	public User(String name, String password, String email, Long mobileNo, String address) {
-		super();
+	public void setName(String name) {
 		this.name = name;
-		this.password = password;
-		this.email = email;
-		this.mobileNo = mobileNo;
-		this.address = address;
+	}
 	
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	public void setMobileNo(Long mobileNo) {
+		this.mobileNo = mobileNo;
+	}
+	
+	public void setAddress(String address) {
+		this.address = address;
 	}
 	
 	@Override
@@ -78,6 +58,5 @@ public class User {
 		return "User [name=" + name + ", email=" + email + ", mobileNo=" + mobileNo
 				+ ", address=" + address + "]";
 	}
-
 
 }

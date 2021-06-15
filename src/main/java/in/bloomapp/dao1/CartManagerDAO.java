@@ -13,14 +13,13 @@ import in.bloomapp.util.ConnectionUtil;
 
 public class CartManagerDAO {
 
-	private CartManagerDAO () {}
-
+	
 	/**
 	 * adds the flower into the cart
 	 * @param flower
 	 * @throws DBException
 	 */
-		public static void save(Flower flower) throws DBException {
+		public void save(Flower flower) throws DBException {
 			// Getting connection
 			Connection connection = null;
 			PreparedStatement pst = null;
@@ -57,7 +56,7 @@ public class CartManagerDAO {
 		 * @param newFlower
 		 * @throws DBException
 		 */
-		public static void update(Flower newFlower) throws DBException {
+		public void update(Flower newFlower) throws DBException {
 			
 			Connection connection = null;
 			PreparedStatement pst = null;
@@ -85,11 +84,11 @@ public class CartManagerDAO {
 		}
 		
 		/**
-		 * TO make it as deleted canges the status to 0
+		 * TO make it as deleted changes the status to 0
 		 * @param flower
 		 * @throws DBException
 		 */
-		public static void delete(Flower flower) throws DBException{
+		public void delete(Flower flower) throws DBException{
 			Connection connection = null;
 			PreparedStatement pst = null;
 			try {
@@ -120,7 +119,7 @@ public class CartManagerDAO {
 		 * @return
 		 * @throws DBException
 		 */
-		public static List<Flower> getCart(String userName) throws DBException {
+		public List<Flower> getCart(String userName) throws DBException {
 			List<Flower> flower = new ArrayList<>();
 			// Step 1: Get the connection
 			Connection con = ConnectionUtil.getConnection();
@@ -143,7 +142,13 @@ public class CartManagerDAO {
 					int quantity=rs.getInt("Quantity");	
 					String userNameGot=rs.getString("username");
 					// Store the data in model
-					Flower subject = new Flower(category, name, price,quantity,userNameGot);
+					
+					Flower subject = new Flower();
+					subject.setCategory(category);
+					subject.setType(name);
+					subject.setPrice(price);
+					subject.setQuantity(quantity);
+					subject.setBuyer(userNameGot);
 					// Store all flowers in list
 					flower.add(subject);
 				}
@@ -166,7 +171,7 @@ public class CartManagerDAO {
 		 * @return
 		 * @throws DBException
 		 */
-		public static int getFlowerId(Flower flower) throws DBException {
+		public int getFlowerId(Flower flower) throws DBException {
 			// Getting connection
 			int flowerId;
 			Connection connection = null;

@@ -31,7 +31,12 @@ public class DeleteFromCartServlet extends HttpServlet {
 			int parsedPrice = Integer.parseInt(price);
 			String quantity = request.getParameter("quantity");
 			int parsedQuantity = Integer.parseInt(quantity);
-			Flower newOrder = new Flower(category, type, parsedPrice, parsedQuantity, userName);
+			Flower newOrder = new Flower();
+			newOrder.setCategory(category);
+			newOrder.setType(type);
+			newOrder.setPrice(parsedPrice);
+			newOrder.setQuantity(parsedQuantity);
+			newOrder.setBuyer(userName);
 			CartManager.deleteFromCart(newOrder);
 		} catch (DBException e) {
 			e.printStackTrace();
