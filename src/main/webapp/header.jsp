@@ -20,7 +20,7 @@ String role = (String) session.getAttribute("ROLE");
       <li class="nav-item active">
         <a class="nav-link" href="index.jsp">Home <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item active">
         <a class="nav-link" href="displayFlowers.jsp">Flowers</a>
       </li>
        <% if (loggedInUsername != null && role != null && role.equalsIgnoreCase("ADMIN")){ %>
@@ -28,14 +28,16 @@ String role = (String) session.getAttribute("ROLE");
         <a class="nav-link" href="addFlower.jsp">Add Product</a>
       </li>
       <%} %>
-     
+       <li class="nav-item active">
+        <a class="nav-link" href="DisplayCities.jsp">Cities available <span class="sr-only">(current)</span></a>
+      </li>
     </ul>
      <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
           <% if (loggedInUsername == null){ %>
       <li class="nav-item active">
         <a class="nav-link" href="Login.jsp">Login</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item active">
         <a class="nav-link" href="registerUser.jsp">Register</a>
       </li>
       <%} else { %>
