@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Display Cities</title>
 </head>
 <body>
 <jsp:include page="header.jsp"></jsp:include>
@@ -20,8 +20,7 @@
 				<th scope="col" id= "serialnumber">S.NO</th>
 				<th scope="col" id="DistrictCode">District Code</th>
 				<th scope="col"id="CityName">City</th>
-				<th scope="col"id="Charge">Delivery Charge</th>
-				
+				<th scope="col"id="Charge">Delivery Charge</th>				
 			</tr>
 		</thead>
 		

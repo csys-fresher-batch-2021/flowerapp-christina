@@ -6,16 +6,16 @@ package in.bloomapp.model;
  *
  */
 public class City {
-	String city;
+	String cityName;
 	int districtCode;
 	int delivaryCharge;
 	int status=1;
 
 	public String getCity() {
-		return city;
+		return cityName;
 	}
 	public void setCity(String city) {
-		this.city = city;
+		this.cityName = city;
 	}
 	public int getDistrictCode() {
 		return districtCode;
@@ -38,7 +38,7 @@ public class City {
 
 	@Override
 	public String toString() {
-		return "City [city=" + city + ", districtCode=" + districtCode + ", delivaryCharge=" + delivaryCharge
+		return "City [city=" + cityName + ", districtCode=" + districtCode + ", delivaryCharge=" + delivaryCharge
 				+ ", status=" + status + "]";
 	}
 }

@@ -16,6 +16,5 @@ public class CityValidator {
 		if(code<=00 && code>=45) {
 			throw new ValidCityException("City code not valid");
 		}
-		
 	}
 }
