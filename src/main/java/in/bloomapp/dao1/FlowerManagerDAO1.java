@@ -117,7 +117,6 @@ public class FlowerManagerDAO1 {
 		} 
 		//If unable to get flowers throws exception
 		catch (SQLException e) {
-			e.printStackTrace();
 			throw new DBException("Unable to fetch flowers");
 		} 
 		finally {

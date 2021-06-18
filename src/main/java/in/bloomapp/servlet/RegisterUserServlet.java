@@ -60,7 +60,6 @@ public class RegisterUserServlet extends HttpServlet {
 				obj.addProperty("IS_ADDED",errorMessage);
 				out.println(obj);
 				out.flush();
-			    e.printStackTrace();
 	        } 
 	        
 	}

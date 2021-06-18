@@ -1,11 +1,15 @@
 package in.bloomapp.servlet;
 
 import java.io.IOException;
+import java.util.logging.Logger;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+
 
 import in.bloomapp.exception.DBException;
 import in.bloomapp.model.Flower;
@@ -24,6 +28,7 @@ import in.bloomapp.service.CartManager;
 public class CartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	final Logger logger = Logger.getLogger(this.getClass().getName());
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -42,7 +47,7 @@ public class CartServlet extends HttpServlet {
 			newOrder.setBuyer(userName);
 			CartManager.addToCart(newOrder);
 		} catch (DBException e) {
-			e.printStackTrace();
+			logger.info(e.getMessage());
 		}
 		response.sendRedirect("displayFlowers.jsp");
 

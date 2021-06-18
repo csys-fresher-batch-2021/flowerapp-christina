@@ -129,7 +129,6 @@ public class CityManagerDAO {
 		}
 		// If unable to get cities throws exception
 		catch (SQLException e) {
-			e.printStackTrace();
 			throw new DBException("Unable to fetch citiy details");
 		} finally {
 			// Closes the connection

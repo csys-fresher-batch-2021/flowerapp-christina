@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.logging.Logger;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,7 +24,9 @@ import in.bloomapp.service.OrderProcedureManager;
 @WebServlet("/OrderProcedureServlet")
 public class OrderProcedureServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	final Logger logger = Logger.getLogger(this.getClass().getName());
 
+	
 	/**
 	 * Initiates an order
 	 */
@@ -59,14 +63,13 @@ public class OrderProcedureServlet extends HttpServlet {
 			obj.addProperty(isAdded, errorMessage);
 			out.println(obj);
 			out.flush();
-			e.printStackTrace();
+			logger.info(e.getMessage());
 		} catch (NumberFormatException e) {
 			errorMessage = "Wrong input";
 			JsonObject obj = new JsonObject();
 			obj.addProperty(isAdded, errorMessage);
 			out.println(obj);
 			out.flush();
-			e.printStackTrace();
 		}
 	}
 

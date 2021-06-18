@@ -64,7 +64,7 @@ String role = (String) session.getAttribute("ROLE");
      	<input type="time" name="DeliveryTime" id="DeliveryTime" required /><br />
 		<label for="DelivaryAddress">Delivery Address</label> <input
 			type="text" name="DelivaryAddress" id="DelivaryAddress"
-			placeholder="Enter delivery address"  pattern="[a-zA-Z0-9\s]{3,}" required autofocus /><br />
+			placeholder="Enter delivery address"  required autofocus /><br />
 		<%if (count > 0) {%>
 		<label>Select city :</label> 
 		<select name="CityName" id="CityName"required>
@@ -78,7 +78,7 @@ String role = (String) session.getAttribute("ROLE");
 
 		<%} else {%>
 		<label for="CityName">Delivery city</label>
-		 <input type="text" name="CityName" id="CityName" placeholder="Enter delivery city" pattern="[a-zA-Z0-9\s]{3,}"
+		 <input type="text" name="CityName" id="CityName" placeholder="Enter delivery city"
 			required autofocus /> <br />
 		<%}%>
 		<%if (loggedInUsername != null && role != null && role.equalsIgnoreCase("USER")) {%>
@@ -97,7 +97,8 @@ String role = (String) session.getAttribute("ROLE");
 			let deliveryTime=document.querySelector("#DeliveryTime").value;
 			let userName='<%= loggedInUsername%>';
 			console.log(delivaryCity+deliveryDate+deliveryTime+userName);
-			const queryParameter="?delivaryCity="+delivaryCity+"&delivaryAddress="+delivaryAddress+"&deliveryDate="+deliveryDate+
+			const queryParameter="?delivaryCity="+delivaryCity+"&delivaryAddress="+delivaryAddress+
+					"&deliveryDate="+deliveryDate+
 					"&deliveryTime="+deliveryTime+"&userName="+userName;
 			let url="OrderProcedureServlet"+queryParameter;
 			console.log("called");

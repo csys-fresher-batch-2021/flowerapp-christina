@@ -52,7 +52,8 @@ String role = (String) session.getAttribute("ROLE");
 			 <%} %> 
 			 <% if (loggedInUsername != null && role != null && role.equalsIgnoreCase("USER")){ %>
 			<td><a href="CartServlet?type=<%=flower.getType()%>&category=<%=flower.getCategory()%>&price=<%=flower.getPrice()%>
-			&username=<%=loggedInUsername%>" class="btn btn-success">ADD</a></td>
+			&username=<%=loggedInUsername%>" class="btn btn-success">ADD TO CART</a></td>
+
 				<%}%>
 					<% } %>
 				</tr>
