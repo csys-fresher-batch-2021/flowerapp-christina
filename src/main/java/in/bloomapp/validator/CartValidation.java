@@ -25,9 +25,9 @@ public class CartValidation {
 	
 			if( (flower.getCategory().equals(item.getCategory()))&& (flower.getType().equals(item.getType()))) {
 				flower.setQuantity(item.getQuantity() + 1);
-				return isAdded;
+				isAdded=true;
 			}
 	}
-		
+		return isAdded;
 	}
 }
