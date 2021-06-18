@@ -27,6 +27,9 @@ String role = (String) session.getAttribute("ROLE");
        <li class="nav-item">
         <a class="nav-link" href="addFlower.jsp">Add Product</a>
       </li>
+        <li class="nav-item">
+        <a class="nav-link" href="ToApproveList.jsp">Delivery Approval</a>
+      </li>
       <%} %>
        <li class="nav-item active">
         <a class="nav-link" href="DisplayCities.jsp">Cities available <span class="sr-only">(current)</span></a>

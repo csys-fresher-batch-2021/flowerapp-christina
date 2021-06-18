@@ -30,7 +30,7 @@ public class CartManagerDAO {
 				String sql = 
 					"insert into bill (flower_id,category,name,quantity,price,username,order_date,status) values (?,?,?,?,?,?,?,?)";
 				pst = connection.prepareStatement(sql);
-				pst.setInt(1, getFlowerId(flower));
+				pst.setInt(1, getFlowerId(flower.getCategory(),flower.getType()));
 				pst.setString(2, flower.getCategory());
 				pst.setString(3, flower.getType());
 				pst.setLong(4, flower.getQuantity());
@@ -171,7 +171,7 @@ public class CartManagerDAO {
 		 * @return
 		 * @throws DBException
 		 */
-		public int getFlowerId(Flower flower) throws DBException {
+		public int getFlowerId(String category,String type) throws DBException {
 			// Getting connection
 			int flowerId;
 			Connection connection = null;
@@ -183,8 +183,8 @@ public class CartManagerDAO {
 				String sql =
 						"select id from flowersdata WHERE name=? AND category=?";
 				pst = connection.prepareStatement(sql);
-				pst.setString(1,flower.getType());
-				pst.setString(2,flower.getCategory());
+				pst.setString(1,type);
+				pst.setString(2,category);
 				rs = pst.executeQuery();
 				rs.next();
 				flowerId=rs.getInt("id"); 				

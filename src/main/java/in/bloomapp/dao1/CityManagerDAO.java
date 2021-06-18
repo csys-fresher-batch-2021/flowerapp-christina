@@ -14,6 +14,7 @@ public class CityManagerDAO {
 
 	/**
 	 * Adds a new city into the data base
+	 * 
 	 * @param city
 	 * @throws DBException
 	 */
@@ -24,76 +25,77 @@ public class CityManagerDAO {
 		PreparedStatement pst = null;
 		try {
 			connection = ConnectionUtil.getConnection();
-			//Prepare data to insert into the driver
+			// Prepare data to insert into the driver
 			String sql = "insert into cities (district_code,city,delivary_charge,status) values ( ?,?,?,?)";
 			pst = connection.prepareStatement(sql);
 			pst.setInt(1, city.getDistrictCode());
 			pst.setString(2, city.getCity());
 			pst.setInt(3, city.getDelivaryCharge());
 			pst.setInt(4, city.getStatus());
-			
+
 			// Executes the Query
 			pst.executeUpdate();
-		} 
-		catch (SQLException e) {
+		} catch (SQLException e) {
 			throw new DBException("Unable to add city");
-		} 
-		finally {
+		} finally {
 			// Null Check - to avoid Null Pointer Exception
 			ConnectionUtil.close(pst, connection);
 		}
-
 	}
-	
+
 	/**
 	 * Update delivery charge to the available city
+	 * 
 	 * @param city
 	 * @throws DBException
 	 */
 	public void update(City city) throws DBException {
-		Connection connection=null;
-		PreparedStatement pst=null;
+		Connection connection = null;
+		PreparedStatement pst = null;
 		try {
-			connection=ConnectionUtil.getConnection();
+			connection = ConnectionUtil.getConnection();
 			String sql = "update cities set delivary_charge=? WHERE city=?";
-			pst=connection.prepareStatement(sql);
-			pst.setInt(1,city.getDelivaryCharge());
-			pst.setString(2,city.getCity());
+			pst = connection.prepareStatement(sql);
+			pst.setInt(1, city.getDelivaryCharge());
+			pst.setString(2, city.getCity());
 			pst.executeUpdate();
-			}
-		catch(SQLException e) {
+		} catch (SQLException e) {
 			throw new DBException("Unable to update city");
-		}
-		finally {
+		} finally {
 			ConnectionUtil.close(pst, connection);
 		}
 
 	}
-	
+
 	/**
-	 * Sets the status of the city to 0 
+	 * Sets the status of the city to 0
+	 * 
 	 * @param city
 	 * @throws DBException
 	 */
 	public void delete(City city) throws DBException {
-		Connection connection=null;
-		PreparedStatement pst=null;
+		Connection connection = null;
+		PreparedStatement pst = null;
 		try {
-			connection=ConnectionUtil.getConnection();
+			connection = ConnectionUtil.getConnection();
 			String sql = "update cities set status=0 WHERE city=?";
-			pst=connection.prepareStatement(sql);
-			pst.setString(1,city.getCity());
+			pst = connection.prepareStatement(sql);
+			pst.setString(1, city.getCity());
 			pst.executeUpdate();
-			}
-		catch(SQLException e) {
+		} catch (SQLException e) {
 			throw new DBException("Unable to update city");
-		}
-		finally {
+		} finally {
 			ConnectionUtil.close(pst, connection);
 		}
-		
+
 	}
-	
+
+	/**
+	 * Gets the list of cities from the data base
+	 * 
+	 * @return
+	 * @throws DBException
+	 */
 	public List<City> getCity() throws DBException {
 		List<City> list = new ArrayList<>();
 		// Step 1: Get the connection
@@ -117,21 +119,20 @@ public class CityManagerDAO {
 				int delivaryCharge = rs.getInt("delivary_charge");
 				// Store the data in model
 				City subject = new City();
-				
+
 				subject.setDistrictCode(districtCode);
 				subject.setCity(city);
 				subject.setDelivaryCharge(delivaryCharge);
 				// Store all flowers in list
 				list.add(subject);
 			}
-		} 
-		//If unable to get flowers throws exception
+		}
+		// If unable to get cities throws exception
 		catch (SQLException e) {
 			e.printStackTrace();
 			throw new DBException("Unable to fetch citiy details");
-		} 
-		finally {
-			//Closes the connection
+		} finally {
+			// Closes the connection
 			ConnectionUtil.close(rs, pst, con);
 		}
 		return list;
