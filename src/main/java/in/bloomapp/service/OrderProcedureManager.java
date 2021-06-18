@@ -44,13 +44,6 @@ public class OrderProcedureManager {
 		}
 	}
 
-	/**
-	 * Cancels the placed order
-	 */
-	public static void cancelOrder() {
-		OrderPlacementDAO orderPlacementDAO=new OrderPlacementDAO();
-		orderPlacementDAO.delete();
-	}
 	
 	/**
 	 * List items that is to be approved from the user

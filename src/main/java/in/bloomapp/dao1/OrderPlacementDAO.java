@@ -65,9 +65,7 @@ public class OrderPlacementDAO {
 			}
 	}
 	
-	public void delete() {
-		//TODO
-	}
+
 	
 	/**
 	 * Gets the list the is to be approved from the order database

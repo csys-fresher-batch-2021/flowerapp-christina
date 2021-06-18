@@ -31,7 +31,7 @@ public class OrderProcedureServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		PrintWriter out = response.getWriter();
-		String IS_ADDED="IS_ADDED";
+		String is_ADDED="IS_ADDED";
 		String errorMessage;
 		try {
 			String deliveryAddress = request.getParameter("delivaryAddress");
