@@ -31,7 +31,7 @@ public class OrderProcedureServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		PrintWriter out = response.getWriter();
-		String is_ADDED="IS_ADDED";
+		String isAdded="IS_ADDED";
 		String errorMessage;
 		try {
 			String deliveryAddress = request.getParameter("delivaryAddress");
@@ -50,20 +50,20 @@ public class OrderProcedureServlet extends HttpServlet {
 			OrderProcedureManager.addOrder(order);
 			String message = "Order Initiated";
 			JsonObject obj = new JsonObject();
-			obj.addProperty(is_ADDED, message);
+			obj.addProperty(isAdded, message);
 			out.println(obj);
 			out.flush();
 		} catch (DBException e) {
 			errorMessage = e.getMessage();
 			JsonObject obj = new JsonObject();
-			obj.addProperty(is_ADDED, errorMessage);
+			obj.addProperty(isAdded, errorMessage);
 			out.println(obj);
 			out.flush();
 			e.printStackTrace();
 		} catch (NumberFormatException e) {
 			errorMessage = "Wrong input";
 			JsonObject obj = new JsonObject();
-			obj.addProperty(is_ADDED, errorMessage);
+			obj.addProperty(isAdded, errorMessage);
 			out.println(obj);
 			out.flush();
 			e.printStackTrace();
