@@ -1,6 +1,5 @@
 package in.bloomapp.model;
 
-import java.sql.Date;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -11,9 +10,6 @@ import java.time.LocalTime;
  */
 public class Order {
 
-	public Order() {
-		// TODO Auto-generated constructor stub
-	}
 
 	private String orderCategory;
 	private String orderType;

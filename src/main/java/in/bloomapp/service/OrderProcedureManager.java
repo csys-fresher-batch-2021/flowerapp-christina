@@ -62,7 +62,6 @@ public class OrderProcedureManager {
 		try {
 			list = orderPlacementDAO.toApprove();
 		} catch (DBException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return list;

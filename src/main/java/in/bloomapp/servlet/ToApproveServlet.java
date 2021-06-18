@@ -25,6 +25,7 @@ public class ToApproveServlet extends HttpServlet {
 	/**
 	 * handles operations related to approval
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 		String category=request.getParameter("category");
@@ -36,7 +37,6 @@ public class ToApproveServlet extends HttpServlet {
 		String userMobile=request.getParameter("UserMobile");
 		String orderDate=request.getParameter("OrderDate");
 		String deliveryStatus=request.getParameter("deliveryStatus");
-		System.out.println(category+price+ type+deliveryTime+deliveryDate+orderDate+deliveryStatus);
 		Order order=new Order();
 		order.setOrderCategory(category);
 		order.setOrderType(type);
@@ -50,7 +50,6 @@ public class ToApproveServlet extends HttpServlet {
 		Long paresedNo=Long.parseLong(userMobile);
 		order.setUserMobileNo(paresedNo);
 		LocalDate parsedOrderDate=LocalDate.parse(orderDate);
-		System.out.println(parsedOrderDate);
 		order.setOrderDate(parsedOrderDate);
 		order.setDeliveryStatus(deliveryStatus);
 		ApprovalManager.setApprovalSts(order);

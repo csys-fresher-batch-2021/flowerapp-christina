@@ -2,8 +2,7 @@ package in.bloomapp.validator;
 
 public class OrderValidator {
 
-	public OrderValidator() {
-		// TODO Auto-generated constructor stub
+	private OrderValidator() {
 	}
 
 	/**

@@ -26,10 +26,12 @@ public class OrderProcedureServlet extends HttpServlet {
 	/**
 	 * Initiates an order
 	 */
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		PrintWriter out = response.getWriter();
+		String IS_ADDED="IS_ADDED";
 		String errorMessage;
 		try {
 			String deliveryAddress = request.getParameter("delivaryAddress");
@@ -48,20 +50,20 @@ public class OrderProcedureServlet extends HttpServlet {
 			OrderProcedureManager.addOrder(order);
 			String message = "Order Initiated";
 			JsonObject obj = new JsonObject();
-			obj.addProperty("IS_ADDED", message);
+			obj.addProperty(IS_ADDED, message);
 			out.println(obj);
 			out.flush();
 		} catch (DBException e) {
 			errorMessage = e.getMessage();
 			JsonObject obj = new JsonObject();
-			obj.addProperty("IS_ADDED", errorMessage);
+			obj.addProperty(IS_ADDED, errorMessage);
 			out.println(obj);
 			out.flush();
 			e.printStackTrace();
 		} catch (NumberFormatException e) {
 			errorMessage = "Wrong input";
 			JsonObject obj = new JsonObject();
-			obj.addProperty("IS_ADDED", errorMessage);
+			obj.addProperty(IS_ADDED, errorMessage);
 			out.println(obj);
 			out.flush();
 			e.printStackTrace();

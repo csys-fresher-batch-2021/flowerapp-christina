@@ -15,15 +15,13 @@ import in.bloomapp.util.ConnectionUtil;
  */
 public class ApprovalManagerDAO {
 
-	public ApprovalManagerDAO() {
-	}
 	
 	/**
 	 * Updates the approval status of order to rejected or to be delivered
 	 * @param order
 	 * @throws DBException
 	 */
-	public void UpdateApprovalSts(Order order) throws DBException {
+	public void updateApprovalSts(Order order) throws DBException {
 		
 		Connection connection=null;
 		PreparedStatement pst=null;
@@ -59,7 +57,6 @@ public class ApprovalManagerDAO {
 		int orderItemId;
 		try {
 			connection=ConnectionUtil.getConnection();
-			System.out.println(order);
 			String sql="select id from orders WHERE category=?"
 					+ "AND name=?"+
 					" AND price=? AND delivery_address=?"+
@@ -79,7 +76,6 @@ public class ApprovalManagerDAO {
 			rs.next();	
 			//gets id from table
 			orderItemId = rs.getInt("id"); 
-			System.out.println("id"+orderItemId);
 		}
 		catch(SQLException e) {
 			throw new DBException("Unable to get item id");

@@ -15,7 +15,7 @@ public class ApprovalManager {
 	 * @throws DBException
 	 */
 	public static void setApprovalSts(Order order) throws DBException {
-		ApprovalManagerDAO ApproveManagerDAO=new ApprovalManagerDAO(); 
-		ApproveManagerDAO.UpdateApprovalSts(order);
+		ApprovalManagerDAO approveManagerDAO=new ApprovalManagerDAO(); 
+		approveManagerDAO.updateApprovalSts(order);
 	}
 }

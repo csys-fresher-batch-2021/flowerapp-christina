@@ -1,12 +1,10 @@
 package in.bloomapp.dao1;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
-import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -68,7 +66,7 @@ public class OrderPlacementDAO {
 	}
 	
 	public void delete() {
-		//todo
+		//TODO
 	}
 	
 	/**
@@ -107,7 +105,7 @@ public class OrderPlacementDAO {
 			}
 		} 
 		catch (SQLException | DBException e) {
-			throw new DBException("Unable to get id");
+			throw new DBException("Unable to get order id");
 		} 
 		finally {
 			ConnectionUtil.close(rs, pst, connection);
