@@ -50,13 +50,13 @@ public class OrderProcedureServlet extends HttpServlet {
 			OrderProcedureManager.addOrder(order);
 			String message = "Order Initiated";
 			JsonObject obj = new JsonObject();
-			obj.addProperty(IS_ADDED, message);
+			obj.addProperty(is_ADDED, message);
 			out.println(obj);
 			out.flush();
 		} catch (DBException e) {
 			errorMessage = e.getMessage();
 			JsonObject obj = new JsonObject();
-			obj.addProperty(IS_ADDED, errorMessage);
+			obj.addProperty(is_ADDED, errorMessage);
 			out.println(obj);
 			out.flush();
 			e.printStackTrace();
