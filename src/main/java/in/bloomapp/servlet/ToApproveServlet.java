@@ -63,6 +63,9 @@ public class ToApproveServlet extends HttpServlet {
 			rd.forward(request, response);
 			logger.info(e.getMessage());
 		}
+		catch(NumberFormatException e) {
+			logger.info(e.getMessage());
+		}
 	}
 
 }
