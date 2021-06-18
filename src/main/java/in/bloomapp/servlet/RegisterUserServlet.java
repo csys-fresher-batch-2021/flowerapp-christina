@@ -2,6 +2,8 @@ package in.bloomapp.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Logger;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,7 +22,10 @@ import in.bloomapp.userservice.UserManager;
  */
 @WebServlet("/RegisterUserServlet")
 public class RegisterUserServlet extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
+	final Logger logger = Logger.getLogger(this.getClass().getName());
+
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
@@ -60,8 +65,10 @@ public class RegisterUserServlet extends HttpServlet {
 				obj.addProperty("IS_ADDED",errorMessage);
 				out.println(obj);
 				out.flush();
-			    e.printStackTrace();
 	        } 
+		  catch (NumberFormatException e) {
+			  logger.info(e.getMessage());
+		  }
 	        
 	}
 

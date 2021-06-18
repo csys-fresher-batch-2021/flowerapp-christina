@@ -17,9 +17,9 @@ String role = (String) session.getAttribute("ROLE");
 
 <jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
-		<h1 style="color:pink">FLower Cart</h1>
+		<h1 style="color:pink">Flower Cart</h1>
 	<table class="table table-border">
-	<caption style="color:black">Flowers available</caption>
+	<caption style="color:black">Cart items</caption>
 		<thead>
 			<tr>
 				<th scope="col" id= "serialnumber">S.NO</th>
@@ -55,7 +55,10 @@ String role = (String) session.getAttribute("ROLE");
 		</tbody>
 	</table>
 		 		 <% if (loggedInUsername != null && role != null && role.equalsIgnoreCase("USER")){ %>
-		 		 <a href="displayFlowers.jsp" class="btn btn-success">FLower</a>
+		 		 <% if(flowers.size()!=0){ %>
+		 		 <a href="OrderProcedure.jsp" class="btn btn-warning">Place Order</a><br/><br/>
+		 		 <%} %>
+		 		 <a href="displayFlowers.jsp" class="btn btn-success">Flowers</a>
 		 		<%}%>	 		 
 </main>
 </body>
