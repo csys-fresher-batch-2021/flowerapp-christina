@@ -41,7 +41,7 @@
 <td>SNO </td><td><%=order.getOrderCategory()%></td>
 			<td><%=order.getOrderType()%></td>
 			<td><%=order.getOrderQuantity()%></td>
-			<td><%=order.getOrderPrice()%></td>
+			<td rs.><%=order.getOrderPrice()%></td>
 			<td><%=order.getDeliveryCity()%></td>
 			<td><%=order.getDeliverAddress()%></td>
 			<td><%=order.getDeliveryDate()%></td>

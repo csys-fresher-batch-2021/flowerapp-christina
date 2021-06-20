@@ -49,14 +49,15 @@ public class SummaryManager {
 	 * Gets order summary for a user this method is for user
 	 * @param userName
 	 * @return
+	 * @throws DBException 
 	 */
-	public static List<Order> getOrderSummary(String userName) {
+	public static List<Order> getOrderSummary(String userName) throws DBException {
 		List<Order> orderSummary=null;
 		OrderSummaryDAO orderSummaryDAO=new OrderSummaryDAO();
 		try {
 			orderSummary =orderSummaryDAO.getUserOrder(userName);
 		} catch (DBException e) {
-			e.printStackTrace();
+			throw new DBException(e.getMessage());
 		}
 		return orderSummary;	
 	}
@@ -65,15 +66,16 @@ public class SummaryManager {
 	 * gets ordered items
 	 * @param userName
 	 * @return
+	 * @throws DBException 
 	 */
-	public static List<Order> getOrderList(String userName){
+	public static List<Order> getOrderList(String userName) throws DBException{
 		
 		List<Order> orderList=null;
 		OrderSummaryDAO orderSummaryDAO=new OrderSummaryDAO();
 		try {
 			orderList =orderSummaryDAO.getOrderItems(userName);
 		} catch (DBException e) {
-			e.printStackTrace();
+			throw new DBException(e.getMessage());
 		}
 		return orderList;
 		

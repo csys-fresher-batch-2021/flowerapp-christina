@@ -59,7 +59,6 @@ public class OrderSummaryDAO {
 			}
 		}
 		catch(SQLException e) {
-			e.printStackTrace();
 			throw new DBException("Unable to get summary list");
 		}
 		finally {
