@@ -45,7 +45,6 @@ public class OrderSummaryDAO {
 			while(rs.next()){
 				Flower flower =new Flower();
 				flower.setCategory(rs.getString("flower_category"));
-				System.out.println("sql");
 				flower.setType(rs.getString("type") );
 				flower.setQuantity(rs.getInt("total") );
 				summary.add(flower);
@@ -160,8 +159,8 @@ public class OrderSummaryDAO {
 		try {
 			String sql="select category,name,price,quantity,delivery_city,delivery_address,deliver_date,delivery_time,user_name"
 					+ ",mobile_no,order_date ,sum(quantity) AS total_flowers, SUM(price) AS total_sum"
-					+ "	from orders WHERE user_name=? AND delivery_status='yetToDeliver' AND"
-					+ "	status=1 group by category,name,price,quantity,delivery_city,delivery_address,deliver_date,delivery_time,"
+					+ "from orders WHERE user_name=? AND delivery_status='yetToDeliver' AND"
+					+ "status=1 group by category,name,price,quantity,delivery_city,delivery_address,deliver_date,delivery_time,"
 					+ "user_name,mobile_no,order_date";
 
 			//fields that is to be passed to the query are given as parameter

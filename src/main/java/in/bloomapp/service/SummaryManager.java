@@ -2,7 +2,6 @@ package in.bloomapp.service;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.logging.Logger;
 import in.bloomapp.dao1.OrderSummaryDAO;
 import in.bloomapp.exception.DBException;
 import in.bloomapp.exception.ServiceException;

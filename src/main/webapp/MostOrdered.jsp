@@ -4,7 +4,7 @@
 <%@ page import="in.bloomapp.model.Flower"%>
 <%@ page import="in.bloomapp.service.SummaryManager"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>Most Ordered</title>
@@ -19,10 +19,10 @@
 		<input type="date" name="SummaryDate" id="SummaryDate"required /> <br />
 	<button type="submit" class="btn btn-info">Submit</button><br/><br/>
 	<table class="table table-bordered" ><caption>List of item</caption><thead><tr>
-					<th>S.NO</th>
-					<th>Category</th>
-					<th>Type</th>
-					<th>Total orders</th>
+					<th scope="col" id= "serialnumber">S.NO</th>
+					<th scope="col" id= "category">Category</th>
+					<th  scope="col" id= "type">Type</th>
+					<th scope="col" id= "orders">Total orders</th>
 				</tr>
 			</thead>
 			<tbody id="table">

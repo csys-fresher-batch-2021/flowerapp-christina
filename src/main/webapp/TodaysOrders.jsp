@@ -5,7 +5,7 @@
     <%@ page import="in.bloomapp.service.SummaryManager"%>
     <%@ page import="in.bloomapp.model.Order"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>Todays Orders</title>
@@ -18,18 +18,18 @@
 	<caption style="color:white">Flowers available</caption>
 		<thead>
 			<tr>
-				<th >S.NO</th>
-				<th>Category</th>
-				<th>Type</th>
-				<th >Quantity</th>
-				<th >Price</th>
-				<th >Delivery City</th>
-				<th >Delivery address</th>
-				<th >Delivery date</th>
-				<th >Max Time</th>
-				<th >User name</th>
-				<th >user mobile No</th>
-				<th >Order date</th>
+				<th scope="col" id= "serialnumber" >S.NO</th>
+				<th scope="col" id= "category">Category</th>
+				<th scope="col" id= "type">Type</th>
+				<th scope="col" id= "quantity">Quantity</th>
+				<th scope="col" id= "price">Price</th>
+				<th scope="col" id= "deliveryCity">Delivery City</th>
+				<th scope="col" id= "deliveryAddress">Delivery address</th>
+				<th scope="col" id= "deliveryDate">Delivery date</th>
+				<th scope="col" id= "time">Max Time</th>
+				<th scope="col" id= "userName">User name</th>
+				<th scope="col" id= "mobileNo">user mobile No</th>
+				<th scope="col" id= "orderdate">Order date</th>
 			</tr>
 		</thead>
 		
