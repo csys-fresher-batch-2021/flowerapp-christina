@@ -24,7 +24,14 @@ public class Order {
 	private LocalDate orderDate;
 	private int status=1;
 	private String deliveryStatus;
+	private int orderId;
 	
+	public int getOrderId() {
+		return orderId;
+	}
+	public void setOrderId(int orderId) {
+		this.orderId = orderId;
+	}
 	public String getOrderCategory() {
 		return orderCategory;
 	}

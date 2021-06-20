@@ -9,7 +9,6 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
-
 import in.bloomapp.exception.DBException;
 import in.bloomapp.model.Order;
 import in.bloomapp.util.ConnectionUtil;
@@ -85,7 +84,7 @@ public class OrderPlacementDAO {
 			pst=connection.prepareStatement(sql);
 			rs = pst.executeQuery();
 			while (rs.next()) {
-				Order subject=new Order();
+			Order subject=new Order();
 			subject.setOrderCategory(rs.getString("category")); 
 			subject.setOrderType(rs.getString("name"));
 			subject.setOrderPrice(rs.getInt("price"));

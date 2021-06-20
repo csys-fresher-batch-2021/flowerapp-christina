@@ -66,10 +66,8 @@ public class Flower {
 	
 	@Override
 	public String toString() {
-		return "Flower [category=" + category + ", type=" + type + ", price=" + price +"]";
+		return "Flower [category=" + category + ", type=" + type + ", price=" + price + ", quantity=" + quantity
+				+ ", buyer=" + buyer + ", date=" + date + "]";
 	}
-
-	
-	
 	
 }

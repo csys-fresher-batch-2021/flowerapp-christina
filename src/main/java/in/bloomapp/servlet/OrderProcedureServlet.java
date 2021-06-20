@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.JsonObject;
 
 import in.bloomapp.exception.DBException;
+import in.bloomapp.exception.InvalidInputException;
 import in.bloomapp.model.Order;
 import in.bloomapp.service.OrderProcedureManager;
 
@@ -64,7 +65,7 @@ public class OrderProcedureServlet extends HttpServlet {
 			out.println(obj);
 			out.flush();
 			logger.info(e.getMessage());
-		} catch (NumberFormatException e) {
+		} catch (InvalidInputException|NumberFormatException e) {
 			errorMessage = "Wrong input";
 			JsonObject obj = new JsonObject();
 			obj.addProperty(isAdded, errorMessage);
