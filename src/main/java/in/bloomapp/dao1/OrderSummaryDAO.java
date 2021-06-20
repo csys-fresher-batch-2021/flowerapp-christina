@@ -19,6 +19,14 @@ import in.bloomapp.model.Order;
 import in.bloomapp.util.ConnectionUtil;
 
 public class OrderSummaryDAO {
+	private static final String DELIVERY_ADDRESS="delivery_address";
+	private static final String DELIVERY_CITY="delivery_city";
+	private static final String DELIVERY_DATE="deliver_date";
+	private static final String DELIVERY_TIME="delivery_time";
+	private static final String USER_NAME="user_name";
+	private static final String MOBILE_NO="mobile_no";
+	private static final String ORDER_DATE="order_date";
+	
 	
 	//jdbc template which helps in giving and closing connections
 	private static JdbcTemplate jdbcTemplate=ConnectionUtil.getJdbcTemplate();
@@ -84,16 +92,16 @@ public class OrderSummaryDAO {
 			subject.setOrderType(rs.getString("name"));
 			subject.setOrderPrice(rs.getInt("price"));
 			subject.setOrderQuantity(rs.getInt("quantity"));
-			subject.setDeliveryCity(rs.getString("delivery_city"));
-			subject.setDeliverAddress(rs.getString("delivery_address"));
-			subject.setDeliveryDate(LocalDate.parse(rs.getString("deliver_date")));
-			Time deliveryTime=(rs.getTime("delivery_time"));
+			subject.setDeliveryCity(rs.getString(DELIVERY_CITY));
+			subject.setDeliverAddress(rs.getString(DELIVERY_ADDRESS));
+			subject.setDeliveryDate(LocalDate.parse(rs.getString(DELIVERY_DATE)));
+			Time deliveryTime=(rs.getTime(DELIVERY_TIME));
 			String time=deliveryTime.toString();
 			LocalTime parsedTime=LocalTime.parse(time);
 			subject.setDeliveryTime(parsedTime);
-			subject.setUserName(rs.getString("user_name"));
-			subject.setUserMobileNo(rs.getLong("mobile_no"));
-			subject.setOrderDate(LocalDate.parse(rs.getString("order_date")));
+			subject.setUserName(rs.getString(USER_NAME));
+			subject.setUserMobileNo(rs.getLong(MOBILE_NO));
+			subject.setOrderDate(LocalDate.parse(rs.getString(ORDER_DATE)));
 			orders.add(subject);
 			}
 		}
@@ -126,16 +134,16 @@ public class OrderSummaryDAO {
 			//And the returned data is stored in a variable
 			orders = jdbcTemplate.query(sql, (rs,rowNo)->{
 			Order subject=new Order();
-			subject.setDeliveryCity(rs.getString("delivery_city"));
-			subject.setDeliverAddress(rs.getString("delivery_address"));
-			subject.setDeliveryDate(LocalDate.parse(rs.getString("deliver_date")));
-			Time deliveryTime=(rs.getTime("delivery_time"));
+			subject.setDeliveryCity(rs.getString(DELIVERY_CITY));
+			subject.setDeliverAddress(rs.getString(DELIVERY_ADDRESS));
+			subject.setDeliveryDate(LocalDate.parse(rs.getString(DELIVERY_DATE)));
+			Time deliveryTime=(rs.getTime(DELIVERY_TIME));
 			String time=deliveryTime.toString();
 			LocalTime parsedTime=LocalTime.parse(time);
 			subject.setDeliveryTime(parsedTime);
-			subject.setUserName(rs.getString("user_name"));
-			subject.setUserMobileNo(rs.getLong("mobile_no"));
-			subject.setOrderDate(LocalDate.parse(rs.getString("order_date")));
+			subject.setUserName(rs.getString(USER_NAME));
+			subject.setUserMobileNo(rs.getLong(MOBILE_NO));
+			subject.setOrderDate(LocalDate.parse(rs.getString(ORDER_DATE)));
 			subject.setOrderQuantity(rs.getInt("total_flowers"));
 			subject.setOrderPrice(rs.getInt("total_sum"));
 			return subject;
@@ -172,16 +180,16 @@ public class OrderSummaryDAO {
 			subject.setOrderType(rs.getString("name"));
 			subject.setOrderPrice(rs.getInt("price"));
 			subject.setOrderQuantity(rs.getInt("quantity"));
-			subject.setDeliveryCity(rs.getString("delivery_city"));
-			subject.setDeliverAddress(rs.getString("delivery_address"));
-			subject.setDeliveryDate(LocalDate.parse(rs.getString("deliver_date")));
-			Time deliveryTime=(rs.getTime("delivery_time"));
+			subject.setDeliveryCity(rs.getString(DELIVERY_CITY));
+			subject.setDeliverAddress(rs.getString(DELIVERY_ADDRESS));
+			subject.setDeliveryDate(LocalDate.parse(rs.getString(DELIVERY_DATE)));
+			Time deliveryTime=(rs.getTime(DELIVERY_TIME));
 			String time=deliveryTime.toString();
 			LocalTime parsedTime=LocalTime.parse(time);
 			subject.setDeliveryTime(parsedTime);
-			subject.setUserName(rs.getString("user_name"));
-			subject.setUserMobileNo(rs.getLong("mobile_no"));
-			subject.setOrderDate(LocalDate.parse(rs.getString("order_date")));
+			subject.setUserName(rs.getString(USER_NAME));
+			subject.setUserMobileNo(rs.getLong(MOBILE_NO));
+			subject.setOrderDate(LocalDate.parse(rs.getString(ORDER_DATE)));
 			subject.setOrderQuantity(rs.getInt("total_flowers"));
 			subject.setOrderPrice(rs.getInt("total_sum"));
 			return subject;
