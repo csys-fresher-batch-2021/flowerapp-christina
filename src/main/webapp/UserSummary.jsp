@@ -46,7 +46,7 @@ String role = (String) session.getAttribute("ROLE");
 				i++;
 			%>
 				<tr>
-					<td scope="col"><%=i%></td>
+					<td><%=i%></td>
 					<td><%=item.getOrderCategory() %></td>
 					<td><%=item.getOrderType()%></td>
 					<td>Rs.<%=item.getOrderPrice()%>/-

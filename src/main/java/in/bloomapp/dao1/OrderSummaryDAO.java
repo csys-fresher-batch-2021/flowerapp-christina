@@ -175,16 +175,13 @@ public class OrderSummaryDAO {
 			//And the returned data is stored in a variable
 			orders = jdbcTemplate.query(sql, (rs,rowNo)->{
 			Order subject=new Order();
-			System.out.println("called");
 			subject.setOrderCategory(rs.getString("category"));
 			subject.setOrderType(rs.getString("name"));
 			subject.setOrderPrice(rs.getInt("price"));
 			subject.setOrderQuantity(rs.getInt("quantity"));
 			subject.setDeliveryCity(rs.getString(DELIVERY_CITY));
 			subject.setDeliverAddress(rs.getString(DELIVERY_ADDRESS));
-			System.out.println("called");
 			subject.setDeliveryDate(LocalDate.parse(rs.getString(DELIVERY_DATE)));
-			System.out.println(LocalDate.parse(rs.getString(DELIVERY_DATE)));
 			Time deliveryTime=(rs.getTime(DELIVERY_TIME));
 			String time=deliveryTime.toString();
 			LocalTime parsedTime=LocalTime.parse(time);
