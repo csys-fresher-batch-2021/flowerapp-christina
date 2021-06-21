@@ -99,7 +99,7 @@ String role = (String) session.getAttribute("ROLE");
 					"&deliveryDate="+deliveryDate+
 					"&deliveryTime="+deliveryTime+"&userName="+userName;
 			let url="OrderProcedureServlet"+queryParameter;
-			fetch(url,{ method:'POST'}).then(res => res.json()).then(res=>{
+			fetch(url).then(res => res.json()).then(res=>{
 				
 				if(res.IS_ADDED=="Order Initiated"){
 				
@@ -113,6 +113,6 @@ String role = (String) session.getAttribute("ROLE");
 			});
 		}
 		</script>
-		<a class="btn btn-info" href=UserSummary.jsp>Summary</a>
+		<br/><a class="btn btn-info" href=UserSummary.jsp>Summary</a>
 	</main>
 </body>

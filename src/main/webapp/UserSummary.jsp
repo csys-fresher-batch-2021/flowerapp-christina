@@ -18,7 +18,7 @@ String role = (String) session.getAttribute("ROLE");
 	<main class="container-fluid">
 	<h1 style="color: pink">To Approve List</h1>
 	
-		<table class="table table-border" style="font-size: 15px">
+		<table class="table table-bordered" style="font-size: 15px">
 			<caption style="color: red">Flower whose order needs
 				approval is shown here</caption>
 			<thead>
