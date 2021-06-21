@@ -10,7 +10,7 @@ String role = (String) session.getAttribute("ROLE");
 
 <header>
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">BLOOM</a>
+  <a class="navbar-brand" style="color: pink" href="#">BLOOM</a>
   <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
       aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -24,11 +24,14 @@ String role = (String) session.getAttribute("ROLE");
         <a class="nav-link" href="displayFlowers.jsp">Flowers</a>
       </li>
        <% if (loggedInUsername != null && role != null && role.equalsIgnoreCase("ADMIN")){ %>
-       <li class="nav-item">
+       <li class="nav-item active">
         <a class="nav-link" href="addFlower.jsp">Add Product</a>
       </li>
-        <li class="nav-item">
+        <li class="nav-item active">
         <a class="nav-link" href="ToApproveList.jsp">Delivery Approval</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="SummaryHome.jsp">Admin Summary</a>
       </li>
       <%} %>
        <li class="nav-item active">
@@ -44,13 +47,18 @@ String role = (String) session.getAttribute("ROLE");
         <a class="nav-link" href="registerUser.jsp">Register</a>
       </li>
       <%} else { %>
-         <li class="nav-item">
-        <a class="nav-link" href="#">Welcome <%=loggedInUsername %></a>
+         <li class="nav-item active">
+        <a class="nav-link" style="color: pink" href="#">Welcome <%=loggedInUsername %></a>
       </li>
-        <li class="nav-item">
-        <a class="nav-link" href="LogoutServlet">Logout</a>
+        <li class="nav-item active">
+        <a class="nav-link" style="color: red" href="LogoutServlet">Logout</a>
       </li>
-      <%} %>
+      <% if (loggedInUsername != null && role != null && !role.equalsIgnoreCase("ADMIN")){ %>
+         <li class="nav-item active">
+        <a class="nav-link" href="UserSummary.jsp">My orders</a>
+      </li>
+       <% }%> 
+      <% }%> 
       </ul>
    
   </div>

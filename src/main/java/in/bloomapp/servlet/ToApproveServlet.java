@@ -29,6 +29,7 @@ public class ToApproveServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
+			String message;
 			String category = request.getParameter("category");
 			String type = request.getParameter("type");
 			String price = request.getParameter("price");
@@ -54,7 +55,12 @@ public class ToApproveServlet extends HttpServlet {
 			order.setOrderDate(parsedOrderDate);
 			order.setDeliveryStatus(deliveryStatus);
 			ApprovalManager.setApprovalSts(order);
-			String message = "Approved";
+			if(deliveryStatus.equals("yetToDeliver")) {
+				message = "Approved";
+			}
+			else {
+				message="Rejected";
+			}
 			RequestDispatcher rd = request.getRequestDispatcher("ToApproveList.jsp?infoMessage=" + message);
 			rd.forward(request, response);
 		} catch (DBException e) {
