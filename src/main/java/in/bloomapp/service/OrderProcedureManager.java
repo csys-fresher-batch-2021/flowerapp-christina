@@ -31,7 +31,6 @@ public class OrderProcedureManager {
 	public static void addOrder(Order order) throws DBException, InvalidInputException {
 		CartManagerDAO cartManagerDAO=new CartManagerDAO();
 		List<Flower> cart=cartManagerDAO.getCart(order.getUserName());
-		IsValid.isCharAllowed(order.getDeliveryCity());
 		IsValid.isValidString(order.getDeliveryCity());
 		IsValid.isValidString(order.getDeliverAddress());
 		for(Flower cartItem:cart) {
@@ -65,4 +64,5 @@ public class OrderProcedureManager {
 		}
 		return list;
 	}
+	
 }

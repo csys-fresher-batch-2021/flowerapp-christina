@@ -80,4 +80,21 @@ public class SummaryManager {
 		return orderList;
 		
 	}
+	
+	/**
+	 * Gets the items which are rejected by the admin
+	 * @param userName
+	 * @return
+	 */
+	public static List<Order> rejectedItems(String userName){
+		OrderSummaryDAO orderSummaryDAO=new OrderSummaryDAO();
+		List<Order> list = null;
+		try {
+			list = orderSummaryDAO.getRejectedItems(userName);
+		} catch (DBException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
 }

@@ -31,7 +31,7 @@ String role = (String) session.getAttribute("ROLE");
         <a class="nav-link" href="ToApproveList.jsp">Delivery Approval</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="SummaryHome.jsp">Delivery Approval</a>
+        <a class="nav-link" href="SummaryHome.jsp">Admin Summary</a>
       </li>
       <%} %>
        <li class="nav-item active">
@@ -53,9 +53,11 @@ String role = (String) session.getAttribute("ROLE");
         <li class="nav-item active">
         <a class="nav-link" style="color: red" href="LogoutServlet">Logout</a>
       </li>
+      <% if (loggedInUsername != null && role != null && !role.equalsIgnoreCase("ADMIN")){ %>
          <li class="nav-item active">
         <a class="nav-link" href="UserSummary.jsp">My orders</a>
       </li>
+       <% }%> 
       <% }%> 
       </ul>
    

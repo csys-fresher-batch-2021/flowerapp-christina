@@ -44,7 +44,7 @@ String role = (String) session.getAttribute("ROLE");
 				for (Flower flower : flowers) {
 					i++;%>
 				<tr>
-					<th scope="col"><%=i%></th>
+					<td><%=i%></td>
 					<td><%=flower.getCategory()%></td>
 					<td><%=flower.getType()%></td>
 					<td>Rs.<%=flower.getPrice()%>/-</td>
@@ -99,7 +99,7 @@ String role = (String) session.getAttribute("ROLE");
 					"&deliveryDate="+deliveryDate+
 					"&deliveryTime="+deliveryTime+"&userName="+userName;
 			let url="OrderProcedureServlet"+queryParameter;
-			fetch(url).then(res => res.json()).then(res=>{
+			fetch(url,{ method:'POST'}).then(res => res.json()).then(res=>{
 				
 				if(res.IS_ADDED=="Order Initiated"){
 				

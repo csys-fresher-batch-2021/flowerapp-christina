@@ -62,6 +62,29 @@ String role = (String) session.getAttribute("ROLE");
 					
 				</tr>
 				<%} %>
+					<%
+		    final List<Order> rejectedList = SummaryManager.rejectedItems(loggedInUsername);
+			int k=0;
+			for(Order item: list){
+				k++;
+			%>
+				<tr>
+					<td><%=k%></td>
+					<td><%=item.getOrderCategory() %></td>
+					<td><%=item.getOrderType()%></td>
+					<td>Rs.<%=item.getOrderPrice()%>/-
+					</td>
+					<td><%=item.getDeliveryCity()%></td>
+					<td><%=item.getDeliverAddress()%></td>
+					<td><%=item.getDeliveryDate()%></td>
+					<td><%=item.getDeliveryTime()%></td>
+					<td><%=item.getUserName()%></td>
+					<td><%=item.getUserMobileNo()%></td>
+					<td><%=item.getOrderDate()%></td>
+					<td style="color: red">Rejected</td>
+					
+				</tr>
+				<%} %>
 			</tbody>
 		</table>
 			<%

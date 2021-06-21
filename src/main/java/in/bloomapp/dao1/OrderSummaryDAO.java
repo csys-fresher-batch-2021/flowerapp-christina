@@ -200,4 +200,50 @@ public class OrderSummaryDAO {
 		return orders;
 	}
 
+	/**
+	 * The items which are rejected are shown here
+	 * @param userName
+	 * @return
+	 * @throws DBException
+	 */
+	public List<Order> getRejectedItems(String userName) throws DBException {
+		
+		List<Order> rejectedOrders=null;
+		try {
+			String sql="select category,name,price,quantity,delivery_city,delivery_address,deliver_date,delivery_time,user_name"
+					+ ",mobile_no,order_date ,sum(quantity) AS total_flowers, SUM(price) AS total_sum "
+					+ "from orders WHERE user_name=? AND delivery_status='Rejected' AND "
+					+ "status=1 group by category,name,price,quantity,delivery_city,delivery_address,deliver_date,delivery_time,"
+					+ "user_name,mobile_no,order_date";
+
+			//fields that is to be passed to the query are given as parameter
+			Object[] params= {userName};
+			//And the returned data is stored in a variable
+			rejectedOrders = jdbcTemplate.query(sql, (rs,rowNo)->{
+			Order subject=new Order();
+			subject.setOrderCategory(rs.getString("category"));
+			subject.setOrderType(rs.getString("name"));
+			subject.setOrderPrice(rs.getInt("price"));
+			subject.setOrderQuantity(rs.getInt("quantity"));
+			subject.setDeliveryCity(rs.getString(DELIVERY_CITY));
+			subject.setDeliverAddress(rs.getString(DELIVERY_ADDRESS));
+			subject.setDeliveryDate(LocalDate.parse(rs.getString(DELIVERY_DATE)));
+			Time deliveryTime=(rs.getTime(DELIVERY_TIME));
+			String time=deliveryTime.toString();
+			LocalTime parsedTime=LocalTime.parse(time);
+			subject.setDeliveryTime(parsedTime);
+			subject.setUserName(rs.getString(USER_NAME));
+			subject.setUserMobileNo(rs.getLong(MOBILE_NO));
+			subject.setOrderDate(LocalDate.parse(rs.getString(ORDER_DATE)));
+			subject.setOrderQuantity(rs.getInt("total_flowers"));
+			subject.setOrderPrice(rs.getInt("total_sum"));
+			return subject;
+			}, params);
+			}
+		catch(DataAccessException e) {
+			throw new DBException("unable to get rejected user order list");
+		}
+		return rejectedOrders;
+	}
+
 }
