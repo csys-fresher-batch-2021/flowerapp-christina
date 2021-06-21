@@ -124,8 +124,8 @@ public class OrderSummaryDAO {
 		try {
 			String sql="select delivery_city,delivery_address,deliver_date,delivery_time,user_name"
 					+ ",mobile_no,order_date ,sum(quantity) AS total_flowers, SUM(price) AS total_sum "
-					+ "from orders WHERE user_name=? AND delivery_status='yetToDeliver' AND"
-					+ " status=1 group by delivery_city,delivery_address,deliver_date,delivery_time,"
+					+ "from orders WHERE user_name=? AND delivery_status='yetToDeliver' AND "
+					+ "status=1 group by delivery_city,delivery_address,deliver_date,delivery_time,"
 					+ "user_name,mobile_no,order_date" ;
 			
 			//fields that is to be passed to the query are given as parameter
@@ -165,8 +165,8 @@ public class OrderSummaryDAO {
 		List<Order> orders=null;
 		try {
 			String sql="select category,name,price,quantity,delivery_city,delivery_address,deliver_date,delivery_time,user_name"
-					+ ",mobile_no,order_date ,sum(quantity) AS total_flowers, SUM(price) AS total_sum"
-					+ "from orders WHERE user_name=? AND delivery_status='yetToDeliver' AND"
+					+ ",mobile_no,order_date ,sum(quantity) AS total_flowers, SUM(price) AS total_sum "
+					+ "from orders WHERE user_name=? AND delivery_status='yetToDeliver' AND "
 					+ "status=1 group by category,name,price,quantity,delivery_city,delivery_address,deliver_date,delivery_time,"
 					+ "user_name,mobile_no,order_date";
 
@@ -175,13 +175,16 @@ public class OrderSummaryDAO {
 			//And the returned data is stored in a variable
 			orders = jdbcTemplate.query(sql, (rs,rowNo)->{
 			Order subject=new Order();
+			System.out.println("called");
 			subject.setOrderCategory(rs.getString("category"));
 			subject.setOrderType(rs.getString("name"));
 			subject.setOrderPrice(rs.getInt("price"));
 			subject.setOrderQuantity(rs.getInt("quantity"));
 			subject.setDeliveryCity(rs.getString(DELIVERY_CITY));
 			subject.setDeliverAddress(rs.getString(DELIVERY_ADDRESS));
+			System.out.println("called");
 			subject.setDeliveryDate(LocalDate.parse(rs.getString(DELIVERY_DATE)));
+			System.out.println(LocalDate.parse(rs.getString(DELIVERY_DATE)));
 			Time deliveryTime=(rs.getTime(DELIVERY_TIME));
 			String time=deliveryTime.toString();
 			LocalTime parsedTime=LocalTime.parse(time);

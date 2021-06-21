@@ -74,7 +74,6 @@ String role = (String) session.getAttribute("ROLE");
 			for (City cities : cityName) {%>
 			<option><%=cities.getCity()%> - Rs.<%=cities.getDelivaryCharge() %></option>
 			<% }%>
-			<p><%= %></p>
 		</select> <br />
 
 		<%} else {%>

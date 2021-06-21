@@ -33,7 +33,6 @@ public class OrderProcedureManager {
 		List<Flower> cart=cartManagerDAO.getCart(order.getUserName());
 		IsValid.isCharAllowed(order.getDeliveryCity());
 		IsValid.isValidString(order.getDeliveryCity());
-		IsValid.isCharAllowed(order.getDeliverAddress());
 		IsValid.isValidString(order.getDeliverAddress());
 		for(Flower cartItem:cart) {
 		order.setOrderCategory(cartItem.getCategory());

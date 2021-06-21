@@ -65,7 +65,7 @@ public class OrderProcedureServlet extends HttpServlet {
 			out.println(obj);
 			out.flush();
 			logger.info(e.getMessage());
-		} catch (InvalidInputException|NumberFormatException e) {
+		} catch (InvalidInputException | NumberFormatException e) {
 			errorMessage = "Wrong input";
 			JsonObject obj = new JsonObject();
 			obj.addProperty(isAdded, errorMessage);

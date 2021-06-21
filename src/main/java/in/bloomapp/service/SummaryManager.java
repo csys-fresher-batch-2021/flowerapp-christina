@@ -74,6 +74,7 @@ public class SummaryManager {
 		OrderSummaryDAO orderSummaryDAO=new OrderSummaryDAO();
 		try {
 			orderList =orderSummaryDAO.getOrderItems(userName);
+			System.out.println(orderList);
 		} catch (DBException e) {
 			throw new DBException(e.getMessage());
 		}
