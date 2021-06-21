@@ -3,7 +3,7 @@
  
  # PROJECT INSIGHTS
  #### Can just see the flowers available
- #### can order any type of flowers and customization feature available
+ #### can order any type of flowers
  #### To retain the product in cloud you can add in to cart
  #### Able to order in cart only
  #### admin can add delete the inventory
