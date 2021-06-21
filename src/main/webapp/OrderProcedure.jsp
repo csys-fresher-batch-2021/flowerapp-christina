@@ -91,23 +91,20 @@ String role = (String) session.getAttribute("ROLE");
 		function proceed(){
 			event.preventDefault();
 			let delivaryCity=document.querySelector("#CityName").value;
-			console.log(delivaryCity);
 			let delivaryAddress=document.querySelector("#DelivaryAddress").value;
 			let deliveryDate=document.querySelector("#DeliveryDate").value;
 			let deliveryTime=document.querySelector("#DeliveryTime").value;
 			let userName='<%= loggedInUsername%>';
-			console.log(delivaryCity+deliveryDate+deliveryTime+userName);
 			const queryParameter="?delivaryCity="+delivaryCity+"&delivaryAddress="+delivaryAddress+
 					"&deliveryDate="+deliveryDate+
 					"&deliveryTime="+deliveryTime+"&userName="+userName;
 			let url="OrderProcedureServlet"+queryParameter;
-			console.log("called");
-			fetch(url,{ method:'POST'}).then(res => res.json()).then(res=>{
+			fetch(url).then(res => res.json()).then(res=>{
 				
 				if(res.IS_ADDED=="Order Initiated"){
 				
 					alert(res.IS_ADDED);
-					//window.location.href="BillPage.jsp";
+					window.location.href="UserSummary.jsp";
 					
 				}	
 				else{
@@ -116,5 +113,6 @@ String role = (String) session.getAttribute("ROLE");
 			});
 		}
 		</script>
+		<br/><a class="btn btn-info" href=UserSummary.jsp>Summary</a>
 	</main>
 </body>
