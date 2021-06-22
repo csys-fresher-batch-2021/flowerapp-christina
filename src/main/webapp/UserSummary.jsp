@@ -104,11 +104,11 @@ String role = (String) session.getAttribute("ROLE");
 					<p><h5>Max Delivery time: <%=order.getDeliveryTime()%></h5></p>
 					<p><h5>Mobile No: <%=order.getUserMobileNo()%></h5></p>
 					<p><h5>Ordered Date: <%=order.getOrderDate()%></h5></p>
-					<%if(count<0){
+					<%if(count>0){
 					int deliveryCharge=CityManager.getDeliveryCharge(order.getDeliveryCity());%>
 					<p>Rs. <%=deliveryCharge %></p>
 					<%}else{ %>
-						<p><h5>Rs. 75 </h5></p>
+						<p><h5>Rs. 75</h5></p>
 						<%} %>
 					<% } %>						
 	</main>
