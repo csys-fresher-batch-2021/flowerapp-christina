@@ -8,7 +8,6 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Most Ordered</title>
-
 </head>
 <body>
 <jsp:include page="header.jsp"></jsp:include>
@@ -39,8 +38,7 @@
 			let totalSummary=res;
 		let content="";
 		let i=1;
-		for(let flower of totalSummary){
-		
+		for(let flower of totalSummary){	
 			content+="<tr><td>"+i+
 			"</td><td>"+flower.category+
 			"</td><td>"+flower.type+

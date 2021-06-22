@@ -32,7 +32,6 @@ public class CartServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 		try {
 			String category = request.getParameter("category");
 			String type = request.getParameter("type");
@@ -50,6 +49,5 @@ public class CartServlet extends HttpServlet {
 			logger.info(e.getMessage());
 		}
 		response.sendRedirect("displayFlowers.jsp");
-
 	}
 }

@@ -3,6 +3,7 @@
     <%@ page import="java.util.List"%>
 <%@ page import="in.bloomapp.model.Order"%>
 <%@ page import="in.bloomapp.service.SummaryManager"%>
+<%@ page import="in.bloomapp.service.CityManager"%>
 <!DOCTYPE html>
 <html lang="en">
 <%
@@ -16,11 +17,10 @@ String role = (String) session.getAttribute("ROLE");
 <body>
 <jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
-	<h1 style="color: pink">To Approve List</h1>
+	<h1 style="color: pink">Order List</h1>
 	
 		<table class="table table-bordered" style="font-size: 15px">
-			<caption style="color: red">Flower whose order needs
-				approval is shown here</caption>
+			<caption style="color: red">Flowers which you ordered are shown here</caption>
 			<thead>
 				<tr>
 					<th scope="col" id="serialnumber">S.NO</th>
@@ -37,11 +37,11 @@ String role = (String) session.getAttribute("ROLE");
 					<th scope="col" id="Status">Approve</th>
 				</tr>
 			</thead>
-
 			<tbody>
 				<%
 		    final List<Order> list = SummaryManager.getOrderList(loggedInUsername);
 			int i=0;
+			int count=0;
 			for(Order item: list){
 				i++;
 			%>
@@ -59,13 +59,16 @@ String role = (String) session.getAttribute("ROLE");
 					<td><%=item.getUserMobileNo()%></td>
 					<td><%=item.getOrderDate()%></td>
 					<td style="color: green">Yet to deliver</td>
-					
+					<%if(item.getOrderCategory().equalsIgnoreCase("Natural")){
+						count++;
+					}
+					%>	
 				</tr>
 				<%} %>
 					<%
 		    final List<Order> rejectedList = SummaryManager.rejectedItems(loggedInUsername);
 			int k=0;
-			for(Order item: list){
+			for(Order item: rejectedList){
 				k++;
 			%>
 				<tr>
@@ -81,8 +84,7 @@ String role = (String) session.getAttribute("ROLE");
 					<td><%=item.getUserName()%></td>
 					<td><%=item.getUserMobileNo()%></td>
 					<td><%=item.getOrderDate()%></td>
-					<td style="color: red">Rejected</td>
-					
+					<td style="color: red">Rejected</td>					
 				</tr>
 				<%} %>
 			</tbody>
@@ -102,7 +104,13 @@ String role = (String) session.getAttribute("ROLE");
 					<p><h5>Max Delivery time: <%=order.getDeliveryTime()%></h5></p>
 					<p><h5>Mobile No: <%=order.getUserMobileNo()%></h5></p>
 					<p><h5>Ordered Date: <%=order.getOrderDate()%></h5></p>
-					<% } %>					
+					<%if(count<0){
+					int deliveryCharge=CityManager.getDeliveryCharge(order.getDeliveryCity());%>
+					<p>Rs. <%=deliveryCharge %></p>
+					<%}else{ %>
+						<p><h5>Rs. 75 </h5></p>
+						<%} %>
+					<% } %>						
 	</main>
 </body>
 </html>

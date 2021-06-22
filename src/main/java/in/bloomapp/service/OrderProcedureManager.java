@@ -2,13 +2,13 @@ package in.bloomapp.service;
 
 import java.util.List;
 
-import in.bloomapp.dao1.CartManagerDAO;
-import in.bloomapp.dao1.OrderPlacementDAO;
+import in.bloomapp.dao.CartManagerDAO;
+import in.bloomapp.dao.OrderPlacementDAO;
 import in.bloomapp.exception.DBException;
 import in.bloomapp.exception.InvalidInputException;
 import in.bloomapp.model.Flower;
 import in.bloomapp.model.Order;
-import in.bloomapp.util.IsValid;
+import in.bloomapp.util.BasicValidator;
 import in.bloomapp.validator.OrderValidator;
 
 /**
@@ -18,8 +18,7 @@ import in.bloomapp.validator.OrderValidator;
  */
 public class OrderProcedureManager {
 
-	private OrderProcedureManager() {
-		
+	private OrderProcedureManager() {	
 	}
 	
 	/**
@@ -31,8 +30,8 @@ public class OrderProcedureManager {
 	public static void addOrder(Order order) throws DBException, InvalidInputException {
 		CartManagerDAO cartManagerDAO=new CartManagerDAO();
 		List<Flower> cart=cartManagerDAO.getCart(order.getUserName());
-		IsValid.isValidString(order.getDeliveryCity());
-		IsValid.isValidString(order.getDeliverAddress());
+		BasicValidator.isValidString(order.getDeliveryCity());
+		BasicValidator.isValidString(order.getDeliverAddress());
 		for(Flower cartItem:cart) {
 		order.setOrderCategory(cartItem.getCategory());
 		order.setOrderType(cartItem.getType());
@@ -49,7 +48,6 @@ public class OrderProcedureManager {
 		}
 	}
 
-	
 	/**
 	 * List items that is to be approved from the user
 	 * @return
@@ -64,5 +62,4 @@ public class OrderProcedureManager {
 		}
 		return list;
 	}
-	
 }

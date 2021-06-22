@@ -2,8 +2,7 @@ package in.bloomapp.adminservice;
 
 public class AdminLogin {
 	
-	private AdminLogin() {
-		
+	private AdminLogin() {	
 	}
 	/**
 	 * Checks weather the user name and password is valid
@@ -18,5 +17,4 @@ public class AdminLogin {
 		}
 		return valid;
 	}
-
 }

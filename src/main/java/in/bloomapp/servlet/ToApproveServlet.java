@@ -63,7 +63,8 @@ public class ToApproveServlet extends HttpServlet {
 			}
 			RequestDispatcher rd = request.getRequestDispatcher("ToApproveList.jsp?infoMessage=" + message);
 			rd.forward(request, response);
-		} catch (DBException e) {
+		} 
+		catch (DBException e) {
 			String message = "This flower is already appoved";
 			RequestDispatcher rd = request.getRequestDispatcher("ToApproveList.jsp?errorMessage=" + message);
 			rd.forward(request, response);

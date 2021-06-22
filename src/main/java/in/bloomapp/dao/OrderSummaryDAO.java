@@ -1,4 +1,4 @@
-package in.bloomapp.dao1;
+package in.bloomapp.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -26,6 +26,11 @@ public class OrderSummaryDAO {
 	private static final String USER_NAME="user_name";
 	private static final String MOBILE_NO="mobile_no";
 	private static final String ORDER_DATE="order_date";
+	private static final String TOTAL_FLOWERS="total_flowers";
+	private static final String CATEGORY="category";
+	private static final String NAME="name";
+	private static final String PRICE="price";
+	private static final String QUANTITY="quantity";
 	
 	
 	//jdbc template which helps in giving and closing connections
@@ -44,7 +49,8 @@ public class OrderSummaryDAO {
 		List<Flower> summary=new ArrayList<>();
 		try {
 			connection =ConnectionUtil.getConnection();			
-			String sql="select flowersdata.category AS flower_category, flowersdata.name AS type , sum(orders.quantity) AS total from orders"
+			String sql="select flowersdata.category AS flower_category, flowersdata.name AS type ,"
+					+ " sum(orders.quantity) AS total from orders"
 					+ " left Join flowersdata on orders.flower_id =flowersdata.id  Where order_date=?"
 					+ " group by flowersdata.category ,flowersdata.name order by total";		
 			pst=connection.prepareStatement(sql);	
@@ -87,10 +93,10 @@ public class OrderSummaryDAO {
 			rs = pst.executeQuery();
 			while (rs.next()) {
 			Order subject=new Order();
-			subject.setOrderCategory(rs.getString("category")); 
-			subject.setOrderType(rs.getString("name"));
-			subject.setOrderPrice(rs.getInt("price"));
-			subject.setOrderQuantity(rs.getInt("quantity"));
+			subject.setOrderCategory(rs.getString(CATEGORY)); 
+			subject.setOrderType(rs.getString(NAME));
+			subject.setOrderPrice(rs.getInt(PRICE));
+			subject.setOrderQuantity(rs.getInt(QUANTITY));
 			subject.setDeliveryCity(rs.getString(DELIVERY_CITY));
 			subject.setDeliverAddress(rs.getString(DELIVERY_ADDRESS));
 			subject.setDeliveryDate(LocalDate.parse(rs.getString(DELIVERY_DATE)));
@@ -143,7 +149,7 @@ public class OrderSummaryDAO {
 			subject.setUserName(rs.getString(USER_NAME));
 			subject.setUserMobileNo(rs.getLong(MOBILE_NO));
 			subject.setOrderDate(LocalDate.parse(rs.getString(ORDER_DATE)));
-			subject.setOrderQuantity(rs.getInt("total_flowers"));
+			subject.setOrderQuantity(rs.getInt(TOTAL_FLOWERS));
 			subject.setOrderPrice(rs.getInt("total_sum"));
 			return subject;
 			}, params);
@@ -164,10 +170,12 @@ public class OrderSummaryDAO {
 		
 		List<Order> orders=null;
 		try {
-			String sql="select category,name,price,quantity,delivery_city,delivery_address,deliver_date,delivery_time,user_name"
+			String sql="select category,name,price,quantity,delivery_city,delivery_address,"
+					+ "deliver_date,delivery_time,user_name"
 					+ ",mobile_no,order_date ,sum(quantity) AS total_flowers, SUM(price) AS total_sum "
 					+ "from orders WHERE user_name=? AND delivery_status='yetToDeliver' AND "
-					+ "status=1 group by category,name,price,quantity,delivery_city,delivery_address,deliver_date,delivery_time,"
+					+ "status=1 group by category,name,price,quantity,delivery_city,"
+					+ "delivery_address,deliver_date,delivery_time,"
 					+ "user_name,mobile_no,order_date";
 
 			//fields that is to be passed to the query are given as parameter
@@ -175,10 +183,10 @@ public class OrderSummaryDAO {
 			//And the returned data is stored in a variable
 			orders = jdbcTemplate.query(sql, (rs,rowNo)->{
 			Order subject=new Order();
-			subject.setOrderCategory(rs.getString("category"));
-			subject.setOrderType(rs.getString("name"));
-			subject.setOrderPrice(rs.getInt("price"));
-			subject.setOrderQuantity(rs.getInt("quantity"));
+			subject.setOrderCategory(rs.getString(CATEGORY));
+			subject.setOrderType(rs.getString(NAME));
+			subject.setOrderPrice(rs.getInt(PRICE));
+			subject.setOrderQuantity(rs.getInt(QUANTITY));
 			subject.setDeliveryCity(rs.getString(DELIVERY_CITY));
 			subject.setDeliverAddress(rs.getString(DELIVERY_ADDRESS));
 			subject.setDeliveryDate(LocalDate.parse(rs.getString(DELIVERY_DATE)));
@@ -189,7 +197,7 @@ public class OrderSummaryDAO {
 			subject.setUserName(rs.getString(USER_NAME));
 			subject.setUserMobileNo(rs.getLong(MOBILE_NO));
 			subject.setOrderDate(LocalDate.parse(rs.getString(ORDER_DATE)));
-			subject.setOrderQuantity(rs.getInt("total_flowers"));
+			subject.setOrderQuantity(rs.getInt(TOTAL_FLOWERS));
 			subject.setOrderPrice(rs.getInt("total_sum"));
 			return subject;
 			}, params);
@@ -210,10 +218,14 @@ public class OrderSummaryDAO {
 		
 		List<Order> rejectedOrders=null;
 		try {
-			String sql="select category,name,price,quantity,delivery_city,delivery_address,deliver_date,delivery_time,user_name"
-					+ ",mobile_no,order_date ,sum(quantity) AS total_flowers, SUM(price) AS total_sum "
-					+ "from orders WHERE user_name=? AND delivery_status='Rejected' AND "
-					+ "status=1 group by category,name,price,quantity,delivery_city,delivery_address,deliver_date,delivery_time,"
+			String sql="select category,name,price,quantity,delivery_city,delivery_address,"
+					+ "deliver_date,delivery_time,user_name,mobile_no,order_date ,"
+					+ "sum(quantity) AS total_flowers"
+					+ ", SUM(price) AS total_sum "
+					+ "from orders WHERE user_name=? "
+					+ "AND delivery_status='Rejected' "
+					+ "AND status=1 group by category,name,price,quantity"
+					+ ",delivery_city,delivery_address,deliver_date,delivery_time,"
 					+ "user_name,mobile_no,order_date";
 
 			//fields that is to be passed to the query are given as parameter
@@ -221,10 +233,10 @@ public class OrderSummaryDAO {
 			//And the returned data is stored in a variable
 			rejectedOrders = jdbcTemplate.query(sql, (rs,rowNo)->{
 			Order subject=new Order();
-			subject.setOrderCategory(rs.getString("category"));
-			subject.setOrderType(rs.getString("name"));
-			subject.setOrderPrice(rs.getInt("price"));
-			subject.setOrderQuantity(rs.getInt("quantity"));
+			subject.setOrderCategory(rs.getString(CATEGORY));
+			subject.setOrderType(rs.getString(NAME));
+			subject.setOrderPrice(rs.getInt(PRICE));
+			subject.setOrderQuantity(rs.getInt(QUANTITY));
 			subject.setDeliveryCity(rs.getString(DELIVERY_CITY));
 			subject.setDeliverAddress(rs.getString(DELIVERY_ADDRESS));
 			subject.setDeliveryDate(LocalDate.parse(rs.getString(DELIVERY_DATE)));
@@ -235,7 +247,7 @@ public class OrderSummaryDAO {
 			subject.setUserName(rs.getString(USER_NAME));
 			subject.setUserMobileNo(rs.getLong(MOBILE_NO));
 			subject.setOrderDate(LocalDate.parse(rs.getString(ORDER_DATE)));
-			subject.setOrderQuantity(rs.getInt("total_flowers"));
+			subject.setOrderQuantity(rs.getInt(TOTAL_FLOWERS));
 			subject.setOrderPrice(rs.getInt("total_sum"));
 			return subject;
 			}, params);

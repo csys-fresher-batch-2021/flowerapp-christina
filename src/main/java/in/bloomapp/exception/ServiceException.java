@@ -10,7 +10,6 @@ public class ServiceException extends Exception {
 	public ServiceException(String message) {
 		super(message);
 	}
-
 	/**
 	 * If a task cannot be completed because of error or exception this type of exception is used 
 	 * we can also pass a exception message in parameter
@@ -20,6 +19,4 @@ public class ServiceException extends Exception {
 	public ServiceException(Exception e,String message) {
 		super(message, e);
 	}
-	
-
 }

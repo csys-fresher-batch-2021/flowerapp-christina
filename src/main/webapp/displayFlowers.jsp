@@ -14,7 +14,6 @@ String role = (String) session.getAttribute("ROLE");
 <title>Flowers available</title>
 </head>
 <body>
-
 <jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
 		<h1 style="color:pink">Flowers available</h1>
@@ -33,8 +32,7 @@ String role = (String) session.getAttribute("ROLE");
 				<th scope="col"id="delete">Delete</th>
 				<% } %>
 			</tr>
-		</thead>
-		
+		</thead>	
 			<tbody>
 		<%
 			final List<Flower> flowers = FlowerManager.getFLowerList();
@@ -53,7 +51,6 @@ String role = (String) session.getAttribute("ROLE");
 			 <% if (loggedInUsername != null && role != null && role.equalsIgnoreCase("USER")){ %>
 			<td><a href="CartServlet?type=<%=flower.getType()%>&category=<%=flower.getCategory()%>&price=<%=flower.getPrice()%>
 			&username=<%=loggedInUsername%>" class="btn btn-success">ADD TO CART</a></td>
-
 				<%}%>
 					<% } %>
 				</tr>

@@ -1,4 +1,4 @@
-package in.bloomapp.dao1;
+package in.bloomapp.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -76,9 +76,7 @@ public class CartManagerDAO {
 					e.printStackTrace();
 					throw new DBException("Unable to add flower quantity");
 				} finally {
-					
-						ConnectionUtil.close(pst, connection);
-					
+					ConnectionUtil.close(pst, connection);
 				}
 				
 		}
@@ -194,7 +192,6 @@ public class CartManagerDAO {
 			finally {
 				ConnectionUtil.close(rs, pst, connection);
 			}
-			
 			return flowerId;
 
 		}

@@ -1,4 +1,4 @@
-package in.bloomapp.dao1;
+package in.bloomapp.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -32,15 +32,12 @@ public class ApprovalManagerDAO {
 			pst=connection.prepareStatement(sql);
 			pst.setString(1, order.getDeliveryStatus());
 			pst.setInt(2, getMaxId(order));
-			pst.executeUpdate();
-					
+			pst.executeUpdate();				
 		}
 		 catch (SQLException | DBException e) {
 				throw new DBException("Unable to add order");
-			} finally {
-				
-					ConnectionUtil.close(pst, connection);
-				
+			} finally {			
+				ConnectionUtil.close(pst, connection);			
 			}
 	}
 	

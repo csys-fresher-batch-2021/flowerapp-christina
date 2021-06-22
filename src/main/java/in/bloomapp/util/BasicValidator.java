@@ -5,9 +5,9 @@ import java.util.regex.Pattern;
 
 import in.bloomapp.exception.InvalidInputException;
 
-public class IsValid {
+public class BasicValidator {
 	
-	private IsValid(){
+	private BasicValidator(){
 		//Default constructor
 	}
 	/**
@@ -87,6 +87,7 @@ public class IsValid {
 	
 	/**
 	 * Checks weather the given password meets the given level constrains
+	 * Password should contain a Capital letter,small letter ,Special Character and a number.
 	 * @param password
 	 * @throws InvalidInputException
 	 */

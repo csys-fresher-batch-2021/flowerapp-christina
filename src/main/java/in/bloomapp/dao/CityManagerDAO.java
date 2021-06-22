@@ -1,4 +1,4 @@
-package in.bloomapp.dao1;
+package in.bloomapp.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -32,7 +32,6 @@ public class CityManagerDAO {
 			pst.setString(2, city.getCity());
 			pst.setInt(3, city.getDelivaryCharge());
 			pst.setInt(4, city.getStatus());
-
 			// Executes the Query
 			pst.executeUpdate();
 		} catch (SQLException e) {
@@ -119,7 +118,6 @@ public class CityManagerDAO {
 				int delivaryCharge = rs.getInt("delivary_charge");
 				// Store the data in model
 				City subject = new City();
-
 				subject.setDistrictCode(districtCode);
 				subject.setCity(city);
 				subject.setDelivaryCharge(delivaryCharge);
@@ -129,7 +127,7 @@ public class CityManagerDAO {
 		}
 		// If unable to get cities throws exception
 		catch (SQLException e) {
-			throw new DBException("Unable to fetch citiy details");
+			throw new DBException("Unable to fetch city details");
 		} finally {
 			// Closes the connection
 			ConnectionUtil.close(rs, pst, con);

@@ -22,8 +22,7 @@
 				<th scope="col"id="CityName">City</th>
 				<th scope="col"id="Charge">Delivery Charge</th>				
 			</tr>
-		</thead>
-		
+		</thead>	
 			<tbody>
 		<%
 		    final List<City> cities = CityManager.getCity();

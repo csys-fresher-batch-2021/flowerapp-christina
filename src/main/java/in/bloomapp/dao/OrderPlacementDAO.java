@@ -1,4 +1,4 @@
-package in.bloomapp.dao1;
+package in.bloomapp.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -59,8 +59,8 @@ public class OrderPlacementDAO {
 		 catch (SQLException e) {
 				throw new DBException("Unable to add order");
 			} finally {
-					ConnectionUtil.close(pst, connection);
-					removeCart(order);
+				ConnectionUtil.close(pst, connection);
+				removeCart(order);
 			}
 	}
 	
@@ -122,7 +122,6 @@ public class OrderPlacementDAO {
 		try {
 			connection = ConnectionUtil.getConnection();
 			// Prepare data to insert into the driver
-		
 			String sql = 
 				"update bill set status=0 WHERE name=? AND category=? AND username=?";
 			pst = connection.prepareStatement(sql);
@@ -167,8 +166,7 @@ public class OrderPlacementDAO {
 		} 
 		finally {
 			ConnectionUtil.close(rs, pst, connection);
-		}
-		
+		}	
 		return userId;
 
 	}

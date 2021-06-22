@@ -2,14 +2,13 @@ package in.bloomapp.service;
 
 import java.time.LocalDate;
 import java.util.List;
-import in.bloomapp.dao1.OrderSummaryDAO;
+import in.bloomapp.dao.OrderSummaryDAO;
 import in.bloomapp.exception.DBException;
 import in.bloomapp.exception.ServiceException;
 import in.bloomapp.model.Flower;
 import in.bloomapp.model.Order;
 
 public class SummaryManager {
-
 	private SummaryManager() {}
 	
 	/**
@@ -69,7 +68,6 @@ public class SummaryManager {
 	 * @throws DBException 
 	 */
 	public static List<Order> getOrderList(String userName) throws DBException{
-		
 		List<Order> orderList=null;
 		OrderSummaryDAO orderSummaryDAO=new OrderSummaryDAO();
 		try {
@@ -77,8 +75,7 @@ public class SummaryManager {
 		} catch (DBException e) {
 			throw new DBException(e.getMessage());
 		}
-		return orderList;
-		
+		return orderList;	
 	}
 	
 	/**
@@ -96,5 +93,4 @@ public class SummaryManager {
 		}
 		return list;
 	}
-
 }

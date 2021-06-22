@@ -1,10 +1,7 @@
 package in.bloomapp.exception;
 
-public class ValidCityException extends Exception {
-
-	
+public class ValidCityException extends Exception {	
 	private static final long serialVersionUID = 1L;
-
 	/**
 	 * This exception specially thrown when error in validation of city
 	 * @param message
@@ -12,7 +9,6 @@ public class ValidCityException extends Exception {
 	public ValidCityException(String message) {
 		super(message);
 	}
-
 	/**
 	 *  This exception specially thrown when error in validation of city
 	 * we can also pass a exception message in parameter

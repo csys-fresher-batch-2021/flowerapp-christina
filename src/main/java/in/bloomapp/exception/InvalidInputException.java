@@ -6,7 +6,6 @@ public class InvalidInputException extends Exception {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
 	/**
 	 * if the string contains invalid characters this type of exception is used
 	 * @param message
@@ -14,7 +13,6 @@ public class InvalidInputException extends Exception {
 	public InvalidInputException(String message) {
 		super(message);
 	}
-
 	/**
 	 * if the string contains invalid characters this type of exception is used and to pass a message in its 
 	 * parameter
@@ -24,6 +22,4 @@ public class InvalidInputException extends Exception {
 	public InvalidInputException(Exception e,String message) {
 		super(message, e);
 	}
-
-
 }

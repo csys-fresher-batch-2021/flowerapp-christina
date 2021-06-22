@@ -16,7 +16,6 @@ import in.bloomapp.service.CartManager;
 @WebServlet("/ReduceFromCartServlet")
 public class ReduceFromCartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
 	/**
 	 * call to reduce quantity in cart
 	 */
@@ -41,7 +40,5 @@ public class ReduceFromCartServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		response.sendRedirect("DisplayCart.jsp");
-
 	}
-
 }

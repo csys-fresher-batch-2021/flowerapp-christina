@@ -1,4 +1,4 @@
-package in.bloomapp.dao1;
+package in.bloomapp.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,7 +11,7 @@ import in.bloomapp.exception.DBException;
 import in.bloomapp.model.Flower;
 import in.bloomapp.util.ConnectionUtil;
 
-public class FlowerManagerDAO1 {
+public class FlowerManagerDAO {
 	
 
 
@@ -71,7 +71,6 @@ public class FlowerManagerDAO1 {
 			throw new DBException("Unable to delete flower");
 		} 
 		finally {
-
 			ConnectionUtil.close(null, pst, connection);
 		}
 
@@ -91,23 +90,19 @@ public class FlowerManagerDAO1 {
 		PreparedStatement pst = null;
 		ResultSet rs = null;
 		try {
-
 			// Step 1: Get the connection
 			con = ConnectionUtil.getConnection();
-
 			// Step 2: Query
 			String sql = "select category,name,price from flowersData";
 			pst = con.prepareStatement(sql);
 			// Step 3: execute query
-
 			rs = pst.executeQuery();
 			while (rs.next()) {
 				String category = rs.getString("category");
 				String name = rs.getString("name");
 				int price = rs.getInt("price");
 				// Store the data in model
-				Flower subject = new Flower();
-				
+				Flower subject = new Flower();			
 				subject.setCategory(category);
 				subject.setType(name);
 				subject.setPrice(price);

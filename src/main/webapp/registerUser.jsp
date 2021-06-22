@@ -27,7 +27,8 @@
 		<div class="d-flex justify-content-center">
 		<input type="Password" name="Password" id="Password" placeholder="Enter password" required />
 		</div>
-		<br/>
+		<div  class="d-flex justify-content-center">
+		<p>Password should contain a Capital letter,small letter ,Special Character and a number.</p></div>
 		<div class="d-flex justify-content-center">
 		<label for="Email">Email:</label>
 		</div>
@@ -58,7 +59,6 @@
 		</div>
 		<br/>
 		</form>
-		
 		<script type="text/javascript">
 		function register(){
 			event.preventDefault();
@@ -70,14 +70,10 @@
 			const queryParameter="?name="+name+"&password="+password+"&email="+email+"&mobileNo="+mobileNo+"&address="+address;
 			let url="RegisterUserServlet"+queryParameter;
 			fetch(url,{ method:'POST'}).then(res => res.json()).then(res=>{
-				
 				if(res.IS_ADDED=="Registration successfull"){
-				
 					alert(res.IS_ADDED);
 					window.location.href="Login.jsp";
-					
 				}
-					
 				else{
 					document.getElementById('testLabel').innerHTML = (res.IS_ADDED);
 				}
@@ -86,5 +82,4 @@
 		</script>		
 	</main>
 </body>
-
 </html>
