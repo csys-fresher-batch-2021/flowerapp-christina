@@ -1,4 +1,4 @@
-package in.bloomapp.dao1;
+package in.bloomapp.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,7 +19,6 @@ public class CityManagerDAO {
 	 * @throws DBException
 	 */
 	public void save(City city) throws DBException {
-
 		// Getting connection
 		Connection connection = null;
 		PreparedStatement pst = null;
@@ -32,7 +31,6 @@ public class CityManagerDAO {
 			pst.setString(2, city.getCity());
 			pst.setInt(3, city.getDelivaryCharge());
 			pst.setInt(4, city.getStatus());
-
 			// Executes the Query
 			pst.executeUpdate();
 		} catch (SQLException e) {
@@ -64,7 +62,6 @@ public class CityManagerDAO {
 		} finally {
 			ConnectionUtil.close(pst, connection);
 		}
-
 	}
 
 	/**
@@ -103,15 +100,12 @@ public class CityManagerDAO {
 		PreparedStatement pst = null;
 		ResultSet rs = null;
 		try {
-
 			// Step 1: Get the connection
 			con = ConnectionUtil.getConnection();
-
 			// Step 2: Query
 			String sql = "select district_code,city,delivary_charge from cities WHERE status=1";
 			pst = con.prepareStatement(sql);
 			// Step 3: execute query
-
 			rs = pst.executeQuery();
 			while (rs.next()) {
 				int districtCode = rs.getInt("district_code");
@@ -119,7 +113,6 @@ public class CityManagerDAO {
 				int delivaryCharge = rs.getInt("delivary_charge");
 				// Store the data in model
 				City subject = new City();
-
 				subject.setDistrictCode(districtCode);
 				subject.setCity(city);
 				subject.setDelivaryCharge(delivaryCharge);
@@ -129,12 +122,11 @@ public class CityManagerDAO {
 		}
 		// If unable to get cities throws exception
 		catch (SQLException e) {
-			throw new DBException("Unable to fetch citiy details");
+			throw new DBException("Unable to fetch city details");
 		} finally {
 			// Closes the connection
 			ConnectionUtil.close(rs, pst, con);
 		}
 		return list;
 	}
-
 }

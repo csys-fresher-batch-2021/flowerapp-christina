@@ -16,7 +16,7 @@ public class IsValidTest {
 		String word = "Garland";
 		boolean valid;
 		try {
-			valid = IsValid.isValidString(word);
+			valid = BasicValidator.isValidString(word);
 			assertEquals(true, valid);
 		} catch (InvalidInputException e) {
 			e.printStackTrace();
@@ -33,7 +33,7 @@ public class IsValidTest {
 		String word = "floral garland";
 		boolean valid;
 		try {
-			valid = IsValid.isValidString(word);
+			valid = BasicValidator.isValidString(word);
 			assertEquals(true, valid);
 		} catch (InvalidInputException e) {
 			e.printStackTrace();
@@ -50,7 +50,7 @@ public class IsValidTest {
 
 		String word = "          ";
 		try {
-			IsValid.isValidString(word);
+			BasicValidator.isValidString(word);
 		} catch (InvalidInputException e) {
 			e.printStackTrace();
 			String message=e.getMessage();

@@ -35,7 +35,6 @@ public class City {
 	public void setStatus(int status) {
 		this.status = status;
 	}
-
 	@Override
 	public String toString() {
 		return "City [city=" + cityName + ", districtCode=" + districtCode + ", delivaryCharge=" + delivaryCharge

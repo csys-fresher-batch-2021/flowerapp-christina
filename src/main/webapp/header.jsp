@@ -6,8 +6,6 @@
 String loggedInUsername = (String)session.getAttribute("LOGGED_IN_USER");
 String role = (String) session.getAttribute("ROLE");
 %>
-
-
 <header>
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
   <a class="navbar-brand" style="color: pink" href="#">BLOOM</a>
@@ -59,8 +57,7 @@ String role = (String) session.getAttribute("ROLE");
       </li>
        <% }%> 
       <% }%> 
-      </ul>
-   
+      </ul> 
   </div>
 </nav>
 </header>

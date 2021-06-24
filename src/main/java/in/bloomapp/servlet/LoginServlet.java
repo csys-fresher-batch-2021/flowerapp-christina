@@ -24,7 +24,6 @@ public class LoginServlet extends HttpServlet {
 
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-
 		String role = null;
 		if (AdminLogin.login(username, password)) {
 			role = "ADMIN";
@@ -37,8 +36,7 @@ public class LoginServlet extends HttpServlet {
 					String msg = "Please register to login or Enter valid login credentials";
 					RequestDispatcher rd = request.getRequestDispatcher("Login.jsp?errorMessage=" + msg);
 					rd.forward(request, response);
-				}
-				
+				}	
 			} catch (Exception e) {
 				String msg = "Data base server is low";
 				RequestDispatcher rd = request.getRequestDispatcher("Login.jsp?errorMessage=" + msg);
@@ -46,7 +44,6 @@ public class LoginServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-
 		if(role!=null) {
 		HttpSession session = request.getSession();
 		session.setAttribute("LOGGED_IN_USER", username);

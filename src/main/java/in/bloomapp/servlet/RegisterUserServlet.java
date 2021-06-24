@@ -25,30 +25,24 @@ public class RegisterUserServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 	final Logger logger = Logger.getLogger(this.getClass().getName());
-
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
 		 String errorMessage=null;
-		  try {
-			  
+		  try {	  
 			String name = request.getParameter("name");
 	        String password = request.getParameter("password");
 	        String email= request.getParameter("email");
 	        String mobileNo= request.getParameter("mobileNo");
 	        String address = request.getParameter("address");
 	        Long parsedMobileNo = null;
-			parsedMobileNo = Long.parseLong(mobileNo);
-	        
+			parsedMobileNo = Long.parseLong(mobileNo);  
 	        User user=new User();
 	        user.setName(name);
 	        user.setPassword(password);
 	        user.setEmail(email);
 	        user.setMobileNo(parsedMobileNo);
-	        user.setAddress(address);
-	       
-	        PrintWriter out = response.getWriter();
-	      
+	        user.setAddress(address);    
+	        PrintWriter out = response.getWriter();	      
 			boolean isAdded = UserManager.addUser(user);
 			if (isAdded) {
 				String message="Registration successfull";
@@ -68,8 +62,6 @@ public class RegisterUserServlet extends HttpServlet {
 	        } 
 		  catch (NumberFormatException e) {
 			  logger.info(e.getMessage());
-		  }
-	        
+		  }        
 	}
-
 }

@@ -3,7 +3,7 @@ package in.bloomapptest.dao;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
-import in.bloomapp.dao1.FlowerManagerDAO1;
+import in.bloomapp.dao.FlowerManagerDAO;
 import in.bloomapp.exception.DBException;
 import in.bloomapp.model.Flower;
 
@@ -14,12 +14,10 @@ public class RemoveFlowerTest {
 		Flower newFlower= new Flower();	
 		newFlower.setCategory("Natural");
 		newFlower.setType("Rose pack");
-		newFlower.setPrice(100);
-		
+		newFlower.setPrice(100);		
 		try {
-			FlowerManagerDAO1 flowerManagerDAO1=new FlowerManagerDAO1();
-			flowerManagerDAO1.saveFlower(newFlower);
-			
+			FlowerManagerDAO flowerManagerDAO=new FlowerManagerDAO();
+			flowerManagerDAO.saveFlower(newFlower);		
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -30,12 +28,10 @@ public class RemoveFlowerTest {
 		Flower oldFlower=new Flower();
 		oldFlower.setCategory("Natural");
 		oldFlower.setType("Rose pack");
-		oldFlower.setPrice(100);
-		
+		oldFlower.setPrice(100);		
 		try {
-			FlowerManagerDAO1 flowerManagerDAO1=new FlowerManagerDAO1();
-			flowerManagerDAO1.removeFlower(oldFlower);
-			
+			FlowerManagerDAO flowerManagerDAO=new FlowerManagerDAO();
+			flowerManagerDAO.removeFlower(oldFlower);		
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail();
@@ -49,15 +45,12 @@ public class RemoveFlowerTest {
 		oldFlower.setType("Rose pack");
 		oldFlower.setPrice(100);
 		try {
-			FlowerManagerDAO1 flowerManagerDAO1=new FlowerManagerDAO1();
-			flowerManagerDAO1.removeFlower(oldFlower);
-			
+			FlowerManagerDAO flowerManagerDAO=new FlowerManagerDAO();
+			flowerManagerDAO.removeFlower(oldFlower);		
 		} catch (DBException e) {
 			e.printStackTrace();
 			String message=e.getMessage();
 			assertEquals("Unable to delete flower",message);
 		}
 	}
-	
-
 }

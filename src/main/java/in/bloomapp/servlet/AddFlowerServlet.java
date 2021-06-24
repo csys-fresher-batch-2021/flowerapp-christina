@@ -20,55 +20,41 @@ import in.bloomapp.service.FlowerManager;
 @WebServlet("/AddFlowerServlet")
 public class AddFlowerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
- 
+
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		        String category = request.getParameter("category");
-		        String type = request.getParameter("type");
-		        String price = request.getParameter("price");
-		        int amount=0;
-				try {
-					amount = Integer.parseInt(price);
-				} catch (NumberFormatException e) {
-				
-					e.printStackTrace();
-				}	
-				
-				Flower flower= new Flower();
-				flower.setCategory(category);	
-				flower.setType(type);
-				flower.setPrice(amount);
-				String message=null;
-				
-				try {
-				boolean isAdded = FlowerManager.addFlower(category,type,amount);
-				if (isAdded) {
-					message="true";
-				} 
-		        }
-				catch(DBException e) {
-					message = "Unable to add new flower";
-					
-					
-				}
-		        catch(ServiceException | ValidFlowerException e){
-		        	e.printStackTrace();
-		        	message=e.getMessage();
-		        	
-		        } 
-				
-				finally {
-					PrintWriter out = response.getWriter();
-					JsonObject obj = new JsonObject();
-					obj.addProperty("IS_ADDED", message);
-					out.println(obj);
-					out.flush();
-				}
-				
+
+		String category = request.getParameter("category");
+		String type = request.getParameter("type");
+		String price = request.getParameter("price");
+		int amount = 0;
+		try {
+			amount = Integer.parseInt(price);
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		}
+		Flower flower = new Flower();
+		flower.setCategory(category);
+		flower.setType(type);
+		flower.setPrice(amount);
+		String message = null;
+		try {
+			boolean isAdded = FlowerManager.addFlower(category, type, amount);
+			if (isAdded) {
+				message = "true";
+			}
+		} catch (DBException e) {
+			message = "Unable to add new flower";
+		} catch (ServiceException | ValidFlowerException e) {
+			e.printStackTrace();
+			message = e.getMessage();
+		} finally {
+			PrintWriter out = response.getWriter();
+			JsonObject obj = new JsonObject();
+			obj.addProperty("IS_ADDED", message);
+			out.println(obj);
+			out.flush();
+		}
 	}
 }
-
-	
-

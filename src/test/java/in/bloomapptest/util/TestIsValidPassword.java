@@ -4,14 +4,14 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import in.bloomapp.exception.InvalidInputException;
-import in.bloomapp.util.IsValid;
+import in.bloomapp.util.BasicValidator;
 
 public class TestIsValidPassword {
 
 	@Test
 	public void testWithValidPassword1() {
 		try {
-			IsValid.isValidPassword("Chris@13s");
+			BasicValidator.isValidPassword("Chris@13s");
 			
 		}
 		catch(InvalidInputException e) {
@@ -21,7 +21,7 @@ public class TestIsValidPassword {
 	@Test
 	public void testWithValidPassword2() {
 		try {
-			IsValid.isValidPassword("Chris@13");
+			BasicValidator.isValidPassword("Chris@13");
 			
 		}
 		catch(InvalidInputException e) {
@@ -32,7 +32,7 @@ public class TestIsValidPassword {
 	@Test
 	public void testWithoutSplCharecters() {
 		try {
-			IsValid.isValidPassword("Chris13");
+			BasicValidator.isValidPassword("Chris13");
 			
 		}
 		catch(InvalidInputException e) {
@@ -44,7 +44,7 @@ public class TestIsValidPassword {
 	@Test
 	public void testWithLettersOnly() {
 		try {
-			IsValid.isValidPassword("christina");
+			BasicValidator.isValidPassword("christina");
 			
 		}
 		catch(InvalidInputException e) {
@@ -56,7 +56,7 @@ public class TestIsValidPassword {
 	@Test
 	public void testWithLettersOnly2() {
 		try {
-			IsValid.isValidPassword("Christina");
+			BasicValidator.isValidPassword("Christina");
 			
 		}
 		catch(InvalidInputException e) {
@@ -68,7 +68,7 @@ public class TestIsValidPassword {
 	@Test
 	public void testWithoutNumberAndUpperCase() {
 		try {
-			IsValid.isValidPassword("christina@");
+			BasicValidator.isValidPassword("christina@");
 			
 		}
 		catch(InvalidInputException e) {
@@ -80,7 +80,7 @@ public class TestIsValidPassword {
 	@Test
 	public void testWithoutNumber() {
 		try {
-			IsValid.isValidPassword("Christina@");
+			BasicValidator.isValidPassword("Christina@");
 			
 		}
 		catch(InvalidInputException e) {
@@ -93,7 +93,7 @@ public class TestIsValidPassword {
 	@Test
 	public void testWithoutSplCharecterAndUpperCase() {
 		try {
-			IsValid.isValidPassword("christina12");
+			BasicValidator.isValidPassword("christina12");
 			
 		}
 		catch(InvalidInputException e) {
@@ -105,7 +105,7 @@ public class TestIsValidPassword {
 	@Test
 	public void testOnlyWithNumber() {
 		try {
-			IsValid.isValidPassword("23654576");
+			BasicValidator.isValidPassword("23654576");
 			
 		}
 		catch(InvalidInputException e) {
@@ -117,7 +117,7 @@ public class TestIsValidPassword {
 	@Test
 	public void testOnlyWithSplCharecter() {
 		try {
-			IsValid.isValidPassword("#$%^&*");
+			BasicValidator.isValidPassword("#$%^&*");
 			
 		}
 		catch(InvalidInputException e) {

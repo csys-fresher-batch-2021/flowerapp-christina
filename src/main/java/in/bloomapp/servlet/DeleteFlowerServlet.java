@@ -18,30 +18,24 @@ public class DeleteFlowerServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
 		String errorMessage;
 		String category = request.getParameter("category");
-        String type = request.getParameter("type");
-      
+        String type = request.getParameter("type"); 
         try {
 			boolean isAdded = FlowerManager.deleteFlower(category,type);
 			if (isAdded) {
 				errorMessage = "Successfully Deleted Flower";
 			}
 			else {
-				errorMessage = "Unable to add flower type";
-				
+				errorMessage = "Unable to add flower type";		
 			}
 	        }
 	        catch(Exception e){
 	        	e.printStackTrace();
-	        	errorMessage=e.getMessage();
-	        	
+	        	errorMessage=e.getMessage();  	
 	        }
 	        response.sendRedirect("displayFlowers.jsp?errorMessage="+ errorMessage);
-		} 
-		
-
+		} 		
 	}
 
 	

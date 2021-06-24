@@ -44,5 +44,4 @@ public class MostOrderedServlet extends HttpServlet {
 			logger.info(e.getMessage());
 		}
 	}
-
 }

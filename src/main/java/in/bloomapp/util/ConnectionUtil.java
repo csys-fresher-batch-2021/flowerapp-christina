@@ -42,9 +42,7 @@ public class ConnectionUtil {
 		} catch (ClassNotFoundException | SQLException e) {
 			throw new DBException("Unable to get the database connection");
 		}
-
 		return connection;
-
 	}
 
 	/**
@@ -59,7 +57,6 @@ public class ConnectionUtil {
 	 */
 	public static void close(ResultSet rs, PreparedStatement pst, Connection con) throws DBException {
 		// Null Check - to avoid Null Pointer Exception
-
 		try {
 			if (rs != null) {
 				rs.close();
@@ -84,7 +81,6 @@ public class ConnectionUtil {
 	 */
 	public static void close(PreparedStatement pst, Connection con) throws DBException {
 		// Null Check - to avoid Null Pointer Exception
-
 		try {
 			if (pst != null) {
 				pst.close();
@@ -97,7 +93,7 @@ public class ConnectionUtil {
 		}
 	}
 
-	public static JdbcTemplate getJdbcTemplate() {
+	public static JdbcTemplate getJdbcTemplate() {	
 		DataSource dataSource = getDataSource();
 		return new JdbcTemplate(dataSource);
 	}

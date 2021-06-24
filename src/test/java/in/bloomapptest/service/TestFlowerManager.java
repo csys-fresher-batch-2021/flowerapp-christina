@@ -1,18 +1,17 @@
 package in.bloomapptest.service;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 import java.util.List;
 import org.junit.Test;
-import in.bloomapp.dao1.FlowerManagerDAO1;
+import in.bloomapp.dao.FlowerManagerDAO;
 import in.bloomapp.exception.DBException;
 import in.bloomapp.model.Flower;
 
 
 public class TestFlowerManager {
-
 	@Test
 	public void displayAllTest() {
-		FlowerManagerDAO1 flowerManagerDAO=new FlowerManagerDAO1();
+		FlowerManagerDAO flowerManagerDAO=new FlowerManagerDAO();
 		List<Flower> display;
 		try {
 			display = flowerManagerDAO.getFlower();
@@ -21,5 +20,4 @@ public class TestFlowerManager {
 			e.printStackTrace();
 		}				
 	}
-	
 }

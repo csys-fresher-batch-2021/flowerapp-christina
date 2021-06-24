@@ -4,7 +4,6 @@ public class OrderValidator {
 
 	private OrderValidator() {
 	}
-
 	/**
 	 * proposes a constrains for order which needs approval
 	 * @param price

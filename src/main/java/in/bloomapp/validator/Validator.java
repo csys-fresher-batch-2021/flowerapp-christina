@@ -2,7 +2,7 @@ package in.bloomapp.validator;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
-import in.bloomapp.dao1.FlowerManagerDAO1;
+import in.bloomapp.dao.FlowerManagerDAO;
 import in.bloomapp.model.Flower;
 import in.bloomapp.exception.DBException;
 import in.bloomapp.exception.ValidFlowerException;
@@ -21,17 +21,12 @@ public class Validator {
 	public static boolean isCategory(String category) throws ValidFlowerException {
 		boolean validity=false;
 		if(category.equalsIgnoreCase("Natural")|| category.equalsIgnoreCase("Artificial")) {
-		
 			validity=true;
-			return validity;
-		
+			return validity;	
 		}
-		else {
-			
+		else {		
 			throw new ValidFlowerException ("Invalid category");
-			
-		}
-		
+		}	
 	}
 	
 	/**
@@ -45,7 +40,7 @@ public class Validator {
 	 */
 	public static void flowerIsDuplicate(String type, String category) throws ValidFlowerException, DBException, SQLException {
 		//returns true if the flower is already available
-		FlowerManagerDAO1 flowerManagerDAO1=new FlowerManagerDAO1();
+		FlowerManagerDAO flowerManagerDAO1=new FlowerManagerDAO();
 		final List<Flower> flowers = flowerManagerDAO1.getFlower();
 		for (Flower checkFlower : flowers) {
 			if (checkFlower.getCategory().equalsIgnoreCase(category) && checkFlower.getType().equalsIgnoreCase(type)) {
@@ -65,7 +60,7 @@ public class Validator {
 	 */
 	public static Flower flowerIsExist(String category,String type) throws ValidFlowerException, DBException, SQLException {
 
-		FlowerManagerDAO1 flowerManagerDAO1=new FlowerManagerDAO1();
+		FlowerManagerDAO flowerManagerDAO1=new FlowerManagerDAO();
 		final List<Flower> flowers = flowerManagerDAO1.getFlower();
 		for(Flower item : flowers) {
 		

@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import in.bloomapp.exception.InvalidInputException;
-import in.bloomapp.util.IsValid;
+import in.bloomapp.util.BasicValidator;
 
 
 public class IsCharAllowedTest {
@@ -13,7 +13,7 @@ public class IsCharAllowedTest {
 	public void testWithValidInput() {
 		boolean isValid = false;
 		try {
-			isValid = IsValid.isCharAllowed("Flower");
+			isValid = BasicValidator.isCharAllowed("Flower");
 			assertTrue(isValid);
 		} catch (InvalidInputException e) {
 			// TODO Auto-generated catch block
@@ -27,7 +27,7 @@ public class IsCharAllowedTest {
 	public void testWithNumbers() {
 		boolean isValid = false;
 		try {
-			isValid = IsValid.isCharAllowed("zlower09");
+			isValid = BasicValidator.isCharAllowed("zlower09");
 			assertTrue(isValid);
 		} catch (InvalidInputException e) {
 			e.printStackTrace();
@@ -39,7 +39,7 @@ public class IsCharAllowedTest {
 	public void testWithNumbersAndSpaces() {
 		boolean isValid = false;
 		try {
-			isValid = IsValid.isCharAllowed("Rose 09");
+			isValid = BasicValidator.isCharAllowed("Rose 09");
 			assertTrue(isValid);
 		} catch (InvalidInputException e) {
 			e.printStackTrace();
@@ -51,7 +51,7 @@ public class IsCharAllowedTest {
 	@Test
 	public void testWithInvalidInput() {
 		try {
-			IsValid.isCharAllowed("##@$%^");
+			BasicValidator.isCharAllowed("##@$%^");
 		} catch (InvalidInputException e) {
 			e.printStackTrace();
 			String message=e.getMessage();

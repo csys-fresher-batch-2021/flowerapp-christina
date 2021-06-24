@@ -6,7 +6,6 @@ public class CityValidator {
 
 	private CityValidator() {
 	}
-
 	/**
 	 * Checks the city code is valid or not
 	 * @param code
