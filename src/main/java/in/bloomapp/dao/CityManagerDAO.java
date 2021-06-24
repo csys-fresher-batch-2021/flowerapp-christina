@@ -19,7 +19,6 @@ public class CityManagerDAO {
 	 * @throws DBException
 	 */
 	public void save(City city) throws DBException {
-
 		// Getting connection
 		Connection connection = null;
 		PreparedStatement pst = null;
@@ -63,7 +62,6 @@ public class CityManagerDAO {
 		} finally {
 			ConnectionUtil.close(pst, connection);
 		}
-
 	}
 
 	/**
@@ -102,15 +100,12 @@ public class CityManagerDAO {
 		PreparedStatement pst = null;
 		ResultSet rs = null;
 		try {
-
 			// Step 1: Get the connection
 			con = ConnectionUtil.getConnection();
-
 			// Step 2: Query
 			String sql = "select district_code,city,delivary_charge from cities WHERE status=1";
 			pst = con.prepareStatement(sql);
 			// Step 3: execute query
-
 			rs = pst.executeQuery();
 			while (rs.next()) {
 				int districtCode = rs.getInt("district_code");
@@ -134,5 +129,4 @@ public class CityManagerDAO {
 		}
 		return list;
 	}
-
 }

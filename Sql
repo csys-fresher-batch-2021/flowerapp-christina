@@ -18,3 +18,50 @@ create table  user_data(
 unique (name)
 );
 select * from  user_data;
+
+CREATE TABLE cities
+(
+    id integer SERIAL PRIMARY KEY NOT NULL,
+    district_code integer NOT NULL,
+    city character varying(100) NOT NULL,
+    delivary_charge integer NOT NULL,
+    status integer NOT NULL,
+);
+select * from cities;
+
+create table bill ( id serial primary key ,
+				   flower_id  int not null,
+					   category varchar(100),
+						  name varchar(100) not null,
+						    quantity int not null,
+				   			price int not null,
+						  username  varchar(100) not null,
+					   order_date TIMESTAMP WITHOUT TIME ZONE,
+				 			  status int not null,
+				   FOREIGN KEY (flower_id) REFERENCES flowersdata(id)
+				   
+);
+select * from bill;
+
+CREATE TABLE orders(
+    id SERIAL PRIMARY KEY NOT NULL,
+    flower_id integer NOT NULL,
+    category character varying(100) NOT NULL,
+    name character varying(100) NOT NULL,
+    quantity integer NOT NULL,
+    price_per integer NOT NULL,
+    price integer NOT NULL,
+    delivery_city character varying(100),
+    delivery_address character varying(200),
+    deliver_date date,
+    delivery_time time without time zone,
+    user_id integer NOT NULL,
+    user_name character varying(100) NOT NULL,
+    mobile_no bigint NOT NULL,
+    order_date date,
+    status integer NOT NULL,
+    delivery_status character varying(100)
+);
+select * from orders;
+
+

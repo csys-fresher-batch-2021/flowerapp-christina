@@ -87,9 +87,9 @@ public class FlowerManager {
 		List<Flower> flowers=null;
 		try {
 			flowers = flowerManagerDAO.getFlower();
-			return flowers;
 		} catch (DBException e) {
-			return flowers;
+			e.printStackTrace();		
 		}
+		return flowers;
 	}
 }

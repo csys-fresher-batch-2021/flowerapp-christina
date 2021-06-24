@@ -9,7 +9,6 @@ import in.bloomapp.model.Flower;
 
 
 public class TestFlowerManager {
-
 	@Test
 	public void displayAllTest() {
 		FlowerManagerDAO flowerManagerDAO=new FlowerManagerDAO();
@@ -21,5 +20,4 @@ public class TestFlowerManager {
 			e.printStackTrace();
 		}				
 	}
-	
 }

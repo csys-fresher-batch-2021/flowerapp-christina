@@ -12,23 +12,20 @@ import in.bloomapp.model.Flower;
 import in.bloomapp.util.ConnectionUtil;
 
 public class FlowerManagerDAO {
-	
-
-
 	/**
 	 * Adds a flower to the database
+	 * 
 	 * @param newFlower
-	 * @throws SQLException 
+	 * @throws SQLException
 	 * @throws Exception
 	 */
 	public void saveFlower(Flower newFlower) throws DBException {
-
 		// Getting connection
 		Connection connection = null;
 		PreparedStatement pst = null;
 		try {
 			connection = ConnectionUtil.getConnection();
-			//Prepare data to insert into the driver
+			// Prepare data to insert into the driver
 			String sql = "insert into flowersData (name,category,price) values ( ?,?,?)";
 			pst = connection.prepareStatement(sql);
 			pst.setString(1, newFlower.getType());
@@ -36,24 +33,22 @@ public class FlowerManagerDAO {
 			pst.setInt(3, newFlower.getPrice());
 			// Executes the Query
 			pst.executeUpdate();
-		} 
-		catch (SQLException e) {
+		} catch (SQLException e) {
 			throw new DBException("Unable to add flower");
-		} 
-		finally {
+		} finally {
 			// Null Check - to avoid Null Pointer Exception
 			ConnectionUtil.close(pst, connection);
 		}
-
 	}
 
 	/**
 	 * remove a flower from the database
+	 * 
 	 * @param oldFlower
-	 * @throws SQLException 
+	 * @throws SQLException
 	 * @throws Exception
 	 */
-	public void removeFlower(Flower oldFlower) throws DBException{
+	public void removeFlower(Flower oldFlower) throws DBException {
 		Connection connection = null;
 		PreparedStatement pst = null;
 		try {
@@ -64,25 +59,23 @@ public class FlowerManagerDAO {
 			pst.setString(1, oldFlower.getType());
 			// Executes the Query
 			pst.executeUpdate();
-			
-		} 
-		catch (SQLException e) {
-			//If cannot add flower shows exception
+
+		} catch (SQLException e) {
+			// If cannot add flower shows exception
 			throw new DBException("Unable to delete flower");
-		} 
-		finally {
+		} finally {
 			ConnectionUtil.close(null, pst, connection);
 		}
-
 	}
 
 	/**
 	 * Gets the all flowers which is in the database
+	 * 
 	 * @return
-	 * @throws SQLException 
+	 * @throws SQLException
 	 * @throws Exception
 	 */
-	public List<Flower> getFlower() throws DBException{
+	public List<Flower> getFlower() throws DBException {
 
 		List<Flower> flower = new ArrayList<>();
 		// Step 1: Get the connection
@@ -102,23 +95,21 @@ public class FlowerManagerDAO {
 				String name = rs.getString("name");
 				int price = rs.getInt("price");
 				// Store the data in model
-				Flower subject = new Flower();			
+				Flower subject = new Flower();
 				subject.setCategory(category);
 				subject.setType(name);
 				subject.setPrice(price);
 				// Store all flowers in list
 				flower.add(subject);
 			}
-		} 
-		//If unable to get flowers throws exception
+		}
+		// If unable to get flowers throws exception
 		catch (SQLException e) {
 			throw new DBException("Unable to fetch flowers");
-		} 
-		finally {
-			//Closes the connection
+		} finally {
+			// Closes the connection
 			ConnectionUtil.close(rs, pst, con);
 		}
 		return flower;
 	}
-
 }

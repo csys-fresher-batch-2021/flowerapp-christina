@@ -62,9 +62,7 @@ public class OrderPlacementDAO {
 				ConnectionUtil.close(pst, connection);
 				removeCart(order);
 			}
-	}
-	
-
+	}	
 	
 	/**
 	 * Gets the list the is to be approved from the order database
@@ -107,8 +105,7 @@ public class OrderPlacementDAO {
 		finally {
 			ConnectionUtil.close(rs, pst, connection);
 		}		
-		return order;
-		
+		return order;		
 	}
 	
 	/**
@@ -136,8 +133,7 @@ public class OrderPlacementDAO {
 		} 
 		finally {
 			ConnectionUtil.close( pst, connection);
-		}
-		
+		}		
 	}
 	
 	/**
@@ -168,7 +164,6 @@ public class OrderPlacementDAO {
 			ConnectionUtil.close(rs, pst, connection);
 		}	
 		return userId;
-
 	}
 	
 	/**
@@ -197,10 +192,7 @@ public class OrderPlacementDAO {
 		} 
 		finally {
 			ConnectionUtil.close(rs, pst, connection);
-		}
-		
+		}	
 		return mobileNo;
-
 	}
-
 }
