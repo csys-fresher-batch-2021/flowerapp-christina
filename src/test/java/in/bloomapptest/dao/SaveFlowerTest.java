@@ -2,7 +2,7 @@ package in.bloomapptest.dao;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
-import in.bloomapp.dao1.FlowerManagerDAO1;
+import in.bloomapp.dao.FlowerManagerDAO;
 import in.bloomapp.model.Flower;
 
 public class SaveFlowerTest {
@@ -14,8 +14,8 @@ public class SaveFlowerTest {
 		newFlower.setType("Rose pack");
 		newFlower.setPrice(100);
 		try {
-			FlowerManagerDAO1 FlowerManagerDAO1=new FlowerManagerDAO1();
-			FlowerManagerDAO1.saveFlower(newFlower);
+			FlowerManagerDAO FlowerManagerDAO=new FlowerManagerDAO();
+			FlowerManagerDAO.saveFlower(newFlower);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -30,8 +30,8 @@ public class SaveFlowerTest {
 		newFlower.setType("Rose pack");
 		newFlower.setPrice(100);
 		try {
-			FlowerManagerDAO1 flowerManagerDAO1= new FlowerManagerDAO1();
-			flowerManagerDAO1.saveFlower(newFlower);
+			FlowerManagerDAO flowerManagerDAO= new FlowerManagerDAO();
+			flowerManagerDAO.saveFlower(newFlower);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

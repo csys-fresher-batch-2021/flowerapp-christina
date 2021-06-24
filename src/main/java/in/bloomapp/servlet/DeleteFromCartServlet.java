@@ -42,7 +42,6 @@ public class DeleteFromCartServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		response.sendRedirect("DisplayCart.jsp");
-
 	}
 
 }

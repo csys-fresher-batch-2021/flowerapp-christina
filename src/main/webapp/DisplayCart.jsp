@@ -28,11 +28,9 @@ String role = (String) session.getAttribute("ROLE");
 				<th scope="col"id="price">Price</th>
 				<th scope="col"id="Quantity">Quantity</th>
 				<th scope="col"id="reduce">Reduce quantity</th>
-				<th scope="col"id="Quantity">delete</th>
-				
+				<th scope="col"id="Quantity">delete</th>			
 			</tr>
-		</thead>
-		
+		</thead>		
 			<tbody>
 		<%
 		    final List<Flower> flowers = CartManager.getOrder(loggedInUsername);

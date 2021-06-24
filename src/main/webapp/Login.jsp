@@ -31,8 +31,7 @@
 		<br/>
 		<button type="submit" class="btn btn-info">Submit</button>
 		<button type="reset" class="btn btn-danger">Reset</button>
-		<br/><p>for admin username: admin  password= admin123</p>
-		
+		<br/><p>for admin username: admin  password= admin123</p>	
 </form>
 </main>
 </body>

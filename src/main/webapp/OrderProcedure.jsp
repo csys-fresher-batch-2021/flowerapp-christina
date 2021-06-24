@@ -32,10 +32,8 @@ String role = (String) session.getAttribute("ROLE");
 					<th scope="col" id="type">Type</th>
 					<th scope="col" id="price">Price</th>
 					<th scope="col" id="Quantity">Quantity</th>
-
 				</tr>
 			</thead>
-
 			<tbody>
 				<%final List<Flower> flowers = CartManager.getOrder(loggedInUsername);
 				int i = 0;
@@ -72,10 +70,9 @@ String role = (String) session.getAttribute("ROLE");
 			<%
 			final List<City> cityName = CityManager.getCity();
 			for (City cities : cityName) {%>
-			<option><%=cities.getCity()%> - Rs.<%=cities.getDelivaryCharge() %></option>
+			<option><%=cities.getCity()%></option>
 			<% }%>
 		</select> <br />
-
 		<%} else {%>
 		<label for="CityName">Delivery city</label>
 		 <input type="text" name="CityName" id="CityName" placeholder="Enter delivery city"
@@ -99,13 +96,10 @@ String role = (String) session.getAttribute("ROLE");
 					"&deliveryDate="+deliveryDate+
 					"&deliveryTime="+deliveryTime+"&userName="+userName;
 			let url="OrderProcedureServlet"+queryParameter;
-			fetch(url,{ method:'POST'}).then(res => res.json()).then(res=>{
-				
-				if(res.IS_ADDED=="Order Initiated"){
-				
+			fetch(url,{ method:'POST'}).then(res => res.json()).then(res=>{			
+				if(res.IS_ADDED=="Order Initiated"){		
 					alert(res.IS_ADDED);
-					window.location.href="UserSummary.jsp";
-					
+					window.location.href="UserSummary.jsp";				
 				}	
 				else{
 					document.getElementById('testLabel').innerHTML = (res.IS_ADDED);

@@ -1,14 +1,12 @@
 package in.bloomapp.validator;
 
 import java.util.List;
-
-import in.bloomapp.dao1.CartManagerDAO;
+import in.bloomapp.dao.CartManagerDAO;
 import in.bloomapp.exception.DBException;
 import in.bloomapp.model.Flower;
 
 public class CartValidation {
-	private CartValidation(){
-		
+	private CartValidation(){	
 	}	
 
 	/**
@@ -21,8 +19,7 @@ public class CartValidation {
 		boolean isAdded=false;
 		CartManagerDAO cartManagerDAO=new CartManagerDAO();
 		List<Flower> order=cartManagerDAO.getCart(flower.getBuyer());
-		for (Flower item:order) {
-	
+		for (Flower item:order) {	
 			if( (flower.getCategory().equals(item.getCategory()))&& (flower.getType().equals(item.getType()))) {
 				flower.setQuantity(item.getQuantity() + 1);
 				isAdded=true;

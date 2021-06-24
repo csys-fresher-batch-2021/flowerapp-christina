@@ -9,8 +9,6 @@ import java.time.LocalTime;
  *
  */
 public class Order {
-
-
 	private String orderCategory;
 	private String orderType;
 	private int orderPrice;
@@ -109,7 +107,5 @@ public class Order {
 	}
 	public void setOrderDate(LocalDate orderDate) {
 		this.orderDate = orderDate;
-	}
-
-	
+	}	
 }

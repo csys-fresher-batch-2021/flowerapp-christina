@@ -25,16 +25,13 @@ import in.bloomapp.service.OrderProcedureManager;
 @WebServlet("/OrderProcedureServlet")
 public class OrderProcedureServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	final Logger logger = Logger.getLogger(this.getClass().getName());
-
-	
+	final Logger logger = Logger.getLogger(this.getClass().getName());	
 	/**
 	 * Initiates an order
 	 */
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 		PrintWriter out = response.getWriter();
 		String isAdded="IS_ADDED";
 		String errorMessage;
@@ -73,5 +70,4 @@ public class OrderProcedureServlet extends HttpServlet {
 			out.flush();
 		}
 	}
-
 }

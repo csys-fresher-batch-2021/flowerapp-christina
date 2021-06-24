@@ -44,13 +44,11 @@
 			let price=document.querySelector("#price").value;
 			const queryParameter="?category="+category+"&type="+type+"&price="+price;
 			let url="AddFlowerServlet"+queryParameter;
-			fetch(url,{ method:'POST'}).then(res => res.json()).then(res=>{
-				
+			fetch(url,{ method:'POST'}).then(res => res.json()).then(res=>{		
 				if(res.IS_ADDED=="true"){				
 					alert("Successfully added");
 					window.location.href="displayFlowers.jsp";					
-				}
-					
+				}	
 				else{
 					document.getElementById('testLabel').innerHTML = (res.IS_ADDED);
 				}

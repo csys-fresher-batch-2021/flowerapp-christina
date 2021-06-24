@@ -2,7 +2,7 @@ package in.bloomapp.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import in.bloomapp.dao1.CartManagerDAO;
+import in.bloomapp.dao.CartManagerDAO;
 import in.bloomapp.exception.DBException;
 import in.bloomapp.model.Flower;
 import in.bloomapp.validator.CartValidation;
@@ -12,8 +12,6 @@ public class CartManager {
 	private CartManager() {
 		
 	}
-	
-	
 	/**
 	 * Adds the item to the cart
 	 * if the item is already available updates the quantity
@@ -22,7 +20,6 @@ public class CartManager {
 	 * @return
 	 */
 	public static boolean addToCart(Flower item) throws DBException{
-
 		CartManagerDAO cartManagerDAO = new CartManagerDAO();
 		if (CartValidation.isAddedToCart(item)) {
 			cartManagerDAO.update(item);
@@ -40,8 +37,7 @@ public class CartManager {
 	 */
 	public static void deleteFromCart(Flower item) throws DBException {
 		CartManagerDAO cartManagerDAO = new CartManagerDAO();
-		cartManagerDAO.delete(item);
-		
+		cartManagerDAO.delete(item);	
 	}
 	
 	/**
@@ -49,17 +45,14 @@ public class CartManager {
 	 * @param item
 	 * @throws DBException
 	 */
-	public static void reduceQuantity(Flower item) throws DBException {
-		
+	public static void reduceQuantity(Flower item) throws DBException {	
 		CartManagerDAO cartManagerDAO = new CartManagerDAO();
 		if(item.getQuantity()>1) {
-		
 		item.setQuantity(item.getQuantity() - 1);
 		cartManagerDAO.update(item);}
 		else {
 			cartManagerDAO.delete(item);
-		}
-		
+		}		
 	}
 	
 	/**
@@ -67,8 +60,7 @@ public class CartManager {
 	 * @return
 	 * @throws DBException 
 	 */
-	public static List<Flower> getOrder(String userName) throws DBException {
-		
+	public static List<Flower> getOrder(String userName) throws DBException {	
 		CartManagerDAO cartManagerDAO = new CartManagerDAO();
 		List<Flower> cart= cartManagerDAO.getCart(userName);
 		List<Flower> buyerzCart= new ArrayList<>();
@@ -77,8 +69,6 @@ public class CartManager {
 				buyerzCart.add(item);
 			}
 		}
-			return buyerzCart;
-
-	}
-	
+		return buyerzCart;
+	}	
 }

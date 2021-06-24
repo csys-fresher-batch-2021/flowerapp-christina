@@ -1,4 +1,4 @@
-package in.bloomapp.dao1;
+package in.bloomapp.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,7 +11,6 @@ import in.bloomapp.model.User;
 import in.bloomapp.util.ConnectionUtil;
 
 public class UserManagerDAO {
-	
 
 	/**
 	 * Registered user details will be saved in a data base
@@ -35,22 +34,11 @@ public class UserManagerDAO {
 			pst.setString(5, newUser.getAddress());
 			// Executes the Query
 			pst.executeUpdate();
-		} 
-		catch (SQLException | DBException e) {
+		} catch (SQLException | DBException e) {
 			throw new DBException("Unable to add user");
-		} 
-		finally {
+		} finally {
 			ConnectionUtil.close(null, pst, connection);
 		}
-
-	}
-
-	public static void deleteUser() {
-		// to do
-	}
-
-	public static void updateUser() {
-		// to do
 	}
 
 	/**
@@ -67,15 +55,12 @@ public class UserManagerDAO {
 		PreparedStatement pst = null;
 		ResultSet rs = null;
 		try {
-
 			// Step 1: Get the connection
 			con = ConnectionUtil.getConnection();
-
 			// Step 2: Query
 			String sql = "select name,password,email,mobileNo,address from user_data";
 			pst = con.prepareStatement(sql);
 			// Step 3: execute query
-
 			rs = pst.executeQuery();
 			while (rs.next()) {
 				String name = rs.getString("name");
@@ -97,8 +82,7 @@ public class UserManagerDAO {
 		// If unable to get flowers throws exception
 		catch (SQLException e) {
 			throw new DBException("Unable to fetch Users");
-		} 
-		finally {
+		} finally {
 			// Closes the connection
 			ConnectionUtil.close(rs, pst, con);
 		}
