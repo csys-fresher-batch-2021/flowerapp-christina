@@ -31,6 +31,7 @@ public class OrderSummaryDAO {
 	private static final String NAME = "name";
 	private static final String PRICE = "price";
 	private static final String QUANTITY = "quantity";
+	private static final String TOTAL_SUM="total_sum";
 
 	// jdbc template which helps in giving and closing connections
 	private static JdbcTemplate jdbcTemplate = ConnectionUtil.getJdbcTemplate();
@@ -128,8 +129,8 @@ public class OrderSummaryDAO {
 			String sql = "select delivery_city,delivery_address,deliver_date,delivery_time,user_name"
 					+ ",mobile_no,order_date ,sum(quantity) AS total_flowers, SUM(price) AS total_sum "
 					+ "from orders WHERE user_name=? AND delivery_status='yetToDeliver' AND "
-					+ "status=1 group by delivery_city,delivery_address,deliver_date,delivery_time,"
-					+ "user_name,mobile_no,order_date";
+					+ "status=1 group by delivery_city,delivery_address,deliver_date,delivery_time,user_name,"
+					+ "mobile_no,order_date";
 
 			// fields that is to be passed to the query are given as parameter
 			Object[] params = { userName };
@@ -147,7 +148,7 @@ public class OrderSummaryDAO {
 				subject.setUserMobileNo(rs.getLong(MOBILE_NO));
 				subject.setOrderDate(LocalDate.parse(rs.getString(ORDER_DATE)));
 				subject.setOrderQuantity(rs.getInt(TOTAL_FLOWERS));
-				subject.setOrderPrice(rs.getInt("total_sum"));
+				subject.setOrderPrice(rs.getInt(TOTAL_SUM));
 				return subject;
 			}, params);
 		} catch (DataAccessException e) {
@@ -172,7 +173,7 @@ public class OrderSummaryDAO {
 					+ ",mobile_no,order_date ,sum(quantity) AS total_flowers, SUM(price) AS total_sum "
 					+ "from orders WHERE user_name=? AND delivery_status='yetToDeliver' AND "
 					+ "status=1 group by category,name,price,quantity,delivery_city,"
-					+ "delivery_address,deliver_date,delivery_time," + "user_name,mobile_no,order_date";
+					+ "delivery_address,deliver_date,delivery_time,user_name,mobile_no,order_date";
 
 			// fields that is to be passed to the query are given as parameter
 			Object[] params = { userName };
@@ -194,7 +195,7 @@ public class OrderSummaryDAO {
 				subject.setUserMobileNo(rs.getLong(MOBILE_NO));
 				subject.setOrderDate(LocalDate.parse(rs.getString(ORDER_DATE)));
 				subject.setOrderQuantity(rs.getInt(TOTAL_FLOWERS));
-				subject.setOrderPrice(rs.getInt("total_sum"));
+				subject.setOrderPrice(rs.getInt(TOTAL_SUM));
 				return subject;
 			}, params);
 		} catch (DataAccessException e) {
@@ -218,7 +219,7 @@ public class OrderSummaryDAO {
 					+ "deliver_date,delivery_time,user_name,mobile_no,order_date ," + "sum(quantity) AS total_flowers"
 					+ ", SUM(price) AS total_sum " + "from orders WHERE user_name=? "
 					+ "AND delivery_status='Rejected' " + "AND status=1 group by category,name,price,quantity"
-					+ ",delivery_city,delivery_address,deliver_date,delivery_time," + "user_name,mobile_no,order_date";
+					+ ",delivery_city,delivery_address,deliver_date,delivery_time,user_name,mobile_no,order_date";
 
 			// fields that is to be passed to the query are given as parameter
 			Object[] params = { userName };
@@ -240,7 +241,7 @@ public class OrderSummaryDAO {
 				subject.setUserMobileNo(rs.getLong(MOBILE_NO));
 				subject.setOrderDate(LocalDate.parse(rs.getString(ORDER_DATE)));
 				subject.setOrderQuantity(rs.getInt(TOTAL_FLOWERS));
-				subject.setOrderPrice(rs.getInt("total_sum"));
+				subject.setOrderPrice(rs.getInt(TOTAL_SUM));
 				return subject;
 			}, params);
 		} catch (DataAccessException e) {
