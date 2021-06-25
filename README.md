@@ -1,5 +1,5 @@
-# BLOOM APP(Online flower sales and delivary app)
-#### This app is a e-commerce app focus on sales and delivary of flower
+# BLOOM APP(Online flower sales and delivery app)
+#### This app is a e-commerce app focus on sales and delivery of flower
  
  # PROJECT INSIGHTS
  #### Can just see the flowers available
