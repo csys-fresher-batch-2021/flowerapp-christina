@@ -107,5 +107,13 @@ public class Order {
 	}
 	public void setOrderDate(LocalDate orderDate) {
 		this.orderDate = orderDate;
-	}	
+	}
+	@Override
+	public String toString() {
+		return "Order [orderCategory=" + orderCategory + ", orderType=" + orderType + ", orderPrice=" + orderPrice
+				+ ", orderQuantity=" + orderQuantity + ", deliveryCity=" + deliveryCity + ", deliverAddress="
+				+ deliverAddress + ", deliveryDate=" + deliveryDate + ", deliveryTime=" + deliveryTime + ", userName="
+				+ userName + ", userMobileNo=" + userMobileNo + ", orderDate=" + orderDate + ", status=" + status
+				+ ", deliveryStatus=" + deliveryStatus + ", orderId=" + orderId + "]";
+	}
 }

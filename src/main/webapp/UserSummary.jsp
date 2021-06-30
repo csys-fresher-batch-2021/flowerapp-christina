@@ -18,7 +18,6 @@ String role = (String) session.getAttribute("ROLE");
 <jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
 	<h1 style="color: pink">Order List</h1>
-	
 		<table class="table table-bordered" style="font-size: 15px">
 			<caption style="color: red">Flowers which you ordered are shown here</caption>
 			<thead>
@@ -95,7 +94,7 @@ String role = (String) session.getAttribute("ROLE");
 			for(Order order: summary){
 				j++;
 			%>
-					<p><h5>Order No <%=i%></h5></p>
+					<p><h5>Order No <%=j%></h5></p>
 					<p><h5>************</h5></p>
 					<p><h5>Total price: Rs.<%=order.getOrderPrice()%>/-</h5></p>
 					<p><h5> Delivery City: <%=order.getDeliveryCity()%></h5></p>
@@ -106,9 +105,9 @@ String role = (String) session.getAttribute("ROLE");
 					<p><h5>Ordered Date: <%=order.getOrderDate()%></h5></p>
 					<%if(count>0){
 					int deliveryCharge=CityManager.getDeliveryCharge(order.getDeliveryCity());%>
-					<p>Rs. <%=deliveryCharge %></p>
+					<p><h5>Delivery Charge: Rs. <%=deliveryCharge %></h5></p>
 					<%}else{ %>
-						<p><h5>Rs. 75</h5></p>
+						<p><h5>Delivery Charge: Rs. 75</h5></p>
 						<%} %>
 					<% } %>						
 	</main>

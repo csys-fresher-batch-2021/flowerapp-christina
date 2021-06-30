@@ -10,6 +10,7 @@
 <meta charset="ISO-8859-1">
 <title>Todays Orders</title>
 </head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 <body>
 <jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
@@ -31,26 +32,32 @@
 				<th scope="col" id= "mobileNo">user mobile No</th>
 				<th scope="col" id= "orderdate">Order date</th>
 			</tr>
-		</thead>
-		
+		</thead>	
 <tbody id="order-tbl">
- <%  final List<Order> approve = SummaryManager.getOrders();
-			int i=0;
-			for(Order order: approve){%>
-<tr>
-<td>SNO </td><td><%=order.getOrderCategory()%></td>
-			<td><%=order.getOrderType()%></td>
-			<td><%=order.getOrderQuantity()%></td>
-			<td rs.><%=order.getOrderPrice()%></td>
-			<td><%=order.getDeliveryCity()%></td>
-			<td><%=order.getDeliverAddress()%></td>
-			<td><%=order.getDeliveryDate()%></td>
-			<td><%=order.getDeliveryTime()%></td>
-			<td><%=order.getUserName()%></td>
-			<td><%=order.getUserMobileNo()%></td>
-			<td><%=order.getOrderDate()%></td></tr><%} %>
-</tbody>
 </table>
+<script type="text/javascript">
+function getApprovalList(){
+	let url = "TodaysOrderServlet";
+	fetch(url).then(res=> res.json()).then(res=>{
+		let orders = res;
+		let SNO=1;
+		console.log("Got response from servlet");
+		console.log(orders);
+		let content = "";
+		for(let order of orders){
+			content += "<tr><td>" +SNO +"</td><td>" +order.orderCategory+"</td><td>"+order.orderType+"</td><td>"+order.orderQuantity
+			+"</td><td>"+order.orderPrice+"</td><td>"+order.deliveryCity+"</td><td>"+order.deliverAddress+"</td><td>"+
+			moment(order.deliveryDate).format('DD-MM-YYYY')+"</td><td>"+moment(order.deliveryTime).format('h:mm:ss')+"</td><td>"+
+			order.userName+"</td><td>"+order.userMobileNo+
+			"</td><td>"+moment(order.orderDate).format('DD-MM-YYYY')+"</td></tr>";	
+			SNO++;
+		}
+		console.log(content);
+		document.querySelector("#order-tbl").innerHTML= content;
+	})
+}
+getApprovalList();
+</script>
 </main>
 </body>
 </html>

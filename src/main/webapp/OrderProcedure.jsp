@@ -18,6 +18,7 @@ String role = (String) session.getAttribute("ROLE");
 </head>
 <body>
 <jsp:include page="header.jsp"></jsp:include>
+
 	<main class="container-fluid">
 		<h1 style="color: black">Place order</h1>
 		<form onsubmit="proceed()" method="post">
